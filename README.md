@@ -1,2 +1,2 @@
 # DevPortfolio
-Repo to host my CV
+Repo to host my Portfolio
