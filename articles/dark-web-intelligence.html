@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eyes Below the Surface: Dark Web Intelligence for Business Security | JSE Insights</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --bg-deep: #0d1117;
+      --bg-mid: #161b22;
+      --bg-card: #1c2128;
+      --bg-card2: #22272e;
+      --cyan: #00e5ff;
+      --cyan-dim: rgba(0,229,255,.09);
+      --green: #00ffb3;
+      --amber: #ffbb00;
+      --red: #ff4757;
+      --purple: #a855f7;
+      --text-pri: #e6edf3;
+      --text-sec: #8b949e;
+      --border: rgba(255,255,255,.08);
+      --border-hot: rgba(0,229,255,.28);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Calibri, 'Trebuchet MS', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-pri);
+      line-height: 1.85;
+      font-size: 1.0625rem;
+    }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,17,23,.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .75rem 2rem;
+    }
+    .topbar-brand { font-family: 'Open Sans', sans-serif; font-size: .85rem; font-weight: 700; color: var(--cyan); text-decoration: none; letter-spacing: .06em; }
+    .topbar-back { display: flex; align-items: center; gap: .5rem; color: var(--text-sec); text-decoration: none; font-size: .85rem; transition: color .2s; }
+    .topbar-back:hover { color: var(--cyan); }
+    .topbar-tags { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .tag { font-family: 'Share Tech Mono', monospace; font-size: .72rem; background: var(--cyan-dim); color: var(--cyan); border: 1px solid var(--border); border-radius: 4px; padding: .2rem .55rem; }
+    .tag.purple { background: rgba(168,85,247,.12); color: var(--purple); border-color: rgba(168,85,247,.28); }
+    .tag.green  { background: rgba(0,255,179,.1);   color: var(--green); border-color: rgba(0,255,179,.22); }
+
+    .article-hero {
+      background: var(--bg-mid);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem 3rem; text-align: center;
+    }
+    .article-hero .eyebrow {
+      font-family: 'Share Tech Mono', monospace; font-size: .78rem;
+      color: var(--purple); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.2rem;
+    }
+    .article-hero h1 {
+      font-family: 'Open Sans', sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 900; line-height: 1.2;
+      background: linear-gradient(135deg, #fff 0%, #a855f7 50%, var(--cyan) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      max-width: 820px; margin: 0 auto 1.2rem;
+    }
+    .article-hero .subtitle { color: var(--text-sec); font-size: 1.05rem; max-width: 680px; margin: 0 auto 2rem; }
+    .article-meta { display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; font-size: .82rem; color: var(--text-sec); }
+    .article-meta span { display: flex; align-items: center; gap: .4rem; }
+    .article-meta i { color: var(--purple); }
+
+    .article-body { max-width: 820px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+    h2 { font-family: 'Open Sans', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--cyan); margin: 3rem 0 1.2rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: .65rem; }
+    h2 i { font-size: 1.0625rem; }
+    h3 { font-size: 1.05rem; font-weight: 600; color: var(--text-pri); margin: 1.8rem 0 .8rem; }
+    p { margin-bottom: 1.3rem; color: var(--text-sec); }
+    strong { color: var(--text-pri); font-weight: 600; }
+    ul, ol { margin: 0 0 1.1rem 1.5rem; color: var(--text-sec); }
+    li { margin-bottom: .45rem; }
+
+    .callout { border-left: 3px solid; border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1.8rem 0; font-size: .93rem; }
+    .callout.info    { border-color: var(--cyan);   background: rgba(0,229,255,.04); }
+    .callout.danger  { border-color: var(--red);    background: rgba(255,71,87,.04); }
+    .callout.success { border-color: var(--green);  background: rgba(0,255,179,.04); }
+    .callout.purple  { border-color: var(--purple); background: rgba(168,85,247,.07); }
+    .callout .callout-title { font-family: 'Share Tech Mono', monospace; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; display: flex; align-items: center; gap: .5rem; }
+    .callout.info    .callout-title { color: var(--cyan); }
+    .callout.danger  .callout-title { color: var(--red); }
+    .callout.success .callout-title { color: var(--green); }
+    .callout.purple  .callout-title { color: var(--purple); }
+
+    /* WEB LAYERS DIAGRAM */
+    .web-layers { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .web-layer { padding: 1.4rem 1.6rem; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 1.2rem; }
+    .web-layer:last-child { border-bottom: none; }
+    .web-layer-icon { font-size: 1.8rem; flex-shrink: 0; width: 2.4rem; text-align: center; margin-top: .1rem; }
+    .web-layer.surface { background: rgba(0,229,255,.04); }
+    .web-layer.deep    { background: rgba(168,85,247,.06); }
+    .web-layer.dark    { background: rgba(255,71,87,.06); }
+    .web-layer-name { font-family: 'Open Sans', sans-serif; font-size: .9rem; font-weight: 700; margin-bottom: .3rem; }
+    .web-layer.surface .web-layer-name { color: var(--cyan); }
+    .web-layer.deep    .web-layer-name { color: var(--purple); }
+    .web-layer.dark    .web-layer-name { color: var(--red); }
+    .web-layer-pct { font-family: 'Share Tech Mono', monospace; font-size: .75rem; color: var(--text-sec); display: inline-block; margin-bottom: .45rem; }
+    .web-layer-desc { font-size: .88rem; color: var(--text-sec); }
+    .web-layer-examples { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; }
+    .web-layer-examples span { font-family: 'Share Tech Mono', monospace; font-size: .72rem; border: 1px solid var(--border); border-radius: 4px; padding: .15rem .5rem; color: var(--text-sec); }
+
+    /* PROCESS FLOW */
+    .process-flow { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; }
+    .pf-step { display: flex; gap: 0; position: relative; }
+    .pf-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 28px; top: 56px;
+      width: 2px; height: calc(100% - 28px);
+      background: linear-gradient(to bottom, var(--cyan-dim), transparent);
+    }
+    .pf-num {
+      flex-shrink: 0;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      border: 2px solid var(--border-hot);
+      background: var(--bg-card2);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Open Sans', sans-serif; font-size: .9rem; font-weight: 700; color: var(--cyan);
+      margin-right: 1.2rem; flex-shrink: 0;
+    }
+    .pf-body { padding: .5rem 0 2.2rem; flex: 1; }
+    .pf-body h4 { font-size: 1.05rem; font-weight: 700; color: var(--text-pri); margin-bottom: .4rem; display: flex; align-items: center; gap: .5rem; }
+    .pf-body h4 i { color: var(--cyan); font-size: .9rem; }
+    .pf-body p { font-size: .9rem; color: var(--text-sec); margin: 0 0 .6rem; }
+    .pf-body .sub-steps { list-style: none; padding: 0; margin: .5rem 0 0; }
+    .pf-body .sub-steps li { font-size: .85rem; color: var(--text-sec); padding: .3rem 0; padding-left: 1.1rem; position: relative; }
+    .pf-body .sub-steps li::before { content: '▸'; position: absolute; left: 0; color: var(--cyan); }
+
+    /* ANALYSIS FRAMEWORK */
+    .analysis-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .9rem; margin: 1.5rem 0; }
+    .analysis-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem; }
+    .analysis-item i { font-size: 1.2rem; color: var(--purple); display: block; margin-bottom: .5rem; }
+    .analysis-item h4 { font-size: .88rem; font-weight: 700; color: var(--text-pri); margin-bottom: .35rem; }
+    .analysis-item p { font-size: .82rem; color: var(--text-sec); margin: 0; }
+
+    /* PLAYBOOK */
+    .playbook { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin: 2rem 0; }
+    .playbook-header { background: rgba(255,71,87,.1); border-bottom: 1px solid rgba(255,71,87,.2); padding: .9rem 1.4rem; display: flex; align-items: center; gap: .7rem; }
+    .playbook-header i { color: var(--red); }
+    .playbook-header span { font-family: 'Open Sans', sans-serif; font-size: .85rem; font-weight: 700; color: var(--red); }
+    .playbook-stages { display: flex; overflow-x: auto; }
+    .pb-stage { flex: 1; min-width: 140px; padding: 1.2rem; border-right: 1px solid var(--border); }
+    .pb-stage:last-child { border-right: none; }
+    .pb-stage-num { font-family: 'Open Sans', sans-serif; font-size: .7rem; color: var(--text-sec); margin-bottom: .35rem; }
+    .pb-stage-name { font-size: .88rem; font-weight: 700; color: var(--text-pri); margin-bottom: .5rem; }
+    .pb-stage-actions { list-style: none; padding: 0; }
+    .pb-stage-actions li { font-size: .78rem; color: var(--text-sec); padding: .25rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .pb-stage-actions li:last-child { border-bottom: none; }
+
+    /* BUSINESS VALUE CARDS */
+    .bv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .bv-card { background: var(--bg-card2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; }
+    .bv-card i { font-size: 2rem; color: var(--cyan); display: block; margin-bottom: .75rem; }
+    .bv-card h4 { font-size: .95rem; font-weight: 700; color: var(--text-pri); margin-bottom: .5rem; }
+    .bv-card p { font-size: .85rem; color: var(--text-sec); margin: 0; }
+
+    /* FUTURE TRENDS */
+    .trends { display: flex; flex-direction: column; gap: .9rem; margin: 1.5rem 0; }
+    .trend { display: flex; align-items: flex-start; gap: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; }
+    .trend i { font-size: 1.3rem; color: var(--amber); flex-shrink: 0; margin-top: .15rem; }
+    .trend h4 { font-size: .93rem; font-weight: 600; color: var(--text-pri); margin-bottom: .3rem; }
+    .trend p { font-size: .85rem; color: var(--text-sec); margin: 0; }
+
+    /* RECOMMENDATIONS */
+    .rec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .rec-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem; transition: border-color .2s; }
+    .rec-card:hover { border-color: var(--border-hot); }
+    .rec-card i { font-size: 1.4rem; color: var(--cyan); margin-bottom: .75rem; display: block; }
+    .rec-card h4 { font-size: .95rem; font-weight: 600; color: var(--text-pri); margin-bottom: .5rem; }
+    .rec-card p { font-size: .85rem; color: var(--text-sec); margin: 0; }
+
+    .takeaways { background: linear-gradient(135deg, rgba(168,85,247,.06) 0%, rgba(0,229,255,.04) 100%); border: 1px solid var(--border-hot); border-radius: 12px; padding: 1.8rem; margin: 3rem 0; }
+    .takeaways h3 { font-family: 'Open Sans', sans-serif; font-size: 1.0625rem; color: var(--cyan); margin: 0 0 1rem; display: flex; align-items: center; gap: .6rem; }
+    .takeaways ul { margin: 0; padding-left: 1.4rem; }
+    .takeaways li { color: var(--text-pri); margin-bottom: .5rem; font-size: .92rem; }
+
+    .divider { height: 1px; background: linear-gradient(to right, transparent, var(--border-hot), transparent); margin: 2.5rem 0; }
+
+    .article-footer { background: var(--bg-mid); border-top: 1px solid var(--border); padding: 2rem; text-align: center; }
+    .article-footer p { color: var(--text-sec); font-size: .85rem; margin: 0; }
+    .article-footer a { color: var(--cyan); text-decoration: none; }
+    .article-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .article-body { padding: 2rem 1.2rem 4rem; }
+      .topbar { padding: .75rem 1rem; }
+      .topbar-tags { display: none; }
+      .playbook-stages { flex-direction: column; }
+      .pb-stage { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <a href="../index.html" class="topbar-brand">JSE // SECURITY</a>
+  <div class="topbar-tags">
+    <span class="tag purple">Dark Web</span>
+    <span class="tag green">CTI</span>
+    <span class="tag">OSINT</span>
+  </div>
+  <a href="../index.html#insights-section" class="topbar-back">
+    <i class="fa fa-arrow-left"></i> Back to Insights
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="article-hero">
+  <p class="eyebrow"><i class="fa fa-eye"></i>&nbsp; Cyber Threat Intelligence</p>
+  <h1>Eyes Below the Surface:<br/>Dark Web Intelligence for Business Security</h1>
+  <p class="subtitle">
+    What happens in the hidden corners of the internet directly affects your organization.
+    A practitioner's guide to dark web monitoring &mdash; from the taxonomy of the hidden web
+    to a five-step monitoring lifecycle and a real-world account compromise playbook.
+  </p>
+  <div class="article-meta">
+    <span><i class="fa fa-calendar"></i> March 2024</span>
+    <span><i class="fa fa-clock"></i> 8 min read</span>
+    <span><i class="fa fa-user-shield"></i> Joe Smith-Essang</span>
+    <span><i class="fa fa-tag"></i> Threat Intelligence &amp; CTI</span>
+  </div>
+</section>
+
+<!-- ARTICLE BODY -->
+<main class="article-body">
+
+  <div class="callout purple">
+    <p class="callout-title"><i class="fa fa-info-circle"></i> Context</p>
+    <p>This article is derived from a knowledge-sharing presentation delivered to an enterprise security team. The content captures the practitioner methodology used to operationalise dark web monitoring within a consulting engagement context. All client-specific details have been removed.</p>
+  </div>
+
+  <!-- THE THREE LAYERS -->
+  <h2><i class="fa fa-layer-group"></i> The Three Layers of the Web</h2>
+  <p>
+    Most people interact with only a thin slice of the internet. Understanding the full structure
+    is the first step toward understanding your organization's actual threat surface.
+  </p>
+
+  <div class="web-layers">
+    <div class="web-layer surface">
+      <div class="web-layer-icon" style="color:var(--cyan)"><i class="fa fa-globe"></i></div>
+      <div>
+        <p class="web-layer-name">Surface Web</p>
+        <p class="web-layer-pct">~4% of internet content &mdash; publicly indexed by search engines</p>
+        <p class="web-layer-desc">
+          Everything reachable via standard browsers and indexed by search engines. This is where
+          your corporate website, news portals, and social media live. It is also where threat actors
+          post proof-of-breach data, publish extortion pages, and recruit affiliates in the open.
+        </p>
+        <div class="web-layer-examples">
+          <span>google.com</span><span>LinkedIn</span><span>News sites</span>
+          <span>Paste sites</span><span>GitHub</span><span>Hacker forums (clearnet)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="web-layer deep">
+      <div class="web-layer-icon" style="color:var(--purple)"><i class="fa fa-database"></i></div>
+      <div>
+        <p class="web-layer-name">Deep Web</p>
+        <p class="web-layer-pct">~96% of internet content &mdash; not indexed, requires credentials</p>
+        <p class="web-layer-desc">
+          The vast majority of the internet. Content is not malicious by default &mdash; it simply
+          requires authentication to access. However, compromised credentials that appear on dark web
+          markets unlock deep web resources (banking portals, email, ERP systems, VPNs).
+          This is why credential monitoring is a core dark web use case.
+        </p>
+        <div class="web-layer-examples">
+          <span>Online banking portals</span><span>Corporate intranets</span>
+          <span>Medical records</span><span>Email accounts</span><span>Cloud storage</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="web-layer dark">
+      <div class="web-layer-icon" style="color:var(--red)"><i class="fa fa-skull"></i></div>
+      <div>
+        <p class="web-layer-name">Dark Web</p>
+        <p class="web-layer-pct">Overlay network &mdash; requires Tor or I2P for access</p>
+        <p class="web-layer-desc">
+          Intentionally hidden content accessible only through anonymising software such as the
+          Tor browser. Home to ransomware leak sites, credential marketplaces, exploit brokers,
+          initial access brokers (IABs), and threat actor communication forums. Organizations
+          whose data appears here face active exfiltration and extortion threats.
+        </p>
+        <div class="web-layer-examples">
+          <span>RaaS leak sites</span><span>Credential markets</span>
+          <span>Exploit brokers</span><span>IAB listings</span><span>Hacker forums (.onion)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT'S AT STAKE -->
+  <h2><i class="fa fa-triangle-exclamation"></i> What Ends Up on the Dark Web</h2>
+  <p>
+    Dark web markets trade in a range of organizational assets. Understanding the commodities
+    helps security teams prioritize what to monitor.
+  </p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem;margin:1.5rem 0;">
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
+      <i class="fa fa-id-card" style="color:var(--red);font-size:1.4rem;display:block;margin-bottom:.5rem;"></i>
+      <p style="font-size:.85rem;font-weight:700;color:var(--text-pri);margin:0 0 .3rem;">Employee Credentials</p>
+      <p style="font-size:.78rem;color:var(--text-sec);margin:0;">Harvested via phishing, stealer malware, or breaches of third-party SaaS providers.</p>
+    </div>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
+      <i class="fa fa-credit-card" style="color:var(--red);font-size:1.4rem;display:block;margin-bottom:.5rem;"></i>
+      <p style="font-size:.85rem;font-weight:700;color:var(--text-pri);margin:0 0 .3rem;">Financial Data</p>
+      <p style="font-size:.78rem;color:var(--text-sec);margin:0;">Customer card data, bank account credentials, and transaction records from breached systems.</p>
+    </div>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
+      <i class="fa fa-file-medical" style="color:var(--red);font-size:1.4rem;display:block;margin-bottom:.5rem;"></i>
+      <p style="font-size:.85rem;font-weight:700;color:var(--text-pri);margin:0 0 .3rem;">PII &amp; PHI</p>
+      <p style="font-size:.78rem;color:var(--text-sec);margin:0;">Patient records, national ID numbers, biometric data &mdash; extremely high value for fraud and identity theft.</p>
+    </div>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
+      <i class="fa fa-network-wired" style="color:var(--red);font-size:1.4rem;display:block;margin-bottom:.5rem;"></i>
+      <p style="font-size:.85rem;font-weight:700;color:var(--text-pri);margin:0 0 .3rem;">Network Access</p>
+      <p style="font-size:.78rem;color:var(--text-sec);margin:0;">VPN credentials, RDP access, and corporate foothold listings sold by Initial Access Brokers.</p>
+    </div>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
+      <i class="fa fa-flask" style="color:var(--red);font-size:1.4rem;display:block;margin-bottom:.5rem;"></i>
+      <p style="font-size:.85rem;font-weight:700;color:var(--text-pri);margin:0 0 .3rem;">Exploits &amp; Toolkits</p>
+      <p style="font-size:.78rem;color:var(--text-sec);margin:0;">Zero-day exploits, malware source code, and offensive tools available for purchase by threat actors.</p>
+    </div>
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
+      <i class="fa fa-file-code" style="color:var(--red);font-size:1.4rem;display:block;margin-bottom:.5rem;"></i>
+      <p style="font-size:.85rem;font-weight:700;color:var(--text-pri);margin:0 0 .3rem;">Proprietary Data</p>
+      <p style="font-size:.78rem;color:var(--text-sec);margin:0;">Stolen source code, R&amp;D documents, contracts, and M&amp;A information used for extortion or competitive espionage.</p>
+    </div>
+  </div>
+
+  <!-- MONITORING PROCESS -->
+  <h2><i class="fa fa-magnifying-glass"></i> The Five-Step Dark Web Monitoring Lifecycle</h2>
+  <p>
+    Effective dark web monitoring is not passive surveillance — it is an active intelligence
+    discipline with defined phases. The following lifecycle was developed and operationalised
+    across multiple enterprise engagements.
+  </p>
+
+  <div class="process-flow">
+    <div class="pf-step">
+      <div class="pf-num">01</div>
+      <div class="pf-body">
+        <h4><i class="fa fa-crosshairs"></i> Preparation</h4>
+        <p>Define the scope of what you are protecting and establish the operational infrastructure to monitor it safely. This phase sets the parameters for everything that follows.</p>
+        <ul class="sub-steps">
+          <li>Identify Crown Jewels: credential domains, IP ranges, executive names, product names, sensitive project codenames</li>
+          <li>Configure monitoring keywords &amp; Boolean search strings for each asset category</li>
+          <li>Stand up isolated monitoring infrastructure (dedicated VMs, VPN routing, Tor nodes)</li>
+          <li>Assign analyst roles: monitor, verifier, and response coordinator</li>
+          <li>Establish a secure communication channel for alerts that bypasses potentially compromised corporate email</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pf-step">
+      <div class="pf-num">02</div>
+      <div class="pf-body">
+        <h4><i class="fa fa-bell"></i> Detection</h4>
+        <p>Automated systems scan dark web forums, paste sites, breach databases, ransomware leak portals, and Telegram channels for keywords matching your monitored assets.</p>
+        <ul class="sub-steps">
+          <li>Automated crawlers index .onion sites, clearnet hacker forums, and paste services continuously</li>
+          <li>Alert triggers on exact-match credentials (email domains), IP mentions, data dumps containing monitored patterns</li>
+          <li>Ransomware leak site monitoring for organization name or industry sector listings</li>
+          <li>Telegram &amp; Discord channel monitoring for threat actor communications referencing targets</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pf-step">
+      <div class="pf-num">03</div>
+      <div class="pf-body">
+        <h4><i class="fa fa-microscope"></i> Analysis &amp; Verification</h4>
+        <p>Raw alerts are rarely actionable on their own. Every detection must be contextualized before a response is triggered. The five-dimension analysis framework:</p>
+        <ul class="sub-steps">
+          <li><strong>Source:</strong> What forum/channel/site? What is its historical reliability and threat actor affiliation?</li>
+          <li><strong>Author Profile:</strong> Is the poster a known threat actor, first-time poster, or likely reseller? Check account history and reputation score.</li>
+          <li><strong>Activity Pattern:</strong> Is this part of a coordinated campaign or an isolated post? Cross-reference with known threat actor activity timelines.</li>
+          <li><strong>Content Context:</strong> Is the data fresh or recycled from an older breach? Does it include internal indicators (hostnames, internal IPs) that confirm it is genuinely from your environment?</li>
+          <li><strong>Verification:</strong> Confirm validity of credentials without activating them (e.g., check if email address exists without attempting login). If it is an access listing, verify the IP/VPN endpoint matches your infrastructure.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pf-step">
+      <div class="pf-num">04</div>
+      <div class="pf-body">
+        <h4><i class="fa fa-shield-halved"></i> Response</h4>
+        <p>Verified findings trigger a graded response commensurate with the severity and nature of the exposure. The response playbook is detailed in the next section.</p>
+        <ul class="sub-steps">
+          <li>Severity triage: active credential exposure vs. stale data vs. reconnaissance mention</li>
+          <li>Immediate credential lock for confirmed active exposures</li>
+          <li>Forensic investigation to determine initial breach source</li>
+          <li>Eliminate the breach vector before re-issuing credentials</li>
+          <li>Notify affected parties per applicable data protection regulations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pf-step">
+      <div class="pf-num">05</div>
+      <div class="pf-body">
+        <h4><i class="fa fa-comments"></i> Communication</h4>
+        <p>Intelligence without communication is wasted. Findings must reach the right stakeholders in the right format to drive decisions.</p>
+        <ul class="sub-steps">
+          <li>C-suite: brief executive summary with business impact, risk rating, and remediation status</li>
+          <li>Security team: full technical IOC package, source details, and recommended detection rules</li>
+          <li>Legal/Compliance: regulatory notification assessment and evidence package if required</li>
+          <li>Affected individuals: notification letters where personal data is confirmed exposed</li>
+          <li>Feed findings back into the Preparation phase to update monitoring keywords and improve future detection</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACCOUNT COMPROMISE PLAYBOOK -->
+  <h2><i class="fa fa-person-falling"></i> Account Compromise Response Playbook</h2>
+  <p>
+    Credential exposure is the most common dark web finding. The following five-stage playbook
+    defines the response to a confirmed account compromise detection:
+  </p>
+
+  <div class="playbook">
+    <div class="playbook-header">
+      <i class="fa fa-triangle-exclamation"></i>
+      <span>ACCOUNT COMPROMISE — RESPONSE PLAYBOOK</span>
+    </div>
+    <div class="playbook-stages">
+      <div class="pb-stage">
+        <p class="pb-stage-num">STAGE 01</p>
+        <p class="pb-stage-name" style="color:var(--red);">Lock</p>
+        <ul class="pb-stage-actions">
+          <li>Immediately disable the compromised account(s)</li>
+          <li>Revoke all active sessions and tokens</li>
+          <li>Block MFA recovery options</li>
+          <li>Alert the account owner</li>
+        </ul>
+      </div>
+      <div class="pb-stage">
+        <p class="pb-stage-num">STAGE 02</p>
+        <p class="pb-stage-name" style="color:var(--amber);">Reset</p>
+        <ul class="pb-stage-actions">
+          <li>Force password reset via out-of-band channel</li>
+          <li>Re-enroll MFA device</li>
+          <li>Review &amp; revoke API keys and OAuth grants</li>
+          <li>Check for forwarding rules / mail exfil</li>
+        </ul>
+      </div>
+      <div class="pb-stage">
+        <p class="pb-stage-num">STAGE 03</p>
+        <p class="pb-stage-name" style="color:var(--cyan);">Investigate</p>
+        <ul class="pb-stage-actions">
+          <li>Audit login history for suspicious geolocations</li>
+          <li>Review email sent items for data exfiltration</li>
+          <li>Check file access &amp; downloads</li>
+          <li>Determine how credentials were obtained</li>
+        </ul>
+      </div>
+      <div class="pb-stage">
+        <p class="pb-stage-num">STAGE 04</p>
+        <p class="pb-stage-name" style="color:var(--purple);">Eliminate</p>
+        <ul class="pb-stage-actions">
+          <li>Remove attacker-planted persistence (rules, delegates)</li>
+          <li>Remediate the breach vector (phishing, stealer malware)</li>
+          <li>Scan endpoint for stealer malware</li>
+          <li>Block attacker IPs at perimeter</li>
+        </ul>
+      </div>
+      <div class="pb-stage">
+        <p class="pb-stage-num">STAGE 05</p>
+        <p class="pb-stage-name" style="color:var(--green);">Recover &amp; Report</p>
+        <ul class="pb-stage-actions">
+          <li>Restore access to the verified user</li>
+          <li>Complete incident documentation</li>
+          <li>Notify regulator if personal data affected</li>
+          <li>Update monitoring keywords &amp; detection rules</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANALYSIS FRAMEWORK -->
+  <h2><i class="fa fa-chart-bar"></i> Intelligence Analysis Framework</h2>
+  <p>Actionable intelligence requires structured analysis. The five-dimension framework evaluates every detection:</p>
+
+  <div class="analysis-grid">
+    <div class="analysis-item">
+      <i class="fa fa-database"></i>
+      <h4>Source Credibility</h4>
+      <p>Known forum, threat actor group affiliation, historical posting accuracy, and reputation score within the community.</p>
+    </div>
+    <div class="analysis-item">
+      <i class="fa fa-user-secret"></i>
+      <h4>Author Profiling</h4>
+      <p>Account age, posting history, claimed skills, prior listings sold, known aliases, and community trust level.</p>
+    </div>
+    <div class="analysis-item">
+      <i class="fa fa-chart-line"></i>
+      <h4>Activity Pattern</h4>
+      <p>Is this an isolated post or part of a campaign? Are other organizations in your sector also targeted? Timing relative to known CVE disclosures.</p>
+    </div>
+    <div class="analysis-item">
+      <i class="fa fa-file-lines"></i>
+      <h4>Content Context</h4>
+      <p>Sample data provided? Does it contain internal indicators (hostnames, private IPs, internal terminology) confirming it is genuinely from your environment?</p>
+    </div>
+    <div class="analysis-item">
+      <i class="fa fa-check-double"></i>
+      <h4>Cross-Verification</h4>
+      <p>Corroborate with SIEM/EDR logs, check breach databases (Have I Been Pwned, DeHashed), and confirm asset ownership before escalating.</p>
+    </div>
+  </div>
+
+  <!-- BUSINESS VALUE -->
+  <h2><i class="fa fa-building-shield"></i> Business Value of Dark Web Monitoring</h2>
+  <p>Organizations that invest in dark web monitoring realize three compounding security benefits:</p>
+
+  <div class="bv-grid">
+    <div class="bv-card">
+      <i class="fa fa-binoculars"></i>
+      <h4>Threat Intelligence &amp; Threat Hunting</h4>
+      <p>Early detection of your organization's exposure &mdash; whether through credentials, sensitive documents, or network access listings &mdash; provides the intelligence needed to proactively hunt threats before they become incidents.</p>
+    </div>
+    <div class="bv-card">
+      <i class="fa fa-bolt"></i>
+      <h4>Faster Incident Response</h4>
+      <p>Dark web signals often precede a full breach by days or weeks. Early warning enables a contained, faster response compared to discovering the breach after the attacker has already operated in your environment.</p>
+    </div>
+    <div class="bv-card">
+      <i class="fa fa-shield-check"></i>
+      <h4>Safeguard Organizational Interests</h4>
+      <p>Protecting intellectual property, customer PII, and executive credentials reduces reputational damage, regulatory penalties, and operational disruption. The cost of monitoring is a fraction of the cost of a breach.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FUTURE OF DWM -->
+  <h2><i class="fa fa-rocket"></i> The Future of Dark Web Monitoring</h2>
+  <p>The discipline is evolving rapidly, driven by both attacker innovation and defender tooling maturity:</p>
+
+  <div class="trends">
+    <div class="trend">
+      <i class="fa fa-brain"></i>
+      <div>
+        <h4>AI/ML-Powered Analysis</h4>
+        <p>Machine learning models trained on threat actor behavioural patterns are beginning to automate the triage and analysis phases, dramatically reducing the analyst time required per alert. NLP enables semantic similarity matching rather than pure keyword detection, catching obfuscated references to your organization.</p>
+      </div>
+    </div>
+    <div class="trend">
+      <i class="fa fa-robot"></i>
+      <div>
+        <h4>Automation at Scale</h4>
+        <p>Automated crawlers indexing thousands of dark web sources simultaneously, combined with SOAR-integrated playbooks, enable a response cycle measured in minutes rather than days.</p>
+      </div>
+    </div>
+    <div class="trend">
+      <i class="fa fa-handshake"></i>
+      <div>
+        <h4>Cross-Organization Threat Sharing</h4>
+        <p>ISACs (Information Sharing and Analysis Centers) and sector-specific threat sharing communities are formalizing the exchange of dark web intelligence across organizations. A breach at one bank becomes an early warning for all others in the consortium.</p>
+      </div>
+    </div>
+    <div class="trend">
+      <i class="fa fa-gavel"></i>
+      <div>
+        <h4>Regulatory Pressure &amp; Compliance</h4>
+        <p>Data protection laws are increasingly mandating breach notification timelines that can only realistically be met with dark web monitoring in place. Proactive monitoring is shifting from a best practice to a compliance requirement in several jurisdictions.</p>
+      </div>
+    </div>
+    <div class="trend">
+      <i class="fa fa-lock"></i>
+      <div>
+        <h4>Anonymity Technology Arms Race</h4>
+        <p>As threat actors adopt more sophisticated anonymisation (I2P, Freenet, encrypted messaging platforms), monitoring tools are evolving counter-techniques. Organizations must partner with intelligence vendors who continuously update their collection infrastructure.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RECOMMENDATIONS -->
+  <h2><i class="fa fa-list-check"></i> Recommendations for Your Organization</h2>
+
+  <div class="rec-grid">
+    <div class="rec-card">
+      <i class="fa fa-binoculars"></i>
+      <h4>Subscribe to a Dark Web Monitoring Service</h4>
+      <p>Commercial platforms (Recorded Future, Digital Shadows, Flare) provide continuous monitoring with analyst curation. The investment is justified even for mid-size organizations. Credential exposure is nearly universal.</p>
+    </div>
+    <div class="rec-card">
+      <i class="fa fa-crown"></i>
+      <h4>Define and Monitor Your Crown Jewels</h4>
+      <p>Do not monitor everything — prioritize. Know which email domains, IP ranges, executive credentials, product names, and sensitive project codenames would be highest-value targets and monitor those specifically.</p>
+    </div>
+    <div class="rec-card">
+      <i class="fa fa-clipboard-list"></i>
+      <h4>Have a Response Playbook Ready</h4>
+      <p>A dark web detection without a response plan is useless. Define who gets notified, what triggers a forced password reset, and when legal/compliance must be engaged — before the alert fires.</p>
+    </div>
+    <div class="rec-card">
+      <i class="fa fa-graduation-cap"></i>
+      <h4>Train Employees on Credential Hygiene</h4>
+      <p>Most dark web credential exposure originates from phishing or employees reusing corporate passwords on personal services that subsequently breach. Password manager mandates and phishing simulation reduce this risk substantially.</p>
+    </div>
+    <div class="rec-card">
+      <i class="fa fa-shield"></i>
+      <h4>Enforce MFA Everywhere</h4>
+      <p>A credential found on the dark web is worthless to an attacker if MFA is enforced. MFA is the single most effective control against credential-based attacks regardless of how the credentials were obtained.</p>
+    </div>
+    <div class="rec-card">
+      <i class="fa fa-link-slash"></i>
+      <h4>Audit Third-Party &amp; SaaS Accounts</h4>
+      <p>Your employees' credentials are exposed via breaches of the SaaS tools they use. Audit which third-party services corporate email addresses are registered with and disable those that are abandoned or unnecessary.</p>
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaways">
+    <h3><i class="fa fa-star"></i> Key Takeaways</h3>
+    <ul>
+      <li><strong>The dark web is not abstract</strong> — it actively trades in your organization's assets. Monitoring is a strategic necessity, not an optional add-on.</li>
+      <li><strong>Detection without analysis is noise</strong> — the five-dimension analysis framework (Source, Author, Activity, Content, Verification) transforms raw alerts into actionable intelligence.</li>
+      <li><strong>Credential exposure usually precedes a breach</strong> — dark web monitoring provides the early warning window that passive controls cannot.</li>
+      <li><strong>MFA and password hygiene</strong> are the cheapest and most effective countermeasures against dark web credential exposure impact.</li>
+      <li><strong>Close the loop</strong> — every dark web finding should feed back into your monitoring keywords, detection rules, and security awareness training.</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer class="article-footer">
+  <p>
+    &copy; 2025 Joe Smith-Essang &mdash; Security Consultant &amp; Threat Intelligence Practitioner
+    &nbsp;|&nbsp;
+    <a href="../index.html">Portfolio</a>
+    &nbsp;|&nbsp;
+    <a href="../index.html#insights-section">All Insights</a>
+  </p>
+</footer>
+
+</body>
+</html>

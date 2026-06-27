@@ -15,7 +15,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
@@ -37,9 +37,9 @@
       --border:     rgba(0,229,255,.14);
       --border-hot: rgba(0,229,255,.45);
       --radius:     12px;
-      --font-head:  'Orbitron', monospace;
+      --font-head:  'Open Sans', sans-serif;
       --font-mono:  'Share Tech Mono', monospace;
-      --font-body:  'DM Sans', sans-serif;
+      --font-body:  Calibri, 'Trebuchet MS', sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -50,7 +50,7 @@
       background: var(--bg-deep);
       color: var(--text-pri);
       font-family: var(--font-body);
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.7;
       overflow-x: hidden;
     }
@@ -81,7 +81,7 @@
     .topbar.scrolled { padding: 8px 28px; }
     .tb-logo {
       font-family: var(--font-head);
-      font-size: 13px;
+      font-size: 14px;
       color: var(--cyan);
       letter-spacing: .12em;
       text-transform: uppercase;
@@ -90,7 +90,7 @@
     .tb-actions { display: flex; gap: 10px; align-items: center; }
     .btn-outline {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 13px;
       padding: 6px 16px;
       border: 1px solid var(--border-hot);
       color: var(--cyan);
@@ -104,7 +104,7 @@
     .btn-outline:hover { background: var(--cyan-dim); box-shadow: 0 0 14px var(--cyan-glow); }
     .btn-solid {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 13px;
       padding: 6px 18px;
       border: none;
       background: var(--cyan);
@@ -119,7 +119,7 @@
     .social-icons { display: flex; gap: 14px; }
     .social-icons a {
       color: var(--text-sec);
-      font-size: 14px;
+      font-size: 15px;
       transition: color .2s, text-shadow .2s;
       text-decoration: none;
     }
@@ -140,7 +140,7 @@
     }
     .page-nav a {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--text-sec);
@@ -168,7 +168,7 @@
     }
     .hero-badge {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: .25em;
       color: var(--cyan);
       text-transform: uppercase;
@@ -259,7 +259,7 @@
       max-width: 720px;
       margin: 0 auto 36px;
       color: var(--text-sec);
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.8;
     }
     .cert-strip {
@@ -271,7 +271,7 @@
     }
     .cert-chip {
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 11px;
       letter-spacing: .12em;
       padding: 5px 13px;
       border: 1px solid var(--border-hot);
@@ -292,7 +292,7 @@
       opacity: .4;
       animation: pulse-hint 2.5s ease-in-out infinite;
     }
-    .scroll-hint span { font-family: var(--font-mono); font-size: 10px; letter-spacing: .15em; color: var(--cyan); }
+    .scroll-hint span { font-family: var(--font-mono); font-size: 11px; letter-spacing: .15em; color: var(--cyan); }
     .scroll-hint i { color: var(--cyan); }
     @keyframes pulse-hint { 0%,100%{opacity:.25;transform:translateX(-50%) translateY(0)} 50%{opacity:.7;transform:translateX(-50%) translateY(6px)} }
 
@@ -328,7 +328,7 @@
     }
     .section-label {
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 11px;
       letter-spacing: .2em;
       color: var(--cyan);
       text-transform: uppercase;
@@ -384,14 +384,14 @@
     }
     .tl-company {
       font-family: var(--font-head);
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--cyan);
       letter-spacing: .06em;
     }
     .tl-period {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-sec);
       letter-spacing: .08em;
       background: var(--bg-card2);
@@ -401,14 +401,14 @@
       white-space: nowrap;
     }
     .tl-role {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 500;
       color: var(--text-pri);
       margin-bottom: 4px;
     }
     .tl-sub {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       color: var(--amber);
       letter-spacing: .06em;
       margin-bottom: 16px;
@@ -418,7 +418,7 @@
       position: relative;
       padding-left: 16px;
       color: var(--text-sec);
-      font-size: 13.5px;
+      font-size: 14.5px;
       margin-bottom: 7px;
       line-height: 1.6;
     }
@@ -427,13 +427,13 @@
       position: absolute;
       left: 0;
       color: var(--cyan);
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.4;
     }
     .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
     .tag {
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 11px;
       padding: 3px 9px;
       border-radius: 2px;
       background: rgba(0,229,255,.07);
@@ -462,7 +462,7 @@
     .skill-card:hover { border-color: var(--border-hot); box-shadow: 0 0 20px var(--cyan-dim); }
     .skill-card-title {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: .15em;
       text-transform: uppercase;
       color: var(--cyan);
@@ -471,16 +471,16 @@
       align-items: center;
       gap: 8px;
     }
-    .skill-card-title i { font-size: 13px; }
+    .skill-card-title i { font-size: 14px; }
     .skill-row { margin-bottom: 13px; }
     .skill-label {
       display: flex;
       justify-content: space-between;
-      font-size: 12.5px;
+      font-size: 13.5px;
       color: var(--text-pri);
       margin-bottom: 5px;
     }
-    .skill-pct { color: var(--cyan); font-family: var(--font-mono); font-size: 11px; }
+    .skill-pct { color: var(--cyan); font-family: var(--font-mono); font-size: 12px; }
     .skill-bar-bg {
       height: 4px;
       background: rgba(255,255,255,.06);
@@ -499,7 +499,7 @@
     .tags-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
     .tag-lg {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       padding: 6px 14px;
       border-radius: 3px;
       background: var(--bg-card2);
@@ -533,26 +533,26 @@
       border: 1px solid var(--border-hot);
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 14px;
-      font-size: 18px;
+      font-size: 19px;
       color: var(--cyan);
     }
     .edu-degree {
       font-family: var(--font-head);
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 700;
       color: #fff;
       margin-bottom: 4px;
     }
-    .edu-school { font-size: 13px; color: var(--text-sec); margin-bottom: 4px; }
+    .edu-school { font-size: 14px; color: var(--text-sec); margin-bottom: 4px; }
     .edu-year {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       color: var(--cyan);
       letter-spacing: .08em;
     }
     .edu-note {
       margin-top: 10px;
-      font-size: 12px;
+      font-size: 13px;
       color: var(--green);
       display: flex;
       align-items: center;
@@ -586,17 +586,17 @@
       background: var(--cyan-dim);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
-      font-size: 15px;
+      font-size: 16px;
       color: var(--cyan);
     }
     .cert-name {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-pri);
       letter-spacing: .04em;
       line-height: 1.4;
     }
-    .cert-issuer { font-size: 10px; color: var(--text-sec); margin-top: 2px; }
+    .cert-issuer { font-size: 11px; color: var(--text-sec); margin-top: 2px; }
 
     /* AWARDS */
     .awards-row {
@@ -614,9 +614,9 @@
       gap: 14px;
       align-items: flex-start;
     }
-    .award-card i { color: var(--amber); font-size: 20px; margin-top: 2px; flex-shrink: 0; }
-    .award-title { font-weight: 600; color: var(--amber); font-size: 13.5px; margin-bottom: 4px; }
-    .award-sub { font-size: 12.5px; color: var(--text-sec); }
+    .award-card i { color: var(--amber); font-size: 21px; margin-top: 2px; flex-shrink: 0; }
+    .award-title { font-weight: 600; color: var(--amber); font-size: 14.5px; margin-bottom: 4px; }
+    .award-sub { font-size: 13.5px; color: var(--text-sec); }
 
     /* ─── PORTFOLIO ──────────────────────────── */
     .portfolio-grid {
@@ -634,7 +634,7 @@
     .portfolio-card:hover { border-color: var(--border-hot); box-shadow: 0 0 20px var(--cyan-dim); }
     .portfolio-card h3 {
       font-family: var(--font-head);
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: .12em;
       color: var(--cyan);
       margin-bottom: 16px;
@@ -644,12 +644,111 @@
     .portfolio-card ul li {
       padding: 7px 0;
       border-bottom: 1px solid var(--border);
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-sec);
     }
     .portfolio-card ul li:last-child { border-bottom: none; }
     .portfolio-card ul li a { color: var(--cyan); text-decoration: none; }
     .portfolio-card ul li a:hover { text-decoration: underline; }
+
+    /* ─── INSIGHTS ──────────────────────────── */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+    }
+    .insight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0;
+      overflow: hidden;
+      transition: border-color .25s;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .insight-card:hover { border-color: var(--border-hot); }
+    .insight-card-header {
+      padding: 20px 22px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .insight-card-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--text-sec);
+    }
+    .insight-card-icon.red    { color: #c77;  }
+    .insight-card-icon.purple { color: #99f;  }
+    .insight-card-icon.amber  { color: #ca8;  }
+    .insight-card-icon.green  { color: #4a8;  }
+    .insight-card-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 5px;
+    }
+    .insight-card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-pri);
+      line-height: 1.4;
+    }
+    .insight-card-body {
+      padding: 0 22px 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .insight-card-desc {
+      font-size: 13px;
+      color: var(--text-sec);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+    .insight-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .insight-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      border-radius: 3px;
+      padding: 2px 7px;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+    .insight-card-footer {
+      padding: 10px 22px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+    .insight-card-read {
+      font-family: var(--font-mono);
+      color: var(--cyan);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      opacity: .8;
+    }
+    .insight-card:hover .insight-card-read { opacity: 1; }
 
     /* ─── BOOKS ──────────────────────────────── */
     .books-grid {
@@ -667,7 +766,7 @@
     .books-card:hover { border-color: var(--border-hot); }
     .books-card h3 {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: .15em;
       text-transform: uppercase;
       color: var(--green);
@@ -675,7 +774,7 @@
     }
     .books-card ul { list-style: none; }
     .books-card ul li {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-sec);
       padding: 5px 0;
       border-bottom: 1px solid var(--border);
@@ -683,7 +782,7 @@
       align-items: center;
       gap: 8px;
     }
-    .books-card ul li::before { content: '📖'; font-size: 12px; }
+    .books-card ul li::before { content: '📖'; font-size: 13px; }
     .books-card ul li:last-child { border-bottom: none; }
 
     /* ─── CONTACT ────────────────────────────── */
@@ -699,14 +798,14 @@
       border-radius: var(--radius);
       padding: 30px;
     }
-    .contact-info-card p { color: var(--text-sec); font-size: 14px; margin-bottom: 20px; }
+    .contact-info-card p { color: var(--text-sec); font-size: 15px; margin-bottom: 20px; }
     .contact-row {
       display: flex;
       align-items: center;
       gap: 12px;
       padding: 10px 0;
       border-bottom: 1px solid var(--border);
-      font-size: 13.5px;
+      font-size: 14.5px;
     }
     .contact-row i { color: var(--cyan); width: 16px; text-align: center; }
     .contact-row a { color: var(--text-pri); text-decoration: none; }
@@ -719,7 +818,7 @@
     }
     .contact-services h3 {
       font-family: var(--font-head);
-      font-size: 13px;
+      font-size: 14px;
       letter-spacing: .08em;
       color: #fff;
       margin-bottom: 20px;
@@ -731,7 +830,7 @@
       margin-bottom: 14px;
     }
     .service-item i { color: var(--green); margin-top: 2px; flex-shrink: 0; }
-    .service-item span { font-size: 13.5px; color: var(--text-sec); }
+    .service-item span { font-size: 14.5px; color: var(--text-sec); }
     .social-row { display: flex; gap: 14px; margin-top: 24px; }
     .soc-btn {
       width: 38px; height: 38px;
@@ -741,7 +840,7 @@
       color: var(--cyan);
       display: flex; align-items: center; justify-content: center;
       text-decoration: none;
-      font-size: 15px;
+      font-size: 16px;
       transition: all .2s;
     }
     .soc-btn:hover { box-shadow: 0 0 14px var(--cyan-glow); background: var(--cyan); color: var(--bg-deep); }
@@ -755,7 +854,7 @@
     }
     footer p {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-dim);
       letter-spacing: .1em;
     }
@@ -801,7 +900,7 @@
 
     /* ─── RESPONSIVE ─────────────────────────── */
     @media (max-width:600px) {
-      .page-nav a { padding: 10px 10px; font-size: 10px; }
+      .page-nav a { padding: 10px 10px; font-size: 11px; }
       .topbar { flex-wrap: wrap; gap: 8px; }
       .contact-wrap { grid-template-columns: 1fr; }
     }
@@ -832,6 +931,7 @@
   <a href="#skills-section">Skills</a>
   <a href="#education-section">Education</a>
   <a href="#portfolio-section">Portfolio</a>
+  <a href="#insights-section">Insights</a>
   <a href="#books-section">Books</a>
   <a href="#contact-section">Contact</a>
 </nav>
@@ -848,7 +948,7 @@
     CISM-certified cybersecurity professional with 5+ years of progressive experience spanning Security Operations, Incident Response, Threat Intelligence, and Digital Forensics. Drawing from my time at Deloitte's Consulting practice, where I delivered enterprise-grade security engagements for Tier-1 financial institutions, critical national infrastructure operators, and global industrial clients, I excel at translating complex telemetry into board-level risk strategies.
   </p>
   <p class="hero-summary">
-    I am currently deepening my expertise in Cloud Architecture & Administration at Seneca, and actively expanding my cloud-native security expertise through hands-on infrastructure automation, alongside concurrent involvements in the application of Artificial Intelligence within cybersecurity, specifically intelligent detection systems, and AI-assisted malware analysis, ensuring modern organizations are protected against next-generation threats.
+    I am currently deepening my expertise in Cloud Architecture & Administration at Seneca, while actively expanding my cloud-native security capability through hands-on infrastructure automation and exploring applications of Artificial Intelligence within cybersecurity — specifically intelligent detection systems and AI-assisted malware analysis — to ensure modern organizations are protected against next-generation threats.
   </p> 
   <div class="cert-strip">
     <span class="cert-chip">CISM</span>
@@ -948,7 +1048,7 @@
           <div class="tl-sub">Lagos, Nigeria</div>
           <div class="tl-desc">
             <ul>
-              <li>Performed shift-based 24/7 security monitoring, triaging, and escalating alerts from SIEM and EDR platforms to contain emerging threats in real time.</li>
+              <li>Performed shift-based 24/7 security monitoring; triaged and escalated alerts from SIEM and EDR platforms to contain emerging threats in real time.</li>
               <li>Investigated alert performance issues and analyzed system logs to recommend precise logic modifications, improving true-positive detection metrics.</li>
               <li>Documented comprehensive incident timelines, investigation findings, and remediation steps within ticketing systems for audit-ready records.</li>
               <li>Supported global financial institution clients in achieving audit-readiness against NIST CSF, ISO 27001, and PCI DSS frameworks.</li>
@@ -1003,8 +1103,8 @@
           <div class="tl-desc">
             <ul>
               <li>Completed the internship as a finalist, finishing in the top 50 out of 1,000+ registered interns.</li>
-              <li>Performed UI/UX design tasks, designing the analytics page for the hotels.ng mobile application.</li>
-              <li>Conducted manual and automated testing for a financial software using Flutterwave and Ravepay APIs, producing detailed bug reports.</li>
+              <li>Designed the analytics page for the hotels.ng mobile application.</li>
+              <li>Conducted manual and automated testing for financial software using Flutterwave and Ravepay APIs, producing detailed bug reports.</li>
             </ul>
           </div>
           <div class="tag-row">
@@ -1256,26 +1356,247 @@
         <ul>
           <li>Nigeria CNII 2025 Threat Intelligence Landscape Report</li>
           <li>Central Bank of Nigeria Cyber &amp; Technology Strategy</li>
-          <li>Access Bank PLC - Managed Security Services</li>
-          <li>Ardagh Group - Cyber Incident Response &amp; IT Estate Rebuild</li>          
-          <li>Fidelity Bank PLC - Cyber Incident Review </li>          
+          <li>Access Bank PLC — Managed Security Services</li>
+          <li>Ardagh Group — Cyber Incident Response &amp; IT Estate Rebuild</li>
+          <li>Fidelity Bank PLC — Cyber Incident Review</li>          
           <li><a href="https://store.bellestoreinc.com" target="_blank">bellestoreinc.com</a> — Apple Retail Store</li>
         </ul>
       </div>
       <div class="portfolio-card">
         <h3>Volunteer &amp; Training</h3>
         <ul>
-          <li>Expert Trainer — Cyber Threat Intelligence, Cybersafe Foundation - CyberGirls Fellowship</li>
+          <li>Expert Trainer — Cyber Threat Intelligence, Cybersafe Foundation — CyberGirls Fellowship</li>
           <li>Technology Specialist — The Church of Jesus Christ of Latter Day Saints, Lekki Ward</li>
         </ul>
       </div>
     </div>
   </section>
 
+  <!-- ──────── INSIGHTS ──────── -->
+  <section id="insights-section" class="section">
+    <div class="section-header">
+      <div class="section-label">05</div>
+      <h2>Insights &amp; Articles</h2>
+    </div>
+    <p style="color:var(--text-sec);font-size: 15px;max-width:640px;margin-bottom:28px;">
+      Practitioner articles drawn from direct consulting engagements &mdash; covering incident response, application security, cloud hardening, cyber governance, offensive security tradecraft, cybercrime law, and threat intelligence. All client information is anonymized.
+    </p>
+    <div class="insights-grid">
+
+      <a href="articles/ransomware-response.html" class="insight-card">
+        <div class="insight-card-header">
+          <div class="insight-card-icon red"><i class="fa fa-radiation"></i></div>
+          <div>
+            <p class="insight-card-label">Incident Response &bull; DFIR</p>
+            <p class="insight-card-title">Ransomware in the Enterprise: A Consultant&rsquo;s Field Account</p>
+          </div>
+        </div>
+        <div class="insight-card-body">
+          <p class="insight-card-desc">Inside a real-world BlackCat/ALPHV double-extortion attack on a Tier-1 insurance group &mdash; containment methodology, attribution, IOC blocking, and recovery without paying the ransom.</p>
+          <div class="insight-card-tags">
+            <span class="insight-tag">BlackCat/ALPHV</span>
+            <span class="insight-tag">DFIR</span>
+            <span class="insight-tag">Offline Backups</span>
+            <span class="insight-tag">PAM</span>
+          </div>
+        </div>
+        <div class="insight-card-footer">
+          <span><i class="fa fa-calendar" style="margin-right:4px;"></i>Feb 2023</span>
+          <span class="insight-card-read">Read article <i class="fa fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="articles/dark-web-intelligence.html" class="insight-card">
+        <div class="insight-card-header">
+          <div class="insight-card-icon purple"><i class="fa fa-eye"></i></div>
+          <div>
+            <p class="insight-card-label">Threat Intelligence &bull; CTI</p>
+            <p class="insight-card-title">Eyes Below the Surface: Dark Web Intelligence for Business Security</p>
+          </div>
+        </div>
+        <div class="insight-card-body">
+          <p class="insight-card-desc">A practitioner&rsquo;s guide to dark web monitoring &mdash; the five-step monitoring lifecycle, an account compromise response playbook, analysis framework, and business value of proactive dark web intelligence.</p>
+          <div class="insight-card-tags">
+            <span class="insight-tag">Dark Web</span>
+            <span class="insight-tag">OSINT</span>
+            <span class="insight-tag">CTI</span>
+            <span class="insight-tag">Credential Exposure</span>
+          </div>
+        </div>
+        <div class="insight-card-footer">
+          <span><i class="fa fa-calendar" style="margin-right:4px;"></i>Mar 2024</span>
+          <span class="insight-card-read">Read article <i class="fa fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="articles/critical-infrastructure-2024.html" class="insight-card">
+        <div class="insight-card-header">
+          <div class="insight-card-icon amber"><i class="fa fa-globe"></i></div>
+          <div>
+            <p class="insight-card-label">Threat Intelligence &bull; Research</p>
+            <p class="insight-card-title">Critical Infrastructure Under Siege: 2024 Threat Intelligence Landscape</p>
+          </div>
+        </div>
+        <div class="insight-card-body">
+          <p class="insight-card-desc">An intelligence-led analysis of APTs, ransomware syndicates, and insider threats targeting critical national infrastructure &mdash; with threat actor profiles, exploited CVEs, risk scoring methodology, and seven advisories.</p>
+          <div class="insight-card-tags">
+            <span class="insight-tag">APT</span>
+            <span class="insight-tag">CNII</span>
+            <span class="insight-tag">FunkSec</span>
+            <span class="insight-tag">Zero-Day</span>
+          </div>
+        </div>
+        <div class="insight-card-footer">
+          <span><i class="fa fa-calendar" style="margin-right:4px;"></i>2024 Research</span>
+          <span class="insight-card-read">Read article <i class="fa fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="articles/soc-operations-mastery.html" class="insight-card">
+        <div class="insight-card-header">
+          <div class="insight-card-icon green"><i class="fa fa-tower-broadcast"></i></div>
+          <div>
+            <p class="insight-card-label">SOC Strategy &bull; Detection Engineering</p>
+            <p class="insight-card-title">Engineering a World-Class SOC: Frameworks, Metrics &amp; Methodology</p>
+          </div>
+        </div>
+        <div class="insight-card-body">
+          <p class="insight-card-desc">From SOC CMM assessments to MTTD/MTTR benchmarks, IR playbook design, proactive threat hunting, OSINT exposure discovery, and the qualities that define elite security operations leadership.</p>
+          <div class="insight-card-tags">
+            <span class="insight-tag">SOC CMM</span>
+            <span class="insight-tag">Purple Team</span>
+            <span class="insight-tag">ISO 27001</span>
+            <span class="insight-tag">Threat Hunting</span>
+          </div>
+        </div>
+        <div class="insight-card-footer">
+          <span><i class="fa fa-calendar" style="margin-right:4px;"></i>2023–2024</span>
+          <span class="insight-card-read">Read article <i class="fa fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="articles/web-mobile-pentest.html" class="insight-card">
+        <div class="insight-card-header">
+          <div class="insight-card-icon amber"><i class="fa fa-bug"></i></div>
+          <div>
+            <p class="insight-card-label">Application Security &bull; VAPT</p>
+            <p class="insight-card-title">Web &amp; Mobile Application Security: Lessons from Real-World VAPT Engagements</p>
+          </div>
+        </div>
+        <div class="insight-card-body">
+          <p class="insight-card-desc">A structured vulnerability assessment across ten financial applications — business logic flaws, hardcoded credentials, arbitrary file upload, mobile plaintext transmission, and a phishing simulation that achieved a 30% staff click rate.</p>
+          <div class="insight-card-tags">
+            <span class="insight-tag">OWASP</span>
+            <span class="insight-tag">VAPT</span>
+            <span class="insight-tag">Secure Code Review</span>
+            <span class="insight-tag">Social Engineering</span>
+          </div>
+        </div>
+        <div class="insight-card-footer">
+          <span><i class="fa fa-calendar" style="margin-right:4px;"></i>Q2 2018</span>
+          <span class="insight-card-read">Read article <i class="fa fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="articles/azure-cloud-security.html" class="insight-card">
+        <div class="insight-card-header">
+          <div class="insight-card-icon" style="color:#60a5fa;"><i class="fa fa-cloud"></i></div>
+          <div>
+            <p class="insight-card-label">Cloud Security &bull; Azure</p>
+            <p class="insight-card-title">Hardening Azure: A Practitioner's Field Guide to Cloud Security Architecture</p>
+          </div>
+        </div>
+        <div class="insight-card-body">
+          <p class="insight-card-desc">Inside a comprehensive Azure security review — 69% of users without MFA, permissive NSGs exposing SSH and RDP from the internet, disabled Defender for Cloud monitoring, and unencrypted VM disks. A prioritized remediation playbook included.</p>
+          <div class="insight-card-tags">
+            <span class="insight-tag">Azure NSG</span>
+            <span class="insight-tag">Defender for Cloud</span>
+            <span class="insight-tag">MFA</span>
+            <span class="insight-tag">Key Vault</span>
+          </div>
+        </div>
+        <div class="insight-card-footer">
+          <span><i class="fa fa-calendar" style="margin-right:4px;"></i>Cloud Assessment</span>
+          <span class="insight-card-read">Read article <i class="fa fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="articles/cyber-risk-governance.html" class="insight-card">
+        <div class="insight-card-header">
+          <div class="insight-card-icon purple"><i class="fa fa-building-columns"></i></div>
+          <div>
+            <p class="insight-card-label">Governance &bull; Risk Management &bull; Board Advisory</p>
+            <p class="insight-card-title">Cyber Risk Governance: From Board Oversight to Operational Accountability</p>
+          </div>
+        </div>
+        <div class="insight-card-body">
+          <p class="insight-card-desc">How financial institutions build genuine cyber resilience — the six-phase risk assessment methodology, the five-domain controls framework, board responsibilities, KPIs to track, and tabletop exercise design from real advisory engagements.</p>
+          <div class="insight-card-tags">
+            <span class="insight-tag">NIST CSF</span>
+            <span class="insight-tag">ISO 27001</span>
+            <span class="insight-tag">Board Advisory</span>
+            <span class="insight-tag">Third-Party Risk</span>
+          </div>
+        </div>
+        <div class="insight-card-footer">
+          <span><i class="fa fa-calendar" style="margin-right:4px;"></i>2023–2024</span>
+          <span class="insight-card-read">Read article <i class="fa fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="articles/recon-osint.html" class="insight-card">
+        <div class="insight-card-header">
+          <div class="insight-card-icon green"><i class="fa fa-crosshairs"></i></div>
+          <div>
+            <p class="insight-card-label">Offensive Security &bull; OSINT &bull; Pentest</p>
+            <p class="insight-card-title">Offensive Security Tradecraft: Inside a Professional Reconnaissance Operation</p>
+          </div>
+        </div>
+        <div class="insight-card-body">
+          <p class="insight-card-desc">A practitioner's walkthrough of professional reconnaissance — from passive Google and GitHub dorking through ASN enumeration, subdomain discovery, Shodan infrastructure mapping, and port analysis — before a single exploit is fired.</p>
+          <div class="insight-card-tags">
+            <span class="insight-tag">OSINT</span>
+            <span class="insight-tag">Amass</span>
+            <span class="insight-tag">Shodan</span>
+            <span class="insight-tag">Black-Box Testing</span>
+          </div>
+        </div>
+        <div class="insight-card-footer">
+          <span><i class="fa fa-calendar" style="margin-right:4px;"></i>2021</span>
+          <span class="insight-card-read">Read article <i class="fa fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="articles/cyber-law-compliance.html" class="insight-card">
+        <div class="insight-card-header">
+          <div class="insight-card-icon red"><i class="fa fa-scale-balanced"></i></div>
+          <div>
+            <p class="insight-card-label">Regulatory Compliance &bull; Cybercrime Law</p>
+            <p class="insight-card-title">Cybercrime Law &amp; Collaborative Defense: The Regulatory Landscape for Financial Institutions</p>
+          </div>
+        </div>
+        <div class="insight-card-body">
+          <p class="insight-card-desc">From the Nigerian Cybercrime Act and NDPA to GDPR, SWIFT CSCF, and the structured case for cross-sector intelligence sharing — how legal frameworks define security obligations and why collaborative defense multiplies individual resilience.</p>
+          <div class="insight-card-tags">
+            <span class="insight-tag">NDPR</span>
+            <span class="insight-tag">GDPR</span>
+            <span class="insight-tag">SWIFT CSCF</span>
+            <span class="insight-tag">CTI Sharing</span>
+          </div>
+        </div>
+        <div class="insight-card-footer">
+          <span><i class="fa fa-calendar" style="margin-right:4px;"></i>2019–2024</span>
+          <span class="insight-card-read">Read article <i class="fa fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
   <!-- ──────── BOOKS ──────── -->
   <section id="books-section" class="section">
     <div class="section-header">
-      <div class="section-label">05</div>
+      <div class="section-label">06</div>
       <h2>Favourite Books</h2>
     </div>
     <div class="books-grid">
@@ -1313,12 +1634,12 @@
   <!-- ──────── CONTACT ──────── -->
   <section id="contact-section" class="section">
     <div class="section-header">
-      <div class="section-label">06</div>
+      <div class="section-label">07</div>
       <h2>Get in Touch</h2>
     </div>
     <div class="contact-wrap">
       <div class="contact-info-card">
-        <p>Available for senior cybersecuirty specialist roles, advisory/consulting engagements, and speaking on Cyber Threat Intelligence.</p>
+        <p>Available for senior cybersecurity specialist roles, advisory/consulting engagements, and speaking on Cyber Threat Intelligence.</p>
         <div class="contact-row"><i class="fas fa-envelope"></i><a href="mailto:joesmithessang@gmail.com">joesmithessang@gmail.com</a></div>
         <div class="contact-row"><i class="fas fa-map-marker-alt"></i><span>Toronto, Ontario, Canada</span></div>
         <div class="contact-row"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/joe-smith-essang-0684791b4/" target="_blank">linkedin.com/in/joe-smith-essang</a></div>
