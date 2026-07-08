@@ -222,9 +222,9 @@
   <p class="eyebrow"><i class="fa fa-eye"></i>&nbsp; Cyber Threat Intelligence</p>
   <h1>Eyes Below the Surface:<br/>Dark Web Intelligence for Business Security</h1>
   <p class="subtitle">
-    What happens in the hidden corners of the internet directly affects your organization.
-    A practitioner's guide to dark web monitoring &mdash; from the taxonomy of the hidden web
-    to a five-step monitoring lifecycle and a real-world account compromise playbook.
+    Stolen passwords and data often end up for sale in the hidden corners of the internet &mdash;
+    and that directly affects your organization. A plain-language guide to what the dark web actually is,
+    how to watch it for signs your business has been exposed, and what to do when it has.
   </p>
   <div class="article-meta">
     <span><i class="fa fa-calendar"></i> March 2026</span>
@@ -239,14 +239,19 @@
 
   <div class="callout purple">
     <p class="callout-title"><i class="fa fa-info-circle"></i> Context</p>
-    <p>This article is derived from a knowledge-sharing presentation delivered to an enterprise security team. The content captures the practitioner methodology used to operationalise dark web monitoring within a consulting engagement context. All client-specific details have been removed.</p>
+    <p>This article is based on a knowledge-sharing session delivered to a corporate security team. It captures the practical, hands-on approach used to set up dark web monitoring during a consulting engagement. All client-specific details have been removed.</p>
+  </div>
+
+  <div class="callout info">
+    <p class="callout-title"><i class="fa fa-circle-info"></i> In Plain Terms</p>
+    <p>The <strong>dark web</strong> is a part of the internet you can't reach with a normal browser or find on Google. It's deliberately hidden, which makes it a marketplace where criminals buy and sell stolen passwords, customer data, and access to company networks. <strong>Dark web monitoring</strong> simply means keeping watch on these places so you find out your organization's data is being traded <em>before</em> criminals use it against you.</p>
   </div>
 
   <!-- THE THREE LAYERS -->
-  <h2><i class="fa fa-layer-group"></i> The Three Layers of the Web</h2>
+  <h2><i class="fa fa-layer-group"></i> The Three Layers of the Internet</h2>
   <p>
-    Most people interact with only a thin slice of the internet. Understanding the full structure
-    is the first step toward understanding your organization's actual threat surface.
+    Most people only ever use a thin slice of the internet. Picturing it as three layers makes it
+    much easier to understand where your organization is exposed and why.
   </p>
 
   <div class="web-layers">
@@ -256,13 +261,13 @@
         <p class="web-layer-name">Surface Web</p>
         <p class="web-layer-pct">~4% of internet content &mdash; publicly indexed by search engines</p>
         <p class="web-layer-desc">
-          Everything reachable via standard browsers and indexed by search engines. This is where
-          your corporate website, news portals, and social media live. It is also where threat actors
-          post proof-of-breach data, publish extortion pages, and recruit affiliates in the open.
+          Everything you can reach with a normal browser and find on Google. This is where your
+          company website, news sites, and social media live. Surprisingly, it's also where some
+          criminals openly brag about breaches and post samples of stolen data to pressure victims.
         </p>
         <div class="web-layer-examples">
           <span>google.com</span><span>LinkedIn</span><span>News sites</span>
-          <span>Paste sites</span><span>GitHub</span><span>Hacker forums (clearnet)</span>
+          <span>GitHub</span><span>Public forums</span>
         </div>
       </div>
     </div>
@@ -271,12 +276,12 @@
       <div class="web-layer-icon" style="color:var(--purple)"><i class="fa fa-database"></i></div>
       <div>
         <p class="web-layer-name">Deep Web</p>
-        <p class="web-layer-pct">~96% of internet content &mdash; not indexed, requires credentials</p>
+        <p class="web-layer-pct">~96% of internet content &mdash; not on search engines, needs a login</p>
         <p class="web-layer-desc">
-          The vast majority of the internet. Content is not malicious by default &mdash; it simply
-          requires authentication to access. However, compromised credentials that appear on dark web
-          markets unlock deep web resources (banking portals, email, ERP systems, VPNs).
-          This is why credential monitoring is a core dark web use case.
+          The vast majority of the internet. There's nothing sinister about it &mdash; it's simply
+          everything that sits behind a login, like your email, online banking, or company intranet.
+          The danger is that a stolen password sold on the dark web is the key that unlocks these
+          private areas. That's why watching for leaked passwords is so important.
         </p>
         <div class="web-layer-examples">
           <span>Online banking portals</span><span>Corporate intranets</span>
@@ -289,26 +294,27 @@
       <div class="web-layer-icon" style="color:var(--red)"><i class="fa fa-skull"></i></div>
       <div>
         <p class="web-layer-name">Dark Web</p>
-        <p class="web-layer-pct">Overlay network &mdash; requires Tor or I2P for access</p>
+        <p class="web-layer-pct">Deliberately hidden &mdash; needs special anonymising software to reach</p>
         <p class="web-layer-desc">
-          Intentionally hidden content accessible only through anonymising software such as the
-          Tor browser. Home to ransomware leak sites, credential marketplaces, exploit brokers,
-          initial access brokers (IABs), and threat actor communication forums. Organizations
-          whose data appears here face active exfiltration and extortion threats.
+          Content that is deliberately hidden and reachable only with special anonymising software
+          (the best known is the Tor browser), which hides who is visiting. This is where criminals
+          run leak sites to publish stolen data, sell passwords, and even sell ready-made access into
+          companies. If your organization's data shows up here, it usually means an attack is already
+          underway or a leak is being threatened.
         </p>
         <div class="web-layer-examples">
-          <span>RaaS leak sites</span><span>Credential markets</span>
-          <span>Exploit brokers</span><span>IAB listings</span><span>Hacker forums (.onion)</span>
+          <span>Data leak sites</span><span>Password markets</span>
+          <span>Stolen-access listings</span><span>Criminal forums</span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- WHAT'S AT STAKE -->
-  <h2><i class="fa fa-triangle-exclamation"></i> What Ends Up on the Dark Web</h2>
+  <h2><i class="fa fa-triangle-exclamation"></i> What Ends Up for Sale</h2>
   <p>
-    Dark web markets trade in a range of organizational assets. Understanding the commodities
-    helps security teams prioritize what to monitor.
+    Criminals buy and sell many kinds of stolen information. Knowing what's traded helps you decide
+    what's most important to watch for.
   </p>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem;margin:1.5rem 0;">
@@ -324,18 +330,18 @@
     </div>
     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
       <i class="fa fa-file-medical" style="color:var(--red);font-size:1.4rem;display:block;margin-bottom:.5rem;"></i>
-      <p style="font-size:.85rem;font-weight:700;color:var(--text-pri);margin:0 0 .3rem;">PII &amp; PHI</p>
-      <p style="font-size:.78rem;color:var(--text-sec);margin:0;">Patient records, national ID numbers, biometric data &mdash; extremely high value for fraud and identity theft.</p>
+      <p style="font-size:.85rem;font-weight:700;color:var(--text-pri);margin:0 0 .3rem;">Personal &amp; Health Records</p>
+      <p style="font-size:.78rem;color:var(--text-sec);margin:0;">Patient records, national ID numbers, and biometric data &mdash; extremely valuable for fraud and identity theft.</p>
     </div>
     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
       <i class="fa fa-network-wired" style="color:var(--red);font-size:1.4rem;display:block;margin-bottom:.5rem;"></i>
-      <p style="font-size:.85rem;font-weight:700;color:var(--text-pri);margin:0 0 .3rem;">Network Access</p>
-      <p style="font-size:.78rem;color:var(--text-sec);margin:0;">VPN credentials, RDP access, and corporate foothold listings sold by Initial Access Brokers.</p>
+      <p style="font-size:.85rem;font-weight:700;color:var(--text-pri);margin:0 0 .3rem;">Ways Into Your Network</p>
+      <p style="font-size:.78rem;color:var(--text-sec);margin:0;">Working remote-access logins to company systems, sold ready-made by specialists who break in and then resell the access.</p>
     </div>
     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
       <i class="fa fa-flask" style="color:var(--red);font-size:1.4rem;display:block;margin-bottom:.5rem;"></i>
-      <p style="font-size:.85rem;font-weight:700;color:var(--text-pri);margin:0 0 .3rem;">Exploits &amp; Toolkits</p>
-      <p style="font-size:.78rem;color:var(--text-sec);margin:0;">Zero-day exploits, malware source code, and offensive tools available for purchase by threat actors.</p>
+      <p style="font-size:.85rem;font-weight:700;color:var(--text-pri);margin:0 0 .3rem;">Hacking Tools</p>
+      <p style="font-size:.78rem;color:var(--text-sec);margin:0;">Ready-made attack software and newly discovered weaknesses, sold to anyone willing to pay &mdash; lowering the skill needed to attack.</p>
     </div>
     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;">
       <i class="fa fa-file-code" style="color:var(--red);font-size:1.4rem;display:block;margin-bottom:.5rem;"></i>
@@ -345,11 +351,11 @@
   </div>
 
   <!-- MONITORING PROCESS -->
-  <h2><i class="fa fa-magnifying-glass"></i> The Five-Step Dark Web Monitoring Lifecycle</h2>
+  <h2><i class="fa fa-magnifying-glass"></i> How Dark Web Monitoring Works: Five Steps</h2>
   <p>
-    Effective dark web monitoring is not passive surveillance — it is an active intelligence
-    discipline with defined phases. The following lifecycle was developed and operationalised
-    across multiple enterprise engagements.
+    Good monitoring isn't just leaving a tool running in the background. It's a repeatable process,
+    and it helps to think of it in five simple steps &mdash; from deciding what to watch, through
+    spotting and checking a warning sign, to acting on it and telling the right people.
   </p>
 
   <div class="process-flow">
@@ -357,13 +363,13 @@
       <div class="pf-num">01</div>
       <div class="pf-body">
         <h4><i class="fa fa-crosshairs"></i> Preparation</h4>
-        <p>Define the scope of what you are protecting and establish the operational infrastructure to monitor it safely. This phase sets the parameters for everything that follows.</p>
+        <p>Decide exactly what you want to protect, and set up a safe way to watch for it. This step shapes everything that follows.</p>
         <ul class="sub-steps">
-          <li>Identify Crown Jewels: credential domains, IP ranges, executive names, product names, sensitive project codenames</li>
-          <li>Configure monitoring keywords &amp; Boolean search strings for each asset category</li>
-          <li>Stand up isolated monitoring infrastructure (dedicated VMs, VPN routing, Tor nodes)</li>
-          <li>Assign analyst roles: monitor, verifier, and response coordinator</li>
-          <li>Establish a secure communication channel for alerts that bypasses potentially compromised corporate email</li>
+          <li>List what matters most: company email domains, executive names, product names, and sensitive project names</li>
+          <li>Turn each of those into search terms to watch for</li>
+          <li>Set up separate, isolated computers to do the searching safely (so the monitoring can't be traced back or put your own network at risk)</li>
+          <li>Decide who does what: who watches, who double-checks, and who coordinates the response</li>
+          <li>Agree a secure way to raise alerts that doesn't rely on company email &mdash; in case that email has itself been compromised</li>
         </ul>
       </div>
     </div>
@@ -386,7 +392,7 @@
       <div class="pf-num">03</div>
       <div class="pf-body">
         <h4><i class="fa fa-microscope"></i> Analysis &amp; Verification</h4>
-        <p>Raw alerts are rarely actionable on their own. Every detection must be contextualized before a response is triggered. The five-dimension analysis framework:</p>
+        <p>A raw alert on its own can be misleading. Before reacting, you need to check whether it's real and whether it actually relates to you. Five questions to ask about every alert:</p>
         <ul class="sub-steps">
           <li><strong>Source:</strong> What forum/channel/site? What is its historical reliability and threat actor affiliation?</li>
           <li><strong>Author Profile:</strong> Is the poster a known threat actor, first-time poster, or likely reseller? Check account history and reputation score.</li>
@@ -401,7 +407,7 @@
       <div class="pf-num">04</div>
       <div class="pf-body">
         <h4><i class="fa fa-shield-halved"></i> Response</h4>
-        <p>Verified findings trigger a graded response commensurate with the severity and nature of the exposure. The response playbook is detailed in the next section.</p>
+        <p>Once a finding is confirmed, act in proportion to how serious it is &mdash; a live, working password needs a faster, bigger response than an old one from a years-old breach. The full response playbook is in the next section.</p>
         <ul class="sub-steps">
           <li>Severity triage: active credential exposure vs. stale data vs. reconnaissance mention</li>
           <li>Immediate credential lock for confirmed active exposures</li>
@@ -416,11 +422,11 @@
       <div class="pf-num">05</div>
       <div class="pf-body">
         <h4><i class="fa fa-comments"></i> Communication</h4>
-        <p>Intelligence without communication is wasted. Findings must reach the right stakeholders in the right format to drive decisions.</p>
+        <p>A finding is only useful if it reaches the right people in a form they can act on. Different audiences need different levels of detail.</p>
         <ul class="sub-steps">
-          <li>C-suite: brief executive summary with business impact, risk rating, and remediation status</li>
-          <li>Security team: full technical IOC package, source details, and recommended detection rules</li>
-          <li>Legal/Compliance: regulatory notification assessment and evidence package if required</li>
+          <li>Senior leaders: a short summary &mdash; what the business impact is, how serious it is, and what's being done about it</li>
+          <li>Security team: the full technical detail, including where it was found and how to detect it in future</li>
+          <li>Legal/Compliance: whether the law requires you to notify anyone, plus the evidence to support it</li>
           <li>Affected individuals: notification letters where personal data is confirmed exposed</li>
           <li>Feed findings back into the Preparation phase to update monitoring keywords and improve future detection</li>
         </ul>
@@ -429,10 +435,11 @@
   </div>
 
   <!-- ACCOUNT COMPROMISE PLAYBOOK -->
-  <h2><i class="fa fa-person-falling"></i> Account Compromise Response Playbook</h2>
+  <h2><i class="fa fa-person-falling"></i> What to Do When an Account Is Exposed</h2>
   <p>
-    Credential exposure is the most common dark web finding. The following five-stage playbook
-    defines the response to a confirmed account compromise detection:
+    A leaked password is by far the most common thing you'll find. Here's a simple five-stage plan
+    for what to do once you've confirmed one of your accounts has been exposed &mdash; lock it,
+    reset it, investigate, remove the attacker's foothold, then restore and report.
   </p>
 
   <div class="playbook">
@@ -495,8 +502,8 @@
   </div>
 
   <!-- ANALYSIS FRAMEWORK -->
-  <h2><i class="fa fa-chart-bar"></i> Intelligence Analysis Framework</h2>
-  <p>Actionable intelligence requires structured analysis. The five-dimension framework evaluates every detection:</p>
+  <h2><i class="fa fa-chart-bar"></i> Judging Whether an Alert Is Real</h2>
+  <p>Not every alert is genuine or relevant. Weighing it against these five points helps you separate a real threat from background noise or an old, recycled leak:</p>
 
   <div class="analysis-grid">
     <div class="analysis-item">
@@ -511,8 +518,8 @@
     </div>
     <div class="analysis-item">
       <i class="fa fa-chart-line"></i>
-      <h4>Activity Pattern</h4>
-      <p>Is this an isolated post or part of a campaign? Are other organizations in your sector also targeted? Timing relative to known CVE disclosures.</p>
+      <h4>Pattern of Activity</h4>
+      <p>Is this a one-off, or part of a wider campaign? Are other organizations in your industry being targeted at the same time? Does the timing line up with a newly announced software weakness?</p>
     </div>
     <div class="analysis-item">
       <i class="fa fa-file-lines"></i>
@@ -521,14 +528,14 @@
     </div>
     <div class="analysis-item">
       <i class="fa fa-check-double"></i>
-      <h4>Cross-Verification</h4>
-      <p>Corroborate with SIEM/EDR logs, check breach databases (Have I Been Pwned, DeHashed), and confirm asset ownership before escalating.</p>
+      <h4>Double-Check It</h4>
+      <p>Compare against your own system logs, check known breach databases (such as Have I Been Pwned), and confirm the data really is yours before raising the alarm.</p>
     </div>
   </div>
 
   <!-- BUSINESS VALUE -->
-  <h2><i class="fa fa-building-shield"></i> Business Value of Dark Web Monitoring</h2>
-  <p>Organizations that invest in dark web monitoring realize three compounding security benefits:</p>
+  <h2><i class="fa fa-building-shield"></i> Why It's Worth the Investment</h2>
+  <p>Organizations that monitor the dark web gain three benefits that build on each other:</p>
 
   <div class="bv-grid">
     <div class="bv-card">
@@ -544,50 +551,50 @@
     <div class="bv-card">
       <i class="fa fa-shield-check"></i>
       <h4>Safeguard Organizational Interests</h4>
-      <p>Protecting intellectual property, customer PII, and executive credentials reduces reputational damage, regulatory penalties, and operational disruption. The cost of monitoring is a fraction of the cost of a breach.</p>
+      <p>Protecting trade secrets, customers' personal data, and executives' accounts reduces reputational harm, regulatory fines, and business disruption. Monitoring costs a small fraction of what a breach costs.</p>
     </div>
   </div>
 
   <div class="divider"></div>
 
   <!-- FUTURE OF DWM -->
-  <h2><i class="fa fa-rocket"></i> The Future of Dark Web Monitoring</h2>
-  <p>The discipline is evolving rapidly, driven by both attacker innovation and defender tooling maturity:</p>
+  <h2><i class="fa fa-rocket"></i> Where This Is Heading</h2>
+  <p>Dark web monitoring is changing fast, as both attackers and defenders get better tools. A few trends worth knowing:</p>
 
   <div class="trends">
     <div class="trend">
       <i class="fa fa-brain"></i>
       <div>
-        <h4>AI/ML-Powered Analysis</h4>
-        <p>Machine learning models trained on threat actor behavioural patterns are beginning to automate the triage and analysis phases, dramatically reducing the analyst time required per alert. NLP enables semantic similarity matching rather than pure keyword detection, catching obfuscated references to your organization.</p>
+        <h4>Artificial Intelligence Doing the First Pass</h4>
+        <p>AI is starting to handle the initial sorting and checking of alerts, freeing up human analysts. It can also spot indirect or disguised references to your organization &mdash; not just exact keyword matches &mdash; catching mentions that simple searches would miss.</p>
       </div>
     </div>
     <div class="trend">
       <i class="fa fa-robot"></i>
       <div>
-        <h4>Automation at Scale</h4>
-        <p>Automated crawlers indexing thousands of dark web sources simultaneously, combined with SOAR-integrated playbooks, enable a response cycle measured in minutes rather than days.</p>
+        <h4>Faster, More Automated Response</h4>
+        <p>Tools now watch thousands of sources at once and can kick off an automatic response &mdash; such as locking an exposed account &mdash; in minutes rather than days.</p>
       </div>
     </div>
     <div class="trend">
       <i class="fa fa-handshake"></i>
       <div>
-        <h4>Cross-Organization Threat Sharing</h4>
-        <p>ISACs (Information Sharing and Analysis Centers) and sector-specific threat sharing communities are formalizing the exchange of dark web intelligence across organizations. A breach at one bank becomes an early warning for all others in the consortium.</p>
+        <h4>Organizations Sharing Warnings</h4>
+        <p>Industry groups are formalizing how companies share threat information. When one bank is attacked, the details become an early warning for every other bank in the group &mdash; so an attack on one becomes a defense for all.</p>
       </div>
     </div>
     <div class="trend">
       <i class="fa fa-gavel"></i>
       <div>
-        <h4>Regulatory Pressure &amp; Compliance</h4>
-        <p>Data protection laws are increasingly mandating breach notification timelines that can only realistically be met with dark web monitoring in place. Proactive monitoring is shifting from a best practice to a compliance requirement in several jurisdictions.</p>
+        <h4>Growing Legal Pressure</h4>
+        <p>Data protection laws increasingly demand that breaches be reported within tight deadlines &mdash; deadlines that are hard to meet without monitoring already in place. In several countries it's shifting from &ldquo;good practice&rdquo; to a legal expectation.</p>
       </div>
     </div>
     <div class="trend">
       <i class="fa fa-lock"></i>
       <div>
-        <h4>Anonymity Technology Arms Race</h4>
-        <p>As threat actors adopt more sophisticated anonymisation (I2P, Freenet, encrypted messaging platforms), monitoring tools are evolving counter-techniques. Organizations must partner with intelligence vendors who continuously update their collection infrastructure.</p>
+        <h4>A Constant Cat-and-Mouse on Hiding</h4>
+        <p>As criminals adopt newer ways to stay hidden, monitoring tools keep adapting to keep up. This is why it usually makes sense to work with a specialist provider whose whole job is keeping pace &mdash; rather than trying to do it all in-house.</p>
       </div>
     </div>
   </div>
@@ -600,33 +607,33 @@
   <div class="rec-grid">
     <div class="rec-card">
       <i class="fa fa-binoculars"></i>
-      <h4>Subscribe to a Dark Web Monitoring Service</h4>
-      <p>Commercial platforms (Recorded Future, Digital Shadows, Flare) provide continuous monitoring with analyst curation. The investment is justified even for mid-size organizations. Credential exposure is nearly universal.</p>
+      <h4>Use a Monitoring Service</h4>
+      <p>Specialist services watch the dark web around the clock and have experts review what they find. It's worth the cost even for mid-size organizations &mdash; nearly every company has some passwords exposed somewhere.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-crown"></i>
-      <h4>Define and Monitor Your Crown Jewels</h4>
-      <p>Do not monitor everything — prioritize. Know which email domains, IP ranges, executive credentials, product names, and sensitive project codenames would be highest-value targets and monitor those specifically.</p>
+      <h4>Focus on What Matters Most</h4>
+      <p>Don't try to watch everything. Decide which things would hurt most if exposed &mdash; company email addresses, senior executives' accounts, key product and project names &mdash; and concentrate your monitoring there.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-clipboard-list"></i>
-      <h4>Have a Response Playbook Ready</h4>
-      <p>A dark web detection without a response plan is useless. Define who gets notified, what triggers a forced password reset, and when legal/compliance must be engaged — before the alert fires.</p>
+      <h4>Agree Your Response in Advance</h4>
+      <p>Spotting a problem is no use if nobody knows what to do next. Decide ahead of time who gets told, when you force a password reset, and when to involve legal &mdash; not in the heat of the moment.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-graduation-cap"></i>
-      <h4>Train Employees on Credential Hygiene</h4>
-      <p>Most dark web credential exposure originates from phishing or employees reusing corporate passwords on personal services that subsequently breach. Password manager mandates and phishing simulation reduce this risk substantially.</p>
+      <h4>Help Staff Handle Passwords Safely</h4>
+      <p>Most leaked passwords come from phishing, or from staff reusing their work password on a personal site that later gets breached. Providing a password manager and running phishing practice drills cuts this risk sharply.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-shield"></i>
-      <h4>Enforce MFA Everywhere</h4>
-      <p>A credential found on the dark web is worthless to an attacker if MFA is enforced. MFA is the single most effective control against credential-based attacks regardless of how the credentials were obtained.</p>
+      <h4>Turn On a Second Login Step Everywhere</h4>
+      <p>A stolen password is nearly useless if a second login step (MFA) is required. It's the single most effective defense against stolen passwords, no matter how they were obtained.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-link-slash"></i>
-      <h4>Audit Third-Party &amp; SaaS Accounts</h4>
-      <p>Your employees' credentials are exposed via breaches of the SaaS tools they use. Audit which third-party services corporate email addresses are registered with and disable those that are abandoned or unnecessary.</p>
+      <h4>Review the Outside Services You Use</h4>
+      <p>Staff passwords often leak through breaches of the third-party online tools they sign up for. Keep track of which outside services use your work email addresses, and close any that are unused or unnecessary.</p>
     </div>
   </div>
 
@@ -634,11 +641,11 @@
   <div class="takeaways">
     <h3><i class="fa fa-star"></i> Key Takeaways</h3>
     <ul>
-      <li><strong>The dark web is not abstract</strong> — it actively trades in your organization's assets. Monitoring is a strategic necessity, not an optional add-on.</li>
-      <li><strong>Detection without analysis is noise</strong> — the five-dimension analysis framework (Source, Author, Activity, Content, Verification) transforms raw alerts into actionable intelligence.</li>
-      <li><strong>Credential exposure usually precedes a breach</strong> — dark web monitoring provides the early warning window that passive controls cannot.</li>
-      <li><strong>MFA and password hygiene</strong> are the cheapest and most effective countermeasures against dark web credential exposure impact.</li>
-      <li><strong>Close the loop</strong> — every dark web finding should feed back into your monitoring keywords, detection rules, and security awareness training.</li>
+      <li><strong>This is real, not theoretical.</strong> Your organization's passwords and data are genuinely bought and sold in these places. Monitoring is a practical necessity, not a nice-to-have.</li>
+      <li><strong>An alert is only a starting point.</strong> Always check whether it's genuine and relevant before reacting &mdash; otherwise you'll drown in false alarms.</li>
+      <li><strong>Leaks usually come before the breach.</strong> Seeing your data appear on the dark web is an early warning that lets you act before an attacker does.</li>
+      <li><strong>A second login step and good password habits</strong> are the cheapest, most effective ways to blunt the impact of a leaked password.</li>
+      <li><strong>Feed what you learn back in.</strong> Every finding should sharpen what you watch for and what you teach your staff.</li>
     </ul>
   </div>
 

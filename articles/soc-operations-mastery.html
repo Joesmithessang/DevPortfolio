@@ -203,9 +203,9 @@
   <p class="eyebrow"><i class="fa fa-tower-broadcast"></i>&nbsp; Security Operations &mdash; Leadership &amp; Architecture</p>
   <h1>Engineering a World-Class SOC:<br/>Frameworks, Metrics &amp; Methodology</h1>
   <p class="subtitle">
-    From SOC capability maturity assessments to incident response playbook design, threat hunting
-    methodology, and DevSecOps culture &mdash; a practitioner's synthesis of what separates
-    elite security operations from reactive alert queues.
+    What actually makes a security team great &mdash; not the number of tools or people, but how well it
+    detects, responds to, and learns from attacks. A practical guide to measuring and improving a security
+    operations team, in plain language.
   </p>
   <div class="article-meta">
     <span><i class="fa fa-calendar"></i> 2023 &ndash; 2024</span>
@@ -222,29 +222,31 @@
     <p>This article distils observations and methodology from over five years of security operations leadership, including SOC capability maturity assessments, IR engagements, and keynote presentations at industry forums. Content presented at the Second Annual Managed Security Services Nigeria Forum (MSS Forum, February 2023) is incorporated here in synthesised form.</p>
   </div>
 
+  <div class="callout info" style="border-left-color:var(--cyan);background:rgba(0,229,255,.04);">
+    <p class="callout-title"><i class="fa fa-circle-info"></i> In Plain Terms</p>
+    <p>A <strong>SOC</strong> (Security Operations Centre) is the team that watches over an organization's computers and networks around the clock, looking for signs of attack and responding when something's wrong &mdash; think of it as the security guards and alarm room for a company's digital world. Two numbers come up a lot: <strong>MTTD</strong> (Mean Time to Detect) is how long it takes to notice an attack, and <strong>MTTR</strong> (Mean Time to Respond) is how long it takes to deal with it. Lower is better for both.</p>
+  </div>
+
   <!-- WHAT MAKES A WORLD-CLASS SOC -->
-  <h2><i class="fa fa-trophy"></i> What Separates Elite SOCs from Alert Queues</h2>
+  <h2><i class="fa fa-trophy"></i> What Makes a Security Team Great</h2>
   <p>
-    Most organizations have a SOC. Far fewer have a <em>security operations capability</em>.
-    The difference is not headcount or tooling &mdash; it is the presence of a coherent framework
-    that aligns people, process, technology, and business objectives into a unified operating model.
-  </p>
-  <p>
-    Three observable characteristics distinguish world-class SOCs:
+    Most organizations have a security team. Far fewer have a genuinely effective one. The difference isn't
+    how many people or tools they have &mdash; it's how well they work together toward a clear goal. Three
+    things set the best teams apart:
   </p>
   <ul>
-    <li><strong>Proactive posture:</strong> The team hunts threats rather than waiting for alerts to fire. Mean Time to Detect (MTTD) is minimized through continuous hypothesis-driven investigation, not just rule-based detection.</li>
-    <li><strong>Playbook-driven response:</strong> Every incident type has a documented, tested runbook. Analysts do not improvise under pressure &mdash; they execute a validated workflow, saving critical decision-making capacity for genuine ambiguity.</li>
-    <li><strong>Continuous feedback loops:</strong> Detection gaps, false positive rates, and missed incidents feed directly back into the engineering process. The SOC's detection capability improves measurably each quarter.</li>
+    <li><strong>They go looking for trouble.</strong> Instead of only waiting for alarms, they actively search for attackers who may already be hiding &mdash; so they catch problems sooner.</li>
+    <li><strong>They follow a tested plan.</strong> Every type of incident has a written, rehearsed step-by-step guide. Under pressure, analysts follow a proven process instead of improvising, saving their judgement for the genuinely tricky cases.</li>
+    <li><strong>They learn from every miss.</strong> When something slips through or a false alarm wastes time, that lesson feeds straight back in &mdash; so the team gets measurably better every few months.</li>
   </ul>
 
   <!-- SOC CMM FRAMEWORK -->
-  <h2><i class="fa fa-sitemap"></i> The SOC Capability Maturity Model (CMM)</h2>
+  <h2><i class="fa fa-sitemap"></i> A Simple Way to Measure How Good Your Team Is</h2>
   <p>
-    The SOC CMM framework provides a structured language for assessing and improving security
-    operations maturity across five domains and twenty-five measurable aspects. It was used
-    directly in client engagements to baseline current-state capability, identify priority
-    improvement areas, and define a structured roadmap to target maturity levels.
+    It's hard to improve something you can't measure. The SOC Maturity Model is a well-known scorecard that
+    rates a security team across five areas &mdash; Business, People, Process, Technology, and Services &mdash;
+    so you can see honestly where you stand today and plan where to improve next. I've used it directly with
+    clients to find their weak spots and build a step-by-step improvement plan.
   </p>
 
   <div class="cmm-grid">
@@ -347,10 +349,10 @@
   </div>
 
   <!-- METRICS -->
-  <h2><i class="fa fa-gauge-high"></i> The Metrics That Matter: MTTD, MTTR &amp; Beyond</h2>
+  <h2><i class="fa fa-gauge-high"></i> The Four Numbers Worth Tracking</h2>
   <p>
-    Operational excellence in a SOC is quantified, not assumed. These four metrics are the
-    leading indicators of SOC effectiveness:
+    A good security team proves its performance with numbers rather than claims. These four are the clearest
+    signs of how well a team is doing:
   </p>
 
   <div class="metrics-grid">
@@ -358,56 +360,57 @@
       <i class="metric-icon fa fa-stopwatch" style="color:var(--cyan);"></i>
       <p class="metric-name">MTTD</p>
       <p class="metric-value" style="color:var(--cyan);">&#60;1h</p>
-      <p class="metric-desc">Mean Time to Detect. World-class target: sub-60 minutes from initial attacker action to alert. Requires high-fidelity detection engineering, not more rules.</p>
+      <p class="metric-desc">Mean Time to Detect &mdash; how long until you notice an attack. The best teams aim for under an hour. Getting there is about better-quality alerts, not simply more of them.</p>
     </div>
     <div class="metric-card">
       <i class="metric-icon fa fa-bolt" style="color:var(--green);"></i>
       <p class="metric-name">MTTR</p>
       <p class="metric-value" style="color:var(--green);">&#60;4h</p>
-      <p class="metric-desc">Mean Time to Respond/Remediate. Measured from detection to containment of the threat. Playbook-driven response is the primary lever for reduction.</p>
+      <p class="metric-desc">Mean Time to Respond &mdash; how long from noticing an attack to shutting it down. Having a rehearsed, step-by-step plan is the biggest thing that speeds this up.</p>
     </div>
     <div class="metric-card">
       <i class="metric-icon fa fa-triangle-exclamation" style="color:var(--amber);"></i>
       <p class="metric-name">False Positive Rate</p>
       <p class="metric-value" style="color:var(--amber);">&#60;5%</p>
-      <p class="metric-desc">High false positive rates burn analyst capacity and erode trust in alerts. Continuous tuning of detection rules is a core SOC engineering discipline.</p>
+      <p class="metric-desc">How many alarms turn out to be nothing. Too many false alarms exhaust the team and make them stop trusting alerts. Keep this low by continually fine-tuning what triggers an alert.</p>
     </div>
     <div class="metric-card">
       <i class="metric-icon fa fa-shield-halved" style="color:var(--purple);"></i>
-      <p class="metric-name">Coverage Ratio</p>
+      <p class="metric-name">Coverage</p>
       <p class="metric-value" style="color:var(--purple);">100%</p>
-      <p class="metric-desc">Percentage of assets emitting logs to the SIEM. Visibility gaps are detection gaps. Any unmonitored asset is a blind spot an attacker will find before you do.</p>
+      <p class="metric-desc">How much of your environment you're actually watching. Anything you're not monitoring is a blind spot &mdash; and an attacker will find it before you do.</p>
     </div>
   </div>
 
-  <h3>Purple Team Validation</h3>
+  <h3>Test Your Numbers with Real Exercises</h3>
   <p>
-    Metrics without validation are self-deception. Purple team exercises &mdash; collaborative
-    red/blue team operations where the offensive team shares TTPs with defenders in real-time &mdash;
-    provide empirical measurement of detection capability against known attack patterns.
+    It's easy to fool yourself with metrics, so test them for real. In a &ldquo;purple team&rdquo; exercise,
+    a friendly attacking team (red) and your defending team (blue) work side by side: the attackers try known
+    techniques and tell the defenders what they're doing, so you can see exactly what your team catches and
+    what it misses.
   </p>
   <p>
-    In practice, purple team exercises conducted with clients consistently revealed that
-    self-reported MTTD and MTTR figures were optimistic by a factor of 3-5x. The gap between
-    assumed and actual detection capability is the SOC's most dangerous vulnerability.
+    In practice, these exercises repeatedly showed that teams' own estimates of how fast they detect and
+    respond were three to five times too optimistic. That gap between what you <em>think</em> you can do and
+    what you <em>actually</em> can do is the most dangerous blind spot a security team has.
   </p>
 
   <!-- IR PLAYBOOK DESIGN -->
-  <h2><i class="fa fa-scroll"></i> Incident Response Playbook Design Principles</h2>
+  <h2><i class="fa fa-scroll"></i> How to Write a Response Plan That Works</h2>
   <p>
-    An IR playbook is only as valuable as the engineer who designed it and the analyst who
-    follows it under pressure. Four design principles separate effective playbooks from
-    document-repository artifacts:
+    A &ldquo;playbook&rdquo; is a step-by-step guide for handling a specific type of incident. A good one is
+    worth its weight in gold during a crisis; a bad one just gathers dust. Five things separate a useful
+    playbook from a document nobody opens:
   </p>
 
   <div class="playbook-design">
     <div class="pd-phase">
       <div class="pd-label"><p class="pd-label-text" style="color:var(--cyan);">SCENARIO-SPECIFIC</p></div>
-      <div class="pd-content"><p>Each playbook addresses one specific incident type (e.g., ransomware, BEC, credential compromise, DDoS). Generic playbooks fail under pressure because analysts face real, specific scenarios &mdash; not abstract incident categories. A ransomware playbook and a phishing playbook should share structure but differ completely in execution steps.</p></div>
+      <div class="pd-content"><p>Each playbook covers one specific type of incident (ransomware, email fraud, a stolen password, a website being flooded offline). One-size-fits-all playbooks fail under pressure, because real incidents are specific. A ransomware plan and a phishing plan can look similar on paper but need very different steps.</p></div>
     </div>
     <div class="pd-phase">
       <div class="pd-label"><p class="pd-label-text" style="color:var(--green);">DECISION TREE DRIVEN</p></div>
-      <div class="pd-content"><p>Playbooks should present decision trees, not just action lists. At each step, the analyst faces a binary choice (Is MFA enforced? Y/N → branch). This eliminates ambiguity and accelerates execution under time pressure. Tools like SOAR platforms automate decision trees for Tier 1 triage.</p></div>
+      <div class="pd-content"><p>A good playbook asks clear yes/no questions and tells you what to do for each answer (&ldquo;Is a second login step turned on? Yes &rarr; do this. No &rarr; do that.&rdquo;). This removes guesswork and speeds things up when the clock is ticking. Some tools can even automate the routine first steps.</p></div>
     </div>
     <div class="pd-phase">
       <div class="pd-label"><p class="pd-label-text" style="color:var(--amber);">REGULARLY TESTED</p></div>
@@ -419,122 +422,119 @@
     </div>
     <div class="pd-phase">
       <div class="pd-label"><p class="pd-label-text" style="color:var(--red);">ROLE-ASSIGNED</p></div>
-      <div class="pd-content"><p>Every action in the playbook carries an explicit role assignment (Tier 1 Analyst / Tier 2 Analyst / SOC Manager / Legal / CISO). Ambiguity about ownership of an action during an incident is a critical failure mode that the playbook must eliminate by design.</p></div>
+      <div class="pd-content"><p>Every step names exactly who does it &mdash; a specific analyst, the team manager, legal, or the security chief. When it's unclear who owns an action during a live incident, things get missed. A good playbook removes that doubt in advance.</p></div>
     </div>
   </div>
 
   <!-- THREAT HUNTING -->
-  <h2><i class="fa fa-crosshairs"></i> Proactive Threat Hunting Methodology</h2>
+  <h2><i class="fa fa-crosshairs"></i> Going Looking for Hidden Attackers</h2>
   <p>
-    Threat hunting moves the SOC from reactive detection (waiting for an alert) to proactive
-    investigation (searching for attacker behaviour that has not yet triggered a rule).
-    The methodology is hypothesis-driven and structured around the intelligence cycle.
+    &ldquo;Threat hunting&rdquo; means actively searching for attackers who may already be inside but haven't
+    set off any alarm &mdash; rather than only reacting when an alarm goes off. The approach is simple: form a
+    hunch about how an attacker might behave, then go look for evidence of it in your data.
   </p>
 
-  <h3>The OSINT-Powered Hunt</h3>
+  <h3>Hunting Through Publicly Available Information</h3>
   <p>
-    One of the most productive and underutilised threat hunting techniques in the Nigerian context
-    is <strong>OSINT-based third-party exposure hunting</strong>. During one engagement, this
-    methodology uncovered significant unintended data exposures before they were exploited:
+    One of the most useful and most overlooked hunts uses only <strong>publicly available information</strong>
+    &mdash; checking what your own organization has accidentally exposed to the open internet. In one
+    engagement, this simple approach found serious leaks before attackers could use them:
   </p>
 
   <div class="finding-box">
-    <p class="finding-label">FINDING — OPEN SOURCE CODE REPOSITORIES</p>
+    <p class="finding-label">FINDING &mdash; PASSWORDS LEFT IN PUBLIC CODE</p>
     <p>
-      Analysis of the organization's name and known developer usernames across public code repositories
-      revealed hardcoded API keys, database connection strings, and internal IP addresses committed
-      to <code>public GitHub</code> repositories by developers working from personal accounts.
-      These credentials would have granted unauthenticated access to production cloud resources.
+      Searching public code-sharing sites for the organization's name and its developers' usernames turned up
+      real passwords and access keys that staff had accidentally left in code they'd posted publicly from
+      their personal accounts. Anyone who found them could have logged straight into the company's live
+      cloud systems.
     </p>
   </div>
 
   <div class="finding-box">
-    <p class="finding-label">FINDING — API DEVELOPMENT PLATFORM EXPOSURE</p>
+    <p class="finding-label">FINDING &mdash; INTERNAL SYSTEM DETAILS EXPOSED</p>
     <p>
-      Postman Collections &mdash; used by development teams to test internal APIs &mdash; had been
-      published to <code>api.getpostman.com</code> with the "public" visibility setting enabled by default.
-      These collections contained authentication tokens, endpoint paths, and sample payloads for
-      internal production APIs, effectively providing an attacker with a fully documented attack surface.
+      A tool developers use to test their systems had been shared publicly by mistake (the default setting
+      made it visible to everyone). It contained login keys and a full map of the company's internal systems
+      &mdash; effectively handing an attacker a ready-made instruction manual for breaking in.
     </p>
   </div>
 
   <div class="callout amber">
     <p class="callout-title"><i class="fa fa-lightbulb"></i> Lesson for Security Teams</p>
-    <p>Third-party platforms used by your development team (GitHub, GitLab, Postman, Confluence, S3 buckets) are part of your attack surface. Monthly automated scanning of these platforms for organizational data exposure should be a standard SOC service, not a one-off assessment.</p>
+    <p>The outside tools your developers use (code-sharing sites, testing tools, cloud storage) are part of what an attacker can see. Regularly check these places for anything your organization has exposed by accident. Make it a routine monthly job, not a one-off.</p>
   </div>
 
-  <h3>Threat Hunting Framework</h3>
+  <h3>The Four Steps of a Hunt</h3>
   <ul>
-    <li><strong>Hypothesis generation:</strong> Derive hypotheses from threat intelligence (known TTPs of actors targeting your sector), MITRE ATT&CK coverage gaps, and recent vulnerability disclosures.</li>
-    <li><strong>Data collection:</strong> Identify the log sources and telemetry streams needed to test each hypothesis. If the data does not exist, the hunt cannot proceed &mdash; which itself is a finding about coverage gaps.</li>
-    <li><strong>Analysis:</strong> Apply statistical analysis, behavioural baselining, and pattern matching across collected data. Look for deviations from baseline, not just known signatures.</li>
-    <li><strong>Discovery and closure:</strong> Confirmed findings convert to incidents. Negative results close the hypothesis and inform detection rule development (if the hunt found nothing, why not? Can a rule be built to catch it automatically next time?).</li>
+    <li><strong>Form a hunch.</strong> Based on how attackers are known to behave &mdash; especially those targeting your industry &mdash; decide what you're going to look for.</li>
+    <li><strong>Gather the data.</strong> Work out what records you'd need to check the hunch. If that data doesn't exist, that's a finding in itself: you have a blind spot to fix.</li>
+    <li><strong>Analyse it.</strong> Look for things that stand out from normal, everyday activity &mdash; not just known bad signatures.</li>
+    <li><strong>Act and improve.</strong> If you find something, treat it as an incident. If you find nothing, ask why &mdash; and, where you can, build an automatic alert so the same thing gets caught next time without a manual hunt.</li>
   </ul>
 
   <!-- SECURITY CONTROLS PRIORITY -->
-  <h2><i class="fa fa-layer-group"></i> Security Controls: Where to Invest First</h2>
+  <h2><i class="fa fa-layer-group"></i> Where to Spend Your Security Budget First</h2>
   <p>
-    When asked to advise on security budget allocation, the consistent recommendation across
-    engagements has been to prioritise three foundational control categories before any
-    advanced capability is considered:
+    When clients ask what to fund first, my answer is consistent: get these three basics right before spending
+    on anything fancier. They stop the most common attacks and make everything else work better.
   </p>
 
   <div class="controls-stack">
     <div class="control-item">
       <i class="fa fa-laptop-medical" style="color:var(--cyan);"></i>
       <div>
-        <h4>Endpoint Detection &amp; Response (EDR)</h4>
-        <p>Behavioural EDR provides visibility at the most contested layer of the kill chain. Without 100% EDR coverage, SIEM use cases that depend on endpoint telemetry are blind. EDR is not optional for any organization that considers itself security-mature. It is the prerequisite for everything else on this list.</p>
+        <h4>1. Modern Protection on Every Device</h4>
+        <p>Tools that watch each computer for suspicious behaviour (called EDR) give you eyes on the place attacks most often play out. Every device needs to be covered &mdash; the ones you're not watching are exactly where an attacker will hide. This is the foundation everything else depends on.</p>
       </div>
     </div>
     <div class="control-item">
       <i class="fa fa-user-lock" style="color:var(--green);"></i>
       <div>
-        <h4>Identity &amp; Access Management (IAM) + Privileged Access Management (PAM)</h4>
-        <p>The majority of significant incidents involve compromised credentials or privilege abuse. IAM controls (MFA, RBAC, access recertification) and PAM (vault, JIT elevation, session recording) are the highest-return investments for eliminating the most common attack paths. A mature IAM programme prevents more incidents than most detection tools can catch.</p>
+        <h4>2. Control Who Can Log In and What They Can Do</h4>
+        <p>Most serious incidents involve a stolen password or misused access. Requiring a second login step, giving people only the access they need, reviewing that access regularly, and keeping tight control of powerful admin accounts prevents more incidents than almost any detection tool can catch.</p>
       </div>
     </div>
     <div class="control-item">
       <i class="fa fa-code" style="color:var(--amber);"></i>
       <div>
-        <h4>Secure Software Development Lifecycle (S-SDLC)</h4>
-        <p>Many incidents originate in the application layer &mdash; exploited vulnerabilities in custom applications that were never security-tested before deployment. Integrating security testing (SAST, DAST, SCA) into the CI/CD pipeline eliminates vulnerabilities at the point of introduction rather than discovering them post-deployment. DevSecOps culture shifts responsibility from a security team that cannot keep up, to developers who own the security of their code.</p>
+        <h4>3. Build Security Into Your Software</h4>
+        <p>Many breaches start in an organization's own applications &mdash; through flaws that were never checked before the software went live. Testing code for security problems automatically, <em>as it's written</em>, catches these early, when they're cheap to fix. The goal is to make security part of how developers work, rather than a gate a stretched security team polices at the end.</p>
       </div>
     </div>
   </div>
 
   <!-- ISO 27001 -->
-  <h2><i class="fa fa-certificate"></i> Governance Framework: ISO 27001 Integration</h2>
+  <h2><i class="fa fa-certificate"></i> Using a Recognized Standard to Stay Organized</h2>
 
   <div class="iso-box">
     <div class="iso-logo">ISO<br/>27001</div>
     <div class="iso-body">
-      <h4>Information Security Management System (ISMS) Implementation</h4>
+      <h4>A Structured Way to Manage Security</h4>
       <p>
-        ISO 27001 was implemented for a major financial institution as an integrated management system
-        alongside ISO 22301 (Business Continuity) and ISO 20000 (IT Service Management). The integration
-        of these three standards into a single management framework eliminated duplicated controls,
-        reduced audit overhead, and provided a unified risk management language across security, resilience,
-        and IT operations teams. The gap assessment identified 68 controls requiring remediation,
-        with a 14-month implementation roadmap to certification.
+        ISO 27001 is an internationally recognized standard for managing information security in an organized,
+        provable way. For a large bank, I helped put it in place together with two related standards &mdash; one
+        for keeping the business running through disruptions, and one for running IT services well. Combining
+        them into a single system removed duplicated effort, cut down on audits, and gave the security,
+        resilience, and IT teams one shared way of talking about risk. The initial review found 68 gaps to fix,
+        with a 14-month plan to get certified.
       </p>
     </div>
   </div>
 
   <p>
-    The most common gap found in ISO 27001 gap assessments is not technical controls &mdash;
-    it is <strong>documentation and evidence management</strong>. Organizations frequently
-    have controls in place but lack the audit trail to demonstrate compliance. Building
-    evidence collection into operational processes (not as a separate compliance activity)
-    is the lesson that consistently emerges from these engagements.
+    The most common gap these reviews uncover isn't a missing security tool &mdash; it's <strong>missing paperwork</strong>.
+    Organizations often have the right protections in place but can't prove it, because they never kept records.
+    The lesson that comes up again and again: build record-keeping into everyday work, rather than scrambling
+    to assemble evidence at audit time.
   </p>
 
   <!-- THREAT MODELING -->
-  <h2><i class="fa fa-network-wired"></i> Threat Modelling: STRIDE &amp; DREAD</h2>
+  <h2><i class="fa fa-network-wired"></i> Thinking Like an Attacker at the Design Stage</h2>
   <p>
-    Threat modelling brings security into the design phase of systems and applications &mdash;
-    where the cost of remediation is orders of magnitude lower than post-deployment.
-    Two complementary frameworks were applied across engagements:
+    &ldquo;Threat modelling&rdquo; simply means asking &ldquo;how could someone attack this?&rdquo; while you're
+    still designing a system &mdash; when fixing a flaw costs a fraction of what it costs after launch. Two
+    well-known checklists help structure that thinking:
   </p>
 
   <div class="tm-grid">
@@ -573,8 +573,8 @@
 
   <div class="qualities-grid">
     <div class="quality-item">
-      <h4>Technical Depth + Breadth</h4>
-      <p>Must understand the stack they manage, from SIEM query syntax to network protocol analysis. Credibility with analysts depends on this. But breadth (IR, forensics, cloud, OT) matters equally at the leadership level.</p>
+      <h4>Real Technical Know-How</h4>
+      <p>They genuinely understand the technology they oversee &mdash; that's how they earn the respect of their analysts. At the same time, they need broad knowledge across incident response, forensics, and cloud, not just deep expertise in one area.</p>
     </div>
     <div class="quality-item">
       <h4>Business Fluency</h4>
@@ -589,8 +589,8 @@
       <p>Builds a team where knowledge is shared, post-incident reviews are blameless learning sessions, and analyst upskilling is treated as a priority, not a distraction from operations.</p>
     </div>
     <div class="quality-item">
-      <h4>Metrics-Driven Decision Making</h4>
-      <p>Makes staffing, tooling, and process decisions based on data (MTTD, MTTR, case volumes, coverage ratios), not intuition. Measures improvement over time, not just absolute current state.</p>
+      <h4>Decisions Based on Data</h4>
+      <p>Makes staffing, tool, and process decisions based on the numbers &mdash; detection speed, response speed, case volumes, coverage &mdash; not gut feeling. Tracks whether things are actually improving over time.</p>
     </div>
     <div class="quality-item">
       <h4>Stakeholder Management</h4>
@@ -606,45 +606,45 @@
   <div class="rec-grid">
     <div class="rec-card">
       <i class="fa fa-clipboard-list"></i>
-      <h4>Assess Before You Invest</h4>
-      <p>Conduct a SOC CMM assessment before adding headcount or tooling. The assessment reveals which domains are genuinely immature vs. which just appear weak due to missing documentation. Investment without assessment funds the wrong gaps.</p>
+      <h4>Assess Before You Spend</h4>
+      <p>Score your team against the maturity model before hiring more people or buying more tools. It shows which areas are genuinely weak versus which just look weak because of poor record-keeping. Spending without assessing tends to fix the wrong gaps.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-scroll"></i>
-      <h4>Write Playbooks for Your Actual Threats</h4>
-      <p>Build IR playbooks for the scenarios most likely to occur in your industry: ransomware, BEC, insider threat, DDoS, credential compromise. Generic playbooks are better than none but scenario-specific playbooks dramatically reduce MTTR.</p>
+      <h4>Write Plans for the Threats You Actually Face</h4>
+      <p>Create response plans for the incidents most likely to hit your industry: ransomware, email fraud, insider misuse, stolen passwords. A specific plan gets you back on your feet far faster than a vague, general one.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-flask"></i>
-      <h4>Measure Your Real Detection Capability</h4>
-      <p>Run purple team exercises with known attacker TTPs (MITRE ATT&CK technique IDs) and measure what percentage you detect and how fast. Assume your self-assessed MTTD is 3-5x optimistic until tested.</p>
+      <h4>Test How Well You Really Detect Attacks</h4>
+      <p>Run friendly attack exercises using known techniques, and measure how much you actually catch and how fast. Assume your own estimates are three to five times too optimistic until you've proven otherwise.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-magnifying-glass-chart"></i>
-      <h4>Operationalize Threat Intelligence</h4>
-      <p>Threat intelligence that does not feed detection rules, hunting hypotheses, or patching priorities is entertainment, not security. Build an explicit process for consuming, contextualizing, and acting on intelligence within 24 hours of receipt.</p>
+      <h4>Actually Act on Threat Information</h4>
+      <p>Threat information you receive but never use is just reading material. Have a clear process to review it and turn it into new alerts, hunts, or patch priorities within a day of receiving it.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-code-branch"></i>
-      <h4>Integrate Security into Development</h4>
-      <p>If your developers can push to production without a security gate, you are continuously expanding your attack surface. Implement SAST in CI/CD pipelines, mandatory peer review for infrastructure-as-code, and quarterly security champion training for dev teams.</p>
+      <h4>Build Security Into How You Develop Software</h4>
+      <p>If developers can put code live with no security check, your risk keeps growing. Add automatic security testing to the development process and make sure changes get a second pair of eyes before release.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-arrow-trend-up"></i>
-      <h4>Align the Roadmap to a Maturity Model</h4>
-      <p>Use SOC CMM to score your current state, define a target state (3+ years out), and build a year-by-year roadmap to close the gap. This gives you a defensible business case for ongoing security investment.</p>
+      <h4>Plan Improvement Over Several Years</h4>
+      <p>Use the maturity model to score where you are, decide where you want to be in a few years, and map out a year-by-year plan to get there. This also gives you a solid case for ongoing security funding.</p>
     </div>
   </div>
 
   <div class="takeaways">
     <h3><i class="fa fa-star"></i> Key Takeaways</h3>
     <ul>
-      <li><strong>Frameworks before tooling:</strong> The SOC CMM provides the language and structure to diagnose gaps systematically. Tool purchases without framework alignment rarely solve the right problem.</li>
-      <li><strong>Test your playbooks</strong> quarterly under simulated incident conditions. A playbook that has never been executed is a liability, not an asset.</li>
-      <li><strong>Threat hunting generates more value than additional detection rules</strong> for mature organizations &mdash; it finds attacker dwell time that rules consistently miss.</li>
-      <li><strong>OSINT exposure hunting</strong> (GitHub, Postman, S3 buckets, paste sites) routinely uncovers critical exposures that internal tools cannot see. Build it into your monthly operations cadence.</li>
-      <li><strong>EDR → IAM/PAM → S-SDLC</strong> is the investment sequence that delivers the highest risk reduction per dollar for organizations building security capability from the ground up.</li>
-      <li><strong>The SOC manager is the force multiplier</strong> — invest in their technical depth, business fluency, and leadership capability as directly as you invest in the platform budget.</li>
+      <li><strong>Understand your gaps before buying tools.</strong> A maturity assessment shows you what's actually wrong. Buying tools without one usually solves the wrong problem.</li>
+      <li><strong>Rehearse your response plans regularly.</strong> A plan that's never been tested under pressure is a risk, not a safeguard.</li>
+      <li><strong>Actively hunt for hidden attackers.</strong> For mature teams, going looking finds intruders that automated alerts consistently miss.</li>
+      <li><strong>Check what you've exposed by accident.</strong> Searching public sites for your own leaked data routinely finds serious problems your internal tools can't see. Make it a monthly habit.</li>
+      <li><strong>Get the basics right in order:</strong> protect every device first, then control who can log in and what they can do, then build security into your software. That sequence gives the most protection for the money.</li>
+      <li><strong>The team's leader sets the ceiling.</strong> Invest in your security manager's skills and judgement as seriously as you invest in tools &mdash; a great one lifts the whole team.</li>
     </ul>
   </div>
 

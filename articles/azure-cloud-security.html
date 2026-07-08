@@ -110,8 +110,8 @@
 
 <header class="article-hero">
   <p class="eyebrow"><i class="fa fa-cloud"></i> &nbsp;Cloud Security &bull; Azure &bull; Security Architecture</p>
-  <h1>Hardening Azure: A Practitioner's Field Guide to Cloud Security Architecture</h1>
-  <p class="subtitle">Inside a comprehensive Azure cloud security review — the misconfigurations, monitoring gaps, and identity control failures that leave cloud environments persistently exposed.</p>
+  <h1>Securing the Cloud: What a Microsoft Azure Health-Check Revealed</h1>
+  <p class="subtitle">The common cloud setup mistakes that quietly leave organizations exposed &mdash; and the practical fixes &mdash; explained clearly for both cloud teams and the leaders who fund them.</p>
   <div class="article-meta">
     <span><i class="fa fa-user"></i> Joe Smith-Essang</span>
     <span><i class="fa fa-cloud"></i> Platform: Microsoft Azure</span>
@@ -122,64 +122,69 @@
 
 <main class="article-body">
 
-  <h2><i class="fa fa-circle-info"></i> Why Cloud Misconfigurations Are the New Perimeter Breach</h2>
-  <p>The migration to cloud infrastructure has inverted the traditional security model. Where perimeter firewalls once formed the primary line of defense, cloud environments expose hundreds of configurable services — each with defaults that prioritize availability over security. The result: organizations move to the cloud and inadvertently create an attack surface larger and more accessible than anything they managed on-premise.</p>
-  <p>This article synthesizes findings from a structured Azure cloud security implementation review, covering identity and access management, network controls, compute security, data protection, and logging and monitoring. The checklist spans over 90 distinct control areas across Azure's service portfolio. All findings are presented as patterns, not attributed to any specific organization.</p>
+  <div class="callout info" style="border-left-color:var(--cyan);background:rgba(0,229,255,.04);">
+    <div class="callout-title"><i class="fa fa-circle-info"></i> In Plain Terms</div>
+    &ldquo;The cloud&rdquo; just means running your systems on a provider's computers (here, Microsoft Azure) instead of your own. The catch: the cloud gives you hundreds of settings to configure, and the defaults often favour convenience over security. A <strong>misconfiguration</strong> is simply one of those settings left in an unsafe state &mdash; like a door left unlocked. Most cloud breaches aren't clever hacks; they're someone finding a door the owner forgot to lock.
+  </div>
+
+  <h2><i class="fa fa-circle-info"></i> Why Simple Cloud Mistakes Cause Big Breaches</h2>
+  <p>When you run your own servers in your own building, a firewall at the edge does much of the protecting. The cloud works differently: you're responsible for correctly configuring hundreds of separate services, and each one ships with default settings that lean toward &ldquo;easy to use&rdquo; rather than &ldquo;secure.&rdquo; It's surprisingly easy to move to the cloud and accidentally leave more doors open than you ever had before.</p>
+  <p>This article shares the patterns from a thorough security check of an Azure environment, covering five areas: who can log in, network protection, the servers and apps themselves, stored data, and whether anyone is watching for trouble. The full checklist covered more than 90 individual settings. Nothing here is tied to any specific organization.</p>
 
   <div class="stat-row">
-    <div class="stat-chip"><span class="num">69%</span><div class="label">Users Without MFA Enabled</div></div>
-    <div class="stat-chip"><span class="num">90+</span><div class="label">Control Areas Evaluated</div></div>
-    <div class="stat-chip"><span class="num">15+</span><div class="label">NSG Misconfigurations Found</div></div>
-    <div class="stat-chip"><span class="num">0</span><div class="label">NSG Flow Logs Active</div></div>
+    <div class="stat-chip"><span class="num">69%</span><div class="label">of users had no second login step</div></div>
+    <div class="stat-chip"><span class="num">90+</span><div class="label">settings checked</div></div>
+    <div class="stat-chip"><span class="num">15+</span><div class="label">network firewall rules left too open</div></div>
+    <div class="stat-chip"><span class="num">0</span><div class="label">network traffic logs switched on</div></div>
   </div>
 
   <div class="callout danger">
-    <div class="callout-title"><i class="fa fa-triangle-exclamation"></i> Critical Context</div>
-    The single most impactful finding across the entire review: <strong>69% of user accounts had no multi-factor authentication enabled</strong>. In a cloud environment where credentials are the primary access control, this represents an organizationally-wide exposure to credential phishing, password spraying, and account takeover.
+    <div class="callout-title"><i class="fa fa-triangle-exclamation"></i> The Single Biggest Problem</div>
+    The most serious finding of the whole review: <strong>69% of user accounts had no second login step (MFA) turned on</strong>. In the cloud, a password is often the only thing standing between an attacker and your systems. Without a second step, one stolen or guessed password is enough to walk right in &mdash; and this affected most of the organization.
   </div>
 
-  <h2><i class="fa fa-id-badge"></i> Domain 1 — Identity &amp; Access Management</h2>
-  <p>Identity is the new perimeter in cloud environments. Every resource access decision flows through the identity plane — making IAM configuration the most consequential security domain in Azure.</p>
+  <h2><i class="fa fa-id-badge"></i> Area 1 — Who Can Log In</h2>
+  <p>In the cloud, controlling who can log in is the most important protection you have. Almost every action starts with someone signing in, so if login security is weak, everything else is built on sand.</p>
 
   <div class="control-domain">
     <div class="domain-header">
       <div class="domain-icon"><i class="fa fa-user-shield"></i></div>
       <div>
-        <div class="domain-title">Azure Active Directory &amp; MFA</div>
-        <div class="domain-subtitle">Identity Foundation</div>
+        <div class="domain-title">Login &amp; Account Security</div>
+        <div class="domain-subtitle">The foundation of cloud security</div>
       </div>
     </div>
     <ul class="finding-list crit">
-      <li>MFA not enabled for 69% of user accounts — including accounts with access to production resources</li>
-      <li>Azure AD Identity Protection configured but risk-based conditional access policies not formulated — location-based anomalous login detection inactive</li>
-      <li>Azure AD Privileged Identity Management (PIM) configured (positive) but requiring P2 license alignment verification</li>
-      <li>Conditional access policies exist but had not been reviewed for coverage gaps or policy conflicts</li>
-      <li>SQL Server instances not configured with Azure Active Directory administrator — local SQL authentication only</li>
+      <li>Most accounts (69%) had no second login step &mdash; including accounts that could reach live business systems</li>
+      <li>Tools to spot suspicious logins (like a sign-in from an unusual country) were available but never switched on</li>
+      <li>The system for tightly controlling powerful admin accounts was set up &mdash; a good sign &mdash; but needed the right licence to work fully</li>
+      <li>Login rules existed but had never been reviewed for gaps or conflicts</li>
+      <li>Databases relied only on their own local passwords instead of the central, better-protected login system</li>
     </ul>
   </div>
 
-  <h2><i class="fa fa-network-wired"></i> Domain 2 — Network Security</h2>
-  <p>Network Security Groups (NSGs) are Azure's primary mechanism for controlling traffic flow between subnets and virtual machines. Permissive NSG rules are the cloud equivalent of leaving firewall ports open — and they are among the most commonly misconfigured controls in Azure environments.</p>
+  <h2><i class="fa fa-network-wired"></i> Area 2 — Network Protection</h2>
+  <p>Azure uses a kind of built-in firewall (called a Network Security Group) to control which connections are allowed to reach your systems. Think of each rule as a door: it should only be open to the people who genuinely need it. Leaving these doors open to the entire internet is one of the most common and dangerous cloud mistakes. The table below lists the open doors we found; it's detailed for technical readers, but the pattern is simple &mdash; too much was left open to everyone.</p>
 
-  <h3>Critical NSG Misconfigurations Identified</h3>
+  <h3>Doors Left Open to the Internet</h3>
 
   <table class="risk-table">
     <thead>
-      <tr><th>Misconfiguration</th><th>Severity</th><th>Attack Vector</th></tr>
+      <tr><th>What was left open</th><th>Severity</th><th>Why it's dangerous</th></tr>
     </thead>
     <tbody>
-      <tr><td>SSH (Port 22) open to all internet traffic</td><td><span class="badge crit">Critical</span></td><td>Brute-force, credential spray on Linux VMs</td></tr>
-      <tr><td>RDP (Port 3389) open to all internet traffic</td><td><span class="badge crit">Critical</span></td><td>BlueKeep-class exploitation, brute-force on Windows VMs</td></tr>
-      <tr><td>Inbound rule permits all TCP traffic from any source</td><td><span class="badge crit">Critical</span></td><td>Full TCP port sweep, lateral movement</td></tr>
-      <tr><td>Inbound rule permits all UDP traffic from any source</td><td><span class="badge high">High</span></td><td>UDP-based DDoS amplification, DNS tunneling</td></tr>
-      <tr><td>NetBIOS (UDP 137/138) exposed to internet</td><td><span class="badge high">High</span></td><td>NBT-NS poisoning, credential capture (Responder)</td></tr>
-      <tr><td>SMB (TCP 445) accessible from internet</td><td><span class="badge high">High</span></td><td>EternalBlue/WannaCry-class worm propagation</td></tr>
-      <tr><td>Telnet (TCP 23) accessible</td><td><span class="badge high">High</span></td><td>Plaintext credential interception</td></tr>
-      <tr><td>VNC Server (TCP 5900) and Listener (5500) exposed</td><td><span class="badge high">High</span></td><td>Unauthorized remote desktop access</td></tr>
-      <tr><td>MySQL (3306) and PostgreSQL (5432) internet-accessible</td><td><span class="badge high">High</span></td><td>Direct database exfiltration or credential spray</td></tr>
-      <tr><td>NSG not attached to resource subnet</td><td><span class="badge med">Medium</span></td><td>Uncontrolled traffic flow between subnets</td></tr>
-      <tr><td>NSG flow logs disabled</td><td><span class="badge med">Medium</span></td><td>No traffic visibility for forensics or anomaly detection</td></tr>
-      <tr><td>Outbound rule permits all traffic to any destination</td><td><span class="badge med">Medium</span></td><td>Data exfiltration, C2 beaconing</td></tr>
+      <tr><td>Remote admin access to Linux servers (SSH)</td><td><span class="badge crit">Critical</span></td><td>Attackers can hammer it with password guesses until one works</td></tr>
+      <tr><td>Remote desktop access to Windows servers (RDP)</td><td><span class="badge crit">Critical</span></td><td>A favourite target for break-ins and known exploits</td></tr>
+      <tr><td>All connection types allowed from anywhere</td><td><span class="badge crit">Critical</span></td><td>Lets attackers probe everything and move around freely once in</td></tr>
+      <tr><td>All of a second connection type allowed from anywhere</td><td><span class="badge high">High</span></td><td>Can be abused to overwhelm services or sneak data out</td></tr>
+      <tr><td>Old Windows file-sharing services exposed</td><td><span class="badge high">High</span></td><td>Can leak login details or capture credentials</td></tr>
+      <tr><td>File-sharing port open (the one WannaCry used)</td><td><span class="badge high">High</span></td><td>How self-spreading worms like WannaCry get in</td></tr>
+      <tr><td>An obsolete, unencrypted remote-login tool (Telnet)</td><td><span class="badge high">High</span></td><td>Sends passwords as plain text anyone can read</td></tr>
+      <tr><td>Remote screen-sharing tools exposed</td><td><span class="badge high">High</span></td><td>Unauthorized remote control of the machine</td></tr>
+      <tr><td>Databases reachable directly from the internet</td><td><span class="badge high">High</span></td><td>Data can be stolen or guessed into directly</td></tr>
+      <tr><td>No firewall attached to part of the network</td><td><span class="badge med">Medium</span></td><td>Traffic flows unchecked between systems</td></tr>
+      <tr><td>Network traffic logging switched off</td><td><span class="badge med">Medium</span></td><td>No record to investigate an attack after the fact</td></tr>
+      <tr><td>Systems allowed to connect out to anywhere</td><td><span class="badge med">Medium</span></td><td>Makes it easy to smuggle stolen data out</td></tr>
     </tbody>
   </table>
 
@@ -187,32 +192,32 @@
     <div class="domain-header">
       <div class="domain-icon"><i class="fa fa-shield-halved"></i></div>
       <div>
-        <div class="domain-title">Application Gateway &amp; WAF</div>
-        <div class="domain-subtitle">Perimeter Controls</div>
+        <div class="domain-title">Web Traffic Protection</div>
+        <div class="domain-subtitle">Guarding the front door of web apps</div>
       </div>
     </div>
     <ul class="finding-list high">
-      <li>Application Gateway permits TLS 1.1 and below — enables POODLE, BEAST, and downgrade attacks on encrypted traffic</li>
-      <li>Web Application Firewall (WAF) not enabled on Application Gateway — no OWASP ruleset protection for web-facing applications</li>
-      <li>Basic DDoS protection configured on VNETs (positive finding) — Standard tier recommended for production workloads</li>
+      <li>Old, weak encryption still allowed &mdash; can be downgraded and broken by attackers</li>
+      <li>No web application firewall switched on &mdash; nothing filtering out common attacks against the websites</li>
+      <li>Only basic protection against traffic-flooding attacks &mdash; the stronger tier is recommended for important systems</li>
     </ul>
   </div>
 
-  <h2><i class="fa fa-server"></i> Domain 3 — Compute &amp; Application Security</h2>
+  <h2><i class="fa fa-server"></i> Area 3 — The Servers and Apps Themselves</h2>
 
   <div class="control-domain">
     <div class="domain-header">
       <div class="domain-icon"><i class="fa fa-desktop"></i></div>
       <div>
-        <div class="domain-title">Virtual Machines</div>
-        <div class="domain-subtitle">Compute Baseline</div>
+        <div class="domain-title">Virtual Servers</div>
+        <div class="domain-subtitle">The machines running in the cloud</div>
       </div>
     </div>
     <ul class="finding-list high">
-      <li>Endpoint protection not installed on virtual machines — no AV/EDR agent deployed at the VM layer</li>
-      <li>VM operating system disks not encrypted at rest using Azure Disk Encryption (ADE) — physical disk compromise would expose OS data in plaintext</li>
-      <li>Unattached disks not encrypted — orphaned data volumes from deleted VMs retain unencrypted data</li>
-      <li>VMs not assigned to availability sets — no resilience against rack-level hardware failure</li>
+      <li>No security software installed on the servers to detect malware or attacks</li>
+      <li>Server hard drives not encrypted &mdash; the data could be read if the underlying storage were ever accessed</li>
+      <li>Leftover drives from deleted servers left unencrypted, still holding old data</li>
+      <li>Servers not set up to survive a hardware failure &mdash; no backup if the equipment fails</li>
     </ul>
   </div>
 
@@ -220,18 +225,16 @@
     <div class="domain-header">
       <div class="domain-icon"><i class="fa fa-window-maximize"></i></div>
       <div>
-        <div class="domain-title">App Service Web Applications</div>
-        <div class="domain-subtitle">Application Layer</div>
+        <div class="domain-title">Web Applications</div>
+        <div class="domain-subtitle">The apps users interact with</div>
       </div>
     </div>
     <ul class="finding-list high">
-      <li>App authentication disabled — no identity provider enforced for web application access</li>
-      <li>HTTP not redirected to HTTPS — web applications accessible over unencrypted connections</li>
-      <li>Managed Service Identity not assigned — applications using static credentials instead of token-based Azure AD authentication</li>
-      <li>Client certificate authentication not required for API endpoints</li>
-      <li>Outdated runtime versions: PHP, Python, Java, .NET Core not on latest supported versions</li>
-      <li>TLS version not locked to 1.2+ — applications negotiable to deprecated protocol versions</li>
-      <li>HTTP/2 not enabled — missing performance and security improvements</li>
+      <li>No login required to reach some apps</li>
+      <li>Visitors not forced onto the secure (encrypted) version of the site</li>
+      <li>Apps storing fixed passwords in their settings instead of using safer, automatic credentials</li>
+      <li>Software components running on outdated versions (PHP, Python, Java, and others)</li>
+      <li>Old, weak encryption still permitted instead of requiring the modern standard</li>
     </ul>
   </div>
 
@@ -239,142 +242,138 @@
     <div class="domain-header">
       <div class="domain-icon"><i class="fa fa-cubes"></i></div>
       <div>
-        <div class="domain-title">AKS (Kubernetes) Cluster</div>
-        <div class="domain-subtitle">Container Orchestration</div>
+        <div class="domain-title">Container Platform (Kubernetes)</div>
+        <div class="domain-subtitle">A system for running apps at scale</div>
       </div>
     </div>
     <ul class="finding-list high">
-      <li>Role-Based Access Control (RBAC) not enforced on AKS cluster — any authenticated user may perform any cluster action</li>
-      <li>Azure CNI networking not enabled — limited network policy enforcement between pods</li>
-      <li>HTTP application routing enabled on production cluster — exposes internal services unnecessarily</li>
-      <li>Cluster monitoring not enabled — no visibility into pod health, resource usage, or anomalous behavior</li>
+      <li>No limits on what logged-in users could do &mdash; anyone with access could take any action</li>
+      <li>Weak separation between the different apps running on the platform</li>
+      <li>Internal services needlessly exposed to the outside</li>
+      <li>No monitoring &mdash; no visibility into the platform's health or unusual activity</li>
       <li>Node pool count below 3 — insufficient resilience for production workloads</li>
     </ul>
   </div>
 
-  <h2><i class="fa fa-database"></i> Domain 4 — Data Storage &amp; Database Security</h2>
+  <h2><i class="fa fa-database"></i> Area 4 — Stored Data and Databases</h2>
 
-  <h3>SQL Server &amp; Database Controls</h3>
+  <h3>Databases</h3>
   <ul>
-    <li><strong>SQL Server auditing disabled</strong> — no query-level audit trail for compliance or forensics</li>
-    <li><strong>SQL Server threat detection not enabled</strong> — no anomalous query pattern alerting</li>
-    <li><strong>Transparent Data Encryption (TDE) disabled</strong> on SQL databases — data at rest unencrypted</li>
-    <li><strong>Audit log retention below 91 days</strong> — insufficient for regulatory compliance (most frameworks require 12 months)</li>
-    <li><strong>SQL Server firewall allows all Azure-internal resources</strong> — overly broad; should be restricted to required service IPs only</li>
-    <li><strong>Email alerts not configured</strong> for threat detection events</li>
+    <li><strong>No record kept of who accessed the database</strong> &mdash; nothing to review for compliance or investigations</li>
+    <li><strong>No alerting for suspicious database activity</strong></li>
+    <li><strong>Stored data not encrypted</strong> &mdash; readable if the storage is ever accessed directly</li>
+    <li><strong>Access records kept too briefly</strong> &mdash; well short of the 12 months most regulations require</li>
+    <li><strong>The database was reachable by too many internal systems</strong> &mdash; access should be limited to only those that truly need it</li>
+    <li><strong>No email alerts set up</strong> for security warnings</li>
   </ul>
 
-  <h3>Key Vault Controls</h3>
+  <h3>The Secrets Vault (where passwords and keys are stored)</h3>
   <ul>
-    <li><strong>Key and secret expiration dates not set</strong> — credentials never rotate automatically</li>
-    <li><strong>Key Vault audit logging disabled</strong> — no record of who accessed secrets or when</li>
-    <li><strong>Key Vault not configured as recoverable</strong> — accidental deletion is permanent</li>
+    <li><strong>Stored passwords and keys had no expiry date</strong> &mdash; so they never got refreshed automatically</li>
+    <li><strong>No record of who accessed the vault</strong> or when</li>
+    <li><strong>Accidental deletion would be permanent</strong> &mdash; recovery protection wasn't switched on</li>
   </ul>
 
-  <h3>Storage Account Controls</h3>
+  <h3>File Storage</h3>
   <ul>
-    <li><strong>Default network access set to Allow</strong> — storage accessible from any IP unless explicitly blocked</li>
-    <li><strong>Blob containers with public access enabled</strong> — content accessible to unauthenticated internet requests</li>
-    <li><strong>Activity log container publicly accessible</strong> — audit trail exposed to public read</li>
-    <li><strong>Secure transfer (HTTPS) not enforced</strong> — blob data transmissible over HTTP</li>
-    <li><strong>Logging disabled</strong> for blobs, queues, and tables — no read/write/delete audit trail</li>
-    <li><strong>Trusted Microsoft Services access not enabled</strong> — legitimate Azure services blocked from accessing storage</li>
+    <li><strong>Storage open by default</strong> &mdash; reachable from anywhere unless specifically blocked</li>
+    <li><strong>Some stored files were publicly readable</strong> &mdash; accessible to anyone on the internet, no login needed</li>
+    <li><strong>Even the access records themselves were public</strong></li>
+    <li><strong>Data could be transferred unencrypted</strong> rather than only over secure connections</li>
+    <li><strong>No logging</strong> of who read, changed, or deleted files</li>
   </ul>
 
   <div class="callout danger">
-    <div class="callout-title"><i class="fa fa-folder-open"></i> Critical: Public Blob Containers</div>
-    Public blob container access, combined with a storage account activity log that is itself publicly readable, creates a scenario where an attacker can not only access stored data but also enumerate access patterns to plan further attacks — without ever authenticating.
+    <div class="callout-title"><i class="fa fa-folder-open"></i> Why the Public Files Were So Serious</div>
+    Some stored files were readable by anyone on the internet &mdash; and so were the records of who had accessed them. That combination means an attacker could not only take the data, but also study the access patterns to plan their next move, all without ever logging in.
   </div>
 
-  <h2><i class="fa fa-chart-line"></i> Domain 5 — Logging &amp; Monitoring</h2>
-  <p>The ability to detect, investigate, and respond to incidents depends entirely on the availability of comprehensive logs. Across every logging and monitoring control evaluated, the environment showed consistent under-configuration of Microsoft Defender for Cloud (formerly Security Center).</p>
+  <h2><i class="fa fa-chart-line"></i> Area 5 — Watching for Trouble</h2>
+  <p>You can't respond to an attack you never notice. Detecting, investigating, and responding all depend on keeping good records and having alerts switched on. Across the board, this environment had Microsoft's built-in cloud security monitoring barely configured.</p>
 
   <div class="control-domain">
     <div class="domain-header">
       <div class="domain-icon"><i class="fa fa-bell"></i></div>
       <div>
-        <div class="domain-title">Microsoft Defender for Cloud — Monitoring Gaps</div>
-        <div class="domain-subtitle">SIEM &amp; Alerting Baseline</div>
+        <div class="domain-title">Security Monitoring &mdash; What Was Missing</div>
+        <div class="domain-subtitle">Whether anyone would notice an attack</div>
       </div>
     </div>
     <ul class="finding-list crit">
-      <li>Standard pricing tier not selected — Defender for Cloud running in limited free-tier mode with reduced threat intelligence and alerts</li>
-      <li>Just-in-Time (JIT) network access monitoring disabled — no enforcement of time-bounded VM port access</li>
-      <li>Automatic monitoring agent provisioning disabled — VMs not automatically enrolled in log collection</li>
-      <li>Endpoint protection monitoring disabled — no integration between Defender and endpoint agents</li>
-      <li>Disk encryption monitoring disabled — non-compliant disks not surfaced in security posture</li>
-      <li>Vulnerability assessment monitoring disabled — VM vulnerability data not aggregated in Defender</li>
-      <li>SQL auditing, encryption, and threat detection monitoring all set to disabled</li>
-      <li>Activity log retention below 365 days — non-compliant with most regulatory frameworks</li>
-      <li>Security contacts (email and phone) not configured — critical alerts have no delivery destination</li>
-      <li>No Activity Log alerts for: NSG creation/modification, security solution changes, SQL firewall rule changes</li>
+      <li>The monitoring tool was left on its free, limited mode instead of the fuller paid version</li>
+      <li>Servers weren't automatically enrolled into monitoring, so many went unwatched</li>
+      <li>The tool wasn't checking whether protections like encryption and anti-malware were actually in place</li>
+      <li>Known weaknesses on servers weren't being gathered up and flagged</li>
+      <li>Records were kept for less than a year &mdash; short of what most regulations require</li>
+      <li>No emergency contact was set, so critical alerts had nowhere to go</li>
+      <li>No alerts for important changes, like someone altering the firewall rules</li>
     </ul>
   </div>
 
   <div class="callout amber">
-    <div class="callout-title"><i class="fa fa-eye-slash"></i> Detection Blindspot</div>
-    With NSG flow logs disabled, Defender for Cloud monitoring off, and no activity log alerts configured, a significant lateral movement event within this Azure environment would generate <strong>zero automated alerts</strong>. Detection would depend entirely on manual log review — if logs were even being retained.
+    <div class="callout-title"><i class="fa fa-eye-slash"></i> The Bottom Line on Monitoring</div>
+    With traffic logging off, the monitoring tool barely configured, and no alerts set up, an attacker moving through this environment would have triggered <strong>no automatic alarms at all</strong>. The only way to catch them would be to manually dig through logs &mdash; assuming any were even being kept.
   </div>
 
-  <h2><i class="fa fa-list-check"></i> Prioritized Remediation Roadmap</h2>
+  <h2><i class="fa fa-list-check"></i> A Fix-It Plan, in Priority Order</h2>
 
   <div class="priority-strip">
     <div class="priority-item p1">
-      <div class="p-label"><i class="fa fa-fire"></i> &nbsp;Priority 1 — Immediate (0–7 days)</div>
-      <p>Enable MFA for all users. Close SSH/RDP from internet. Enable TDE on all SQL databases. Set storage accounts to private. Configure security contact in Defender for Cloud.</p>
+      <div class="p-label"><i class="fa fa-fire"></i> &nbsp;First (within a week)</div>
+      <p>Turn on a second login step for everyone. Close off remote admin access from the internet. Encrypt the databases. Make storage private. Set an emergency security contact so alerts reach someone.</p>
     </div>
     <div class="priority-item p2">
-      <div class="p-label"><i class="fa fa-clock"></i> &nbsp;Priority 2 — Short-Term (7–30 days)</div>
-      <p>Enable Defender for Cloud Standard tier. Enable NSG flow logs. Configure activity log retention to 365+ days. Enable Key Vault audit logging and set expiration on keys/secrets. Enforce HTTPS on App Services.</p>
+      <div class="p-label"><i class="fa fa-clock"></i> &nbsp;Soon (within a month)</div>
+      <p>Upgrade to the fuller monitoring tier and switch on traffic logging. Keep records for at least a year. Turn on access logging for the secrets vault and set expiry dates. Force all websites onto secure connections.</p>
     </div>
     <div class="priority-item p3">
-      <div class="p-label"><i class="fa fa-calendar-check"></i> &nbsp;Priority 3 — Ongoing (30–90 days)</div>
-      <p>Enable ADE on all VM disks. Enforce RBAC on AKS. Upgrade runtime versions. Configure conditional access policies with risk-based signals. Enable SQL threat detection with email alerting.</p>
+      <div class="p-label"><i class="fa fa-calendar-check"></i> &nbsp;Ongoing (within three months)</div>
+      <p>Encrypt all server drives. Limit what users can do on the container platform. Update outdated software. Add smarter login rules that react to risky sign-ins. Turn on database threat alerts with email notifications.</p>
     </div>
   </div>
 
-  <h2><i class="fa fa-shield-halved"></i> Recommendations for Cloud Security Teams</h2>
+  <h2><i class="fa fa-shield-halved"></i> Recommendations for Cloud Teams</h2>
 
   <div class="rec-grid">
     <div class="rec-card">
       <i class="fa fa-user-lock"></i>
-      <h4>MFA as Non-Negotiable Baseline</h4>
-      <p>Deploy conditional access policies that require MFA for all users, with no exceptions. Enforce via Azure AD Conditional Access, not voluntary enrollment. Privileged accounts should use FIDO2 hardware keys, not TOTP.</p>
+      <h4>Make a Second Login Step Mandatory</h4>
+      <p>Require a second login step for every user, no exceptions &mdash; enforced by policy, not left to people to opt in. For the most powerful accounts, use physical security keys, which are the hardest to defeat.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-network-wired"></i>
-      <h4>Adopt Least-Privilege NSG Design</h4>
-      <p>Start NSG design from a deny-all baseline and open only what is explicitly required. Use NSG flow logs and Azure Network Watcher for traffic analysis before opening any port. Review NSG rules quarterly.</p>
+      <h4>Open Only the Doors You Need</h4>
+      <p>Start with everything closed and open only what's genuinely required &mdash; never open access to the whole internet by default. Review these firewall rules every few months and close anything no longer needed.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-eye"></i>
-      <h4>Enable Defender for Cloud — Standard Tier</h4>
-      <p>The free tier provides limited protection. Standard tier enables threat detection, JIT VM access, adaptive application controls, and file integrity monitoring. The cost is justified by the detection capability delta.</p>
+      <h4>Pay for Proper Monitoring</h4>
+      <p>The free monitoring tier barely protects you. The paid tier adds real threat detection and alerting. Given what a breach costs, the extra spend is easily justified.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-key"></i>
-      <h4>Secrets Management with Key Vault</h4>
-      <p>All application secrets, connection strings, and API keys must be stored in Key Vault — never in app settings, environment variables, or code. Enable audit logging, set expiration dates, and configure key rotation automation.</p>
+      <h4>Keep Secrets in a Proper Vault</h4>
+      <p>Store all passwords and access keys in a dedicated secure vault &mdash; never in app settings or code. Log who accesses them, set expiry dates, and refresh them automatically.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-lock"></i>
-      <h4>Encrypt Everything at Rest</h4>
-      <p>Enable Azure Disk Encryption for all VM disks (OS and data). Enable TDE for all SQL databases. Enforce Secure Transfer Required on all storage accounts. Treat unencrypted storage as an unacceptable default.</p>
+      <h4>Encrypt Everything You Store</h4>
+      <p>Encrypt server drives, databases, and stored files, and only allow data to move over secure connections. Treat unencrypted storage as simply unacceptable.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-chart-bar"></i>
-      <h4>Build a Logging Architecture First</h4>
-      <p>Define your log retention strategy before deploying workloads. Route all Azure Monitor logs, Defender alerts, NSG flow logs, and activity logs to a centralized Log Analytics workspace. Set 365-day minimum retention.</p>
+      <h4>Plan Your Record-Keeping First</h4>
+      <p>Decide what you'll log and for how long <em>before</em> you build anything. Send all your logs and alerts to one central place, and keep them for at least a year.</p>
     </div>
   </div>
 
   <h2><i class="fa fa-book-open"></i> Key Takeaways</h2>
   <ul>
-    <li><strong>Cloud security is an ongoing practice, not a deployment checkbox.</strong> Misconfigured resources persist indefinitely unless there are automated compliance checks (Azure Policy, Defender for Cloud) continuously evaluating the environment.</li>
-    <li><strong>Default configurations are not secure configurations.</strong> Azure's out-of-the-box settings prioritize ease of use. Every service deployed should be hardened against the documented Azure security baseline before being connected to production traffic.</li>
-    <li><strong>Identity is your most critical control.</strong> With 69% of accounts lacking MFA, every other security control is undermined. Credential compromise becomes a complete organizational takeover without compensating identity controls.</li>
-    <li><strong>Without logging, you have no security posture — only hope.</strong> Disabling NSG flow logs, Defender monitoring, and audit trails doesn't reduce risk; it eliminates your ability to detect and respond to it.</li>
-    <li><strong>Use Azure Policy to enforce, not just report.</strong> Policy in Audit mode tells you what's wrong. Policy in Deny mode prevents non-compliant resources from being created. Deploy both, and treat policy compliance as a release gate.</li>
+    <li><strong>Cloud security is ongoing, not a one-time setup.</strong> Unsafe settings stay unsafe forever unless something is continuously checking for them. Use automatic checks to catch problems as they appear.</li>
+    <li><strong>The defaults are not safe.</strong> Cloud services arrive set up for convenience, not security. Harden every service against a known security checklist before it goes live.</li>
+    <li><strong>Login security matters most.</strong> With most accounts lacking a second login step, everything else was undermined. One stolen password could have meant a full takeover.</li>
+    <li><strong>No monitoring means no security &mdash; just hope.</strong> Turning off logs and alerts doesn't reduce risk; it just removes your ability to notice and respond when something goes wrong.</li>
+    <li><strong>Prevent bad settings, don't just report them.</strong> Most cloud platforms let you automatically block unsafe setups from being created in the first place. Use that, rather than only flagging problems after the fact.</li>
   </ul>
 
 </main>

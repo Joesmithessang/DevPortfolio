@@ -185,9 +185,9 @@
   <p class="eyebrow"><i class="fa fa-globe"></i>&nbsp; Threat Intelligence Research &mdash; 2024</p>
   <h1>Critical Infrastructure Under Siege:<br/>The 2024 Cyber Threat Intelligence Landscape</h1>
   <p class="subtitle">
-    An intelligence-led analysis of the cyber threat landscape targeting critical national infrastructure &mdash;
-    covering geopolitical drivers, threat actor profiles, notable incident patterns, key vulnerabilities,
-    and a seven-pillar advisory framework for defending high-value environments.
+    A plain-language look at who was attacking essential services &mdash; banks, hospitals, power, telecoms &mdash;
+    in 2024, why they were doing it, how the attacks worked, and the practical steps organizations can take
+    to defend themselves.
   </p>
   <div class="article-meta">
     <span><i class="fa fa-calendar"></i> 2024 Research</span>
@@ -201,25 +201,29 @@
 
   <div class="callout amber">
     <p class="callout-title"><i class="fa fa-shield"></i> Scope &amp; Methodology</p>
-    <p>This analysis synthesises intelligence from consulting engagement observations, open-source intelligence (OSINT), sector CERT advisories, and commercial threat intelligence sources. All client-identifying information has been anonymized. The recommendations are universally applicable regardless of geography or sector.</p>
+    <p>This analysis draws on real consulting work, publicly available information, official cyber-authority advisories, and commercial threat-intelligence services. All client-identifying information has been anonymized, and the recommendations apply to any organization, anywhere.</p>
+  </div>
+
+  <div class="callout info">
+    <p class="callout-title"><i class="fa fa-circle-info"></i> In Plain Terms</p>
+    <p><strong>Critical infrastructure</strong> means the services a country can't function without &mdash; banks, hospitals, electricity, water, phone and internet networks. Because knocking these out causes maximum disruption, they're prime targets. In 2024, three kinds of attackers stood out: <strong>government-backed spies</strong> gathering secrets, <strong>ransomware gangs</strong> in it for money, and <strong>insiders</strong> who abused the access they'd been trusted with. This article explains who they were and what actually protects against them.</p>
   </div>
 
   <!-- EXECUTIVE SUMMARY -->
-  <h2><i class="fa fa-chart-line"></i> Executive Summary</h2>
+  <h2><i class="fa fa-chart-line"></i> The Big Picture</h2>
   <p>
-    The 2024 threat landscape for critical national infrastructure was defined by the intersection of
-    <strong>geopolitical instability, ransomware-as-a-service industrialisation, and a surge in
-    supply chain exploitation</strong>. Nation-state actors with documented ties to state intelligence
-    apparatus expanded their operational footprint beyond traditional espionage targets into financial
-    services, energy, and telecommunications networks. Concurrently, ransomware syndicates &mdash;
-    operating with the commercial efficiency of technology businesses &mdash; drove double-extortion
-    campaigns that generated significant disruption and regulatory exposure for their victims.
+    In 2024, attacks on essential services were driven by three forces coming together: <strong>political
+    conflict spilling into cyberspace, ransomware becoming a slick, money-making industry, and attackers
+    increasingly breaking in through the smaller suppliers their targets depend on</strong>. Government-backed
+    hacking groups pushed beyond their usual spying targets into banks, energy companies, and telecoms networks.
+    At the same time, ransomware gangs &mdash; run with the efficiency of real businesses &mdash; locked up
+    victims and stole their data at scale.
   </p>
   <p>
-    Three threat categories dominated: <strong>advanced persistent threats (APTs)</strong> pursuing
-    strategic intelligence collection; <strong>ransomware operators</strong> monetizing access acquired
-    by initial access brokers; and <strong>insider threats</strong> facilitated by inadequate access
-    governance and weak separation of duties in privileged systems.
+    Three types of attacker did most of the damage: <strong>government-backed groups</strong> after
+    long-term intelligence; <strong>ransomware gangs</strong> buying their way in and demanding payment;
+    and <strong>insiders</strong> &mdash; staff or contractors who abused access they already had, often
+    because no one was watching the powerful accounts closely enough.
   </p>
 
   <div class="stat-row">
@@ -233,43 +237,44 @@
     </div>
     <div class="stat-chip">
       <span class="num">8+</span>
-      <span class="label">State-nexus threat actors active in the region</span>
+      <span class="label">Government-backed hacking groups active in the region</span>
     </div>
     <div class="stat-chip">
       <span class="num">4</span>
-      <span class="label">Critical CVEs exploited as zero-days in enterprise infrastructure</span>
+      <span class="label">Major software flaws attacked before a fix existed</span>
     </div>
   </div>
 
   <!-- GEOPOLITICAL CONTEXT -->
-  <h2><i class="fa fa-earth-africa"></i> Geopolitical Context: When Conflicts Become Cyber Campaigns</h2>
+  <h2><i class="fa fa-earth-africa"></i> When Real-World Conflicts Spill Into Cyberspace</h2>
   <p>
-    The cyber domain in 2024 continued its role as the preferred asymmetric battlefield for
-    state and non-state actors. Three geopolitical flashpoints directly shaped the regional threat landscape:
+    Cyberattacks are now a standard tool in political conflicts &mdash; they're cheap, deniable, and can
+    hit an enemy from the other side of the world. Three global flashpoints shaped the attacks seen in
+    the region during 2024:
   </p>
 
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.5rem 0;">
     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;">
       <p style="font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--red);margin-bottom:.5rem;">RUSSIA-UKRAINE CONFLICT</p>
-      <p style="font-size:.88rem;color:var(--text-sec);margin:0;">Russian APT groups expanded targeting beyond the conflict zone to allied and partner nations, including African financial and government institutions offering support to Ukraine. Destructive wiper malware and critical infrastructure sabotage TTPs observed in reconnaissance activities.</p>
+      <p style="font-size:.88rem;color:var(--text-sec);margin:0;">Russian hacking groups reached beyond the war zone to countries seen as supporting Ukraine, including African financial and government bodies. Investigators saw signs of preparation for sabotage, including malware built to permanently wipe systems rather than just steal from them.</p>
     </div>
     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;">
       <p style="font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--amber);margin-bottom:.5rem;">ISRAEL-HAMAS CONFLICT</p>
-      <p style="font-size:.88rem;color:var(--text-sec);margin:0;">Pro-Palestinian hacktivist groups and Iranian state-nexus actors intensified distributed denial-of-service (DDoS) campaigns and intrusion operations targeting financial services, media, and telecommunications providers globally.</p>
+      <p style="font-size:.88rem;color:var(--text-sec);margin:0;">Activist hacking groups and Iran-linked attackers stepped up their operations against banks, media, and telecoms companies worldwide &mdash; including flooding websites with fake traffic to knock them offline (known as a denial-of-service attack).</p>
     </div>
     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;">
-      <p style="font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--purple);margin-bottom:.5rem;">REGIONAL SECURITY INSTABILITY</p>
-      <p style="font-size:.88rem;color:var(--text-sec);margin:0;">Political transitions and governance vacuums created conditions exploited by cyber mercenaries offering services to non-state clients. Critical infrastructure in energy and mining sectors became targets for economic disruption campaigns.</p>
+      <p style="font-family:'Share Tech Mono',monospace;font-size:.72rem;color:var(--purple);margin-bottom:.5rem;">REGIONAL INSTABILITY</p>
+      <p style="font-size:.88rem;color:var(--text-sec);margin:0;">Political upheaval and weak oversight created openings for hackers-for-hire working on behalf of private clients. Energy and mining operations became targets of campaigns aimed at causing economic damage.</p>
     </div>
   </div>
 
   <!-- CNII SECTORS -->
-  <h2><i class="fa fa-city"></i> The 13 Critical National Infrastructure Sectors</h2>
+  <h2><i class="fa fa-city"></i> The 13 Essential Sectors</h2>
   <p>
-    Critical National Information Infrastructure (CNII) encompasses the systems, networks, and assets
-    whose disruption would have a severe impact on national security, public health, economic stability,
-    or essential government functions. Formal designation of these sectors drives regulatory obligations,
-    incident reporting requirements, and minimum security standards.
+    &ldquo;Critical infrastructure&rdquo; is the official term for the services a country genuinely cannot do
+    without &mdash; the ones where a serious outage would threaten national security, public health, the
+    economy, or basic government functions. Governments formally name these sectors so they can hold them
+    to minimum security standards and require them to report incidents.
   </p>
 
   <div class="sectors-grid">
@@ -294,11 +299,10 @@
   </div>
 
   <!-- NOTABLE INCIDENTS -->
-  <h2><i class="fa fa-siren"></i> Notable Incident Patterns (Obfuscated Case Studies)</h2>
+  <h2><i class="fa fa-siren"></i> Three Real Incidents, Anonymized</h2>
   <p>
-    The following case studies are drawn from direct engagement observation and intelligence sources.
-    All client-identifying information has been removed. The patterns, TTPs, and lessons are
-    universally applicable.
+    These short case studies are based on real events, with all identifying details removed. Each one
+    shows a different kind of attack &mdash; and, more usefully, the specific gap that let it succeed.
   </p>
 
   <div class="case-cards">
@@ -308,17 +312,15 @@
         <p class="case-title">Insider Financial Fraud — $29M Loss at a Major Financial Institution</p>
         <p class="case-sector">SECTOR: Banking &amp; Finance &nbsp;|&nbsp; THREAT TYPE: Insider Threat &nbsp;|&nbsp; IMPACT: $29M+</p>
         <p>
-          A privileged employee at a major financial institution exploited elevated access rights within
-          the core banking system to manipulate fund settlement procedures over an extended period.
-          The fraud was facilitated by inadequate <strong>separation of duties</strong> controls,
-          lack of real-time transaction monitoring for insider behaviour, and a failure to enforce
-          the principle of least privilege. The insider collaborated with an external criminal syndicate
-          to route funds to accounts beyond the organization's jurisdiction.
+          A trusted employee at a large bank used their high-level access to the core banking system to
+          quietly divert funds over a long period, working with an outside criminal group to move the money
+          abroad. The key problem: the same person could both start <em>and</em> approve a transaction. When
+          one individual controls both steps, there's no second pair of eyes to catch fraud.
         </p>
         <p>
-          <strong>Root cause:</strong> Absence of User and Entity Behaviour Analytics (UEBA); an
-          employee role that combined initiation and approval privileges in the same account;
-          no periodic access recertification process.
+          <strong>What let it happen:</strong> no system watching for unusual staff behaviour; one role that
+          combined the power to both initiate and approve payments; and no regular review of who had access
+          to what.
         </p>
       </div>
     </div>
@@ -326,19 +328,19 @@
     <div class="case-card">
       <div class="case-icon hlt"><i class="fa fa-hospital"></i></div>
       <div class="case-body">
-        <p class="case-title">Patient Data Exfiltration — Healthcare Technology Provider</p>
-        <p class="case-sector">SECTOR: Health Services &nbsp;|&nbsp; THREAT TYPE: External Breach &nbsp;|&nbsp; IMPACT: PII/PHI Exposure</p>
+        <p class="case-title">Patient Data Stolen — Healthcare Technology Provider</p>
+        <p class="case-sector">SECTOR: Health Services &nbsp;|&nbsp; THREAT TYPE: External Breach &nbsp;|&nbsp; IMPACT: Patient records exposed</p>
         <p>
-          A regional health-technology startup operating electronic health record (EHR) services
-          suffered a breach resulting in the exposure of patient personally identifiable information
-          (PII) and protected health information (PHI). The data appeared on dark web forums within
-          72 hours of the breach, indicating the attacker had pre-arranged a buyer. The attack vector
-          was an unpatched API endpoint with insufficient authentication controls.
+          A health-technology startup that stored patient records was breached, exposing sensitive personal
+          and medical information. The data showed up for sale on the dark web within three days &mdash; so
+          fast that the attacker had almost certainly lined up a buyer in advance. The way in was a piece of
+          the system that connects apps together (an &ldquo;API&rdquo;) that had a known flaw and weak login
+          checks.
         </p>
         <p>
-          <strong>Root cause:</strong> Inadequate API security posture; no penetration testing prior to
-          production deployment; absence of dark web monitoring that would have provided earlier
-          notification; non-compliance with applicable data protection legislation.
+          <strong>What let it happen:</strong> weak security on that app connection; no security testing
+          before the system went live; no dark web monitoring that could have raised the alarm sooner; and
+          failure to meet data protection law.
         </p>
       </div>
     </div>
@@ -346,30 +348,36 @@
     <div class="case-card">
       <div class="case-icon gov"><i class="fa fa-landmark"></i></div>
       <div class="case-body">
-        <p class="case-title">Double-Extortion Ransomware — State Government Administration</p>
-        <p class="case-sector">SECTOR: Government Services &nbsp;|&nbsp; THREAT TYPE: RaaS (FunkSec) &nbsp;|&nbsp; IMPACT: Service Disruption</p>
+        <p class="case-title">Ransomware Shuts Down a Government Office</p>
+        <p class="case-sector">SECTOR: Government Services &nbsp;|&nbsp; THREAT TYPE: Ransomware (FunkSec) &nbsp;|&nbsp; IMPACT: Days of downtime</p>
         <p>
-          A state government's administrative systems were encrypted by the FunkSec ransomware
-          group in a double-extortion attack. The group exfiltrated citizen records and government
-          operational data before deploying the encryption payload, publishing excerpts on their
-          dark web leak site as proof of compromise. Government services were disrupted for several
-          days while recovery operations were conducted.
+          A regional government's systems were locked up by the FunkSec ransomware gang. Before locking
+          everything, the attackers first stole citizen records and internal data, then published samples
+          online to prove it and pressure officials into paying. Public services were down for several days
+          during recovery.
         </p>
         <p>
-          <strong>Root cause:</strong> Outdated endpoint protection on legacy government workstations;
-          flat network architecture enabling rapid lateral movement; absence of ransomware-specific
-          IR playbook; online-only backup strategy (encrypted alongside production systems).
+          <strong>What let it happen:</strong> out-of-date protection on old computers; a &ldquo;flat&rdquo;
+          network with no internal walls, so the attack spread freely once inside; no rehearsed plan for a
+          ransomware attack; and backups that were all online &mdash; so they got locked too.
         </p>
       </div>
     </div>
   </div>
 
   <!-- THREAT ACTORS -->
-  <h2><i class="fa fa-users-slash"></i> Threat Actor Profiles</h2>
+  <h2><i class="fa fa-users-slash"></i> Who's Doing the Attacking</h2>
   <p>
-    Eight threat actor groups were consistently observed in intelligence reporting targeting
-    critical national infrastructure during the analysis period:
+    Eight groups came up again and again in 2024. The table below is a quick reference for security
+    teams; if the codenames don't mean much to you, focus on the <strong>Type</strong> column, which tells
+    you the group's motive:
   </p>
+  <ul>
+    <li><strong>APT</strong> (Advanced Persistent Threat) &mdash; well-resourced, usually government-backed groups that break in quietly and stay for a long time, mostly to spy.</li>
+    <li><strong>Ransomware</strong> &mdash; criminals who lock up systems and demand payment.</li>
+    <li><strong>BEC</strong> (Business Email Compromise) &mdash; fraudsters who impersonate executives or suppliers by email to trick staff into sending money.</li>
+    <li><strong>Hacktivist</strong> &mdash; politically motivated groups who attack to make a statement or cause disruption.</li>
+  </ul>
 
   <div style="overflow-x:auto;">
     <table class="ta-table">
@@ -444,8 +452,8 @@
   </div>
 
   <!-- RANSOMWARE MARKET SHARE -->
-  <h2><i class="fa fa-chart-pie"></i> Ransomware Group Activity in 2024</h2>
-  <p>Four ransomware groups collectively dominated observed regional attack volume, each operating distinct affiliate models:</p>
+  <h2><i class="fa fa-chart-pie"></i> The Most Active Ransomware Gangs</h2>
+  <p>Four gangs were behind most of the ransomware attacks seen in the region. Their share of the attacks:</p>
 
   <div class="bar-chart">
     <div class="bar-row">
@@ -475,16 +483,17 @@
   </div>
 
   <div class="callout danger">
-    <p class="callout-title"><i class="fa fa-robot"></i> FunkSec: AI-Assisted Malware Development</p>
-    <p>FunkSec emerged in late 2024 as a novel RaaS group notable for reportedly leveraging generative AI to accelerate malware development. Analysis of their toolchain revealed code patterns inconsistent with manual authorship, suggesting AI-generated components. This trend — adversaries using LLMs to lower the technical barrier for malware creation — is expected to intensify.</p>
+    <p class="callout-title"><i class="fa fa-robot"></i> FunkSec: A Sign of Things to Come</p>
+    <p>FunkSec appeared in late 2024 and stood out for reportedly using artificial intelligence to help write its malware. Parts of their code looked machine-generated rather than hand-written. The worrying trend here is that AI lowers the skill needed to create attack software &mdash; meaning more people can now do damage that once required expert programmers. Expect more of this.</p>
   </div>
 
   <!-- CRITICAL CVEs -->
-  <h2><i class="fa fa-bug"></i> Critical Vulnerabilities Exploited in 2024</h2>
+  <h2><i class="fa fa-bug"></i> The Software Weaknesses Attackers Used</h2>
   <p>
-    Four vulnerability classes drove the majority of successful initial access events against
-    enterprise infrastructure. All were actively exploited as zero-days before vendor patches
-    were available:
+    Most successful break-ins in 2024 came through a handful of software weaknesses. Alarmingly, all were
+    being attacked <strong>before the software maker had released a fix</strong> &mdash; a situation known as
+    a &ldquo;zero-day,&rdquo; because defenders have zero days' warning. The table below lists them for
+    technical readers; the key point for everyone else is in the callout that follows.
   </p>
 
   <div style="overflow-x:auto;">
@@ -539,30 +548,30 @@
   </div>
 
   <div class="callout amber">
-    <p class="callout-title"><i class="fa fa-triangle-exclamation"></i> Pattern Recognition</p>
-    <p>Every major CVE in 2024 targeted <strong>network edge infrastructure</strong> — VPNs, remote access tools, and firewall management interfaces. These are exactly the systems that cannot be protected by endpoint detection alone. Vulnerability management for edge devices must be treated as a board-level priority, not a routine patching task.</p>
+    <p class="callout-title"><i class="fa fa-triangle-exclamation"></i> The Key Pattern</p>
+    <p>Nearly every major weakness in 2024 was in the equipment that sits at the &ldquo;front door&rdquo; of the network &mdash; the remote-access systems (VPNs), firewalls, and their control panels that connect a company to the internet. These are exactly the devices that many security tools <em>don't</em> watch closely. Keeping this front-door equipment patched and up to date deserves leadership attention, not just routine IT maintenance.</p>
   </div>
 
   <!-- RISK PROFILE METHODOLOGY -->
-  <h2><i class="fa fa-calculator"></i> Risk Profile &amp; Impact Scoring Methodology</h2>
+  <h2><i class="fa fa-calculator"></i> How to Rank What to Protect First</h2>
   <p>
-    A quantitative risk profile was developed to rank sector criticality and prioritise
-    defensive resource allocation. The model combines threat exposure, asset criticality,
-    and control effectiveness:
+    You can't fix everything at once, so you need a way to decide what matters most. These simple formulas
+    give a repeatable way to score risk and business impact &mdash; turning a gut feeling into a number you
+    can compare across systems and defend in a budget conversation.
   </p>
 
   <div class="formula-box">
-    <h4>RISK PROFILE FORMULA</h4>
+    <h4>RISK = HOW LIKELY &times; HOW EXPOSED, MINUS YOUR DEFENSES</h4>
     <div class="formula">
-      <span>Risk Profile</span> = ( <span>T</span> &times; <span>V</span> ) &divide; <span>C</span>
+      <span>Risk</span> = ( <span>T</span> &times; <span>V</span> ) &divide; <span>C</span>
     </div>
-    <p class="formula-note">T = Threat Level (actor capability &times; intent) &nbsp;|&nbsp; V = Vulnerability Score &nbsp;|&nbsp; C = Control Effectiveness</p>
+    <p class="formula-note">T = Threat (how capable and motivated the attackers are) &nbsp;|&nbsp; V = Vulnerability (how exposed you are) &nbsp;|&nbsp; C = Controls (how good your defenses are). Stronger defenses lower the risk.</p>
   </div>
 
   <div class="formula-box" style="margin-top:1rem;">
-    <h4>BUSINESS IMPACT SCORE (BIS) FORMULA</h4>
+    <h4>BUSINESS IMPACT: FIVE THINGS, WEIGHTED BY WHAT HURTS MOST</h4>
     <div class="formula">
-      <span>BIS</span> = ( <span>BD</span>&times;0.30 ) + ( <span>DS</span>&times;0.25 ) + ( <span>FL</span>&times;0.20 ) + ( <span>RC</span>&times;0.15 ) + ( <span>RD</span>&times;0.10 )
+      <span>Impact</span> = ( <span>BD</span>&times;0.30 ) + ( <span>DS</span>&times;0.25 ) + ( <span>FL</span>&times;0.20 ) + ( <span>RC</span>&times;0.15 ) + ( <span>RD</span>&times;0.10 )
     </div>
     <p class="formula-note">
       BD = Business Disruption &nbsp;|&nbsp; DS = Data Sensitivity &nbsp;|&nbsp; FL = Financial Loss<br/>
@@ -571,138 +580,139 @@
   </div>
 
   <p>
-    Business Disruption carries the highest weighting (30%) because downtime in critical sectors
-    has cascading economic effects beyond the immediate victim. Data Sensitivity (25%) reflects
-    the regulatory and reputational multiplier effect of personal data exposure.
+    In plain terms: score each system on these five things, but give more weight to the ones that hurt most.
+    Business disruption counts for the most (30%) because when an essential service goes down, the knock-on
+    effects reach far beyond the organization itself. Data sensitivity comes next (25%), because leaking
+    personal data brings both fines and lasting reputational damage.
   </p>
 
   <!-- REGULATORY LANDSCAPE -->
-  <h2><i class="fa fa-scale-balanced"></i> Regulatory Landscape</h2>
+  <h2><i class="fa fa-scale-balanced"></i> The Rules Are Tightening</h2>
   <p>
-    The regulatory environment governing critical infrastructure security is intensifying globally.
-    Organizations operating in or adjacent to CNII sectors face an expanding compliance burden:
+    Governments are steadily raising the legal bar for protecting essential services. If you operate in or
+    supply one of these sectors, expect more rules, not fewer:
   </p>
 
   <ul>
-    <li><strong>Data Protection Legislation:</strong> National data protection acts now mandate breach notification within 72 hours in many jurisdictions. Non-compliance carries fines of up to 2% of annual turnover.</li>
-    <li><strong>Cybercrime Amendments:</strong> Updated cybercrime legislation introduced offences specifically targeting attacks on CNII with substantially higher penalties and mandatory reporting obligations.</li>
-    <li><strong>Sectoral Minimum Standards:</strong> Financial services regulators have issued technology risk management frameworks mandating SOC implementation, EDR deployment, and incident response capability for licensed institutions.</li>
-    <li><strong>OT/ICS Security Guidelines:</strong> Energy and utility regulators are moving toward mandatory security assessments of operational technology (OT) environments following documented intrusions at power generation facilities.</li>
+    <li><strong>Data protection laws:</strong> Many countries now require you to report a breach within 72 hours, with fines up to 2% of annual revenue for failing to comply.</li>
+    <li><strong>Tougher cybercrime laws:</strong> New laws create specific, heavier penalties for attacking essential services, and make reporting incidents mandatory.</li>
+    <li><strong>Minimum standards by sector:</strong> Financial regulators now require licensed institutions to have a security monitoring team, modern threat-detection tools on their devices, and a tested plan for responding to incidents.</li>
+    <li><strong>Industrial system rules:</strong> Energy and utility regulators are starting to require security checks of the systems that run physical equipment (like power stations), after real intrusions were discovered.</li>
   </ul>
 
   <div class="divider"></div>
 
   <!-- 7 ADVISORIES -->
-  <h2><i class="fa fa-list-check"></i> Seven Advisories for Critical Infrastructure Defence</h2>
+  <h2><i class="fa fa-list-check"></i> Seven Ways to Defend Essential Services</h2>
   <p>
-    These advisories represent the distilled recommendations from this analysis, calibrated specifically
-    for organizations operating within or serving critical national infrastructure:
+    These are the main lessons from the analysis above, written as practical advice for any organization that
+    runs or supplies an essential service:
   </p>
 
   <div class="advisory-grid">
     <div class="advisory">
       <div class="adv-num">01</div>
       <div class="adv-body">
-        <h4>Establish Proactive Threat Hunting &amp; Intelligence Sharing</h4>
-        <p>Do not wait for alerts — actively hunt for threat actor TTPs in your environment. Join sectoral ISACs, subscribe to government CERT advisories, and participate in intelligence-sharing consortiums. Threat intelligence that reaches your team before the attack changes the outcome fundamentally.</p>
+        <h4>Go Looking for Threats &mdash; and Share What You Learn</h4>
+        <p>Don't just wait for an alarm to go off. Actively search your own systems for signs of the attack methods described here. Sign up to government cyber-authority alerts and join industry groups that share warnings. Knowing about an attack before it reaches you changes everything.</p>
       </div>
     </div>
 
     <div class="advisory">
       <div class="adv-num">02</div>
       <div class="adv-body">
-        <h4>Harden Your Security Posture with Priority Focus on Edge Devices</h4>
-        <p>Patch VPNs, firewalls, and remote access tools within 24-48 hours of critical CVE disclosure. Consider isolating management interfaces from internet exposure. Deploy cloud security posture management (CSPM) for cloud infrastructure. Enforce MFA universally. The 2024 CVE pattern clearly shows edge devices are the primary attack surface.</p>
+        <h4>Patch Your Internet-Facing Equipment First</h4>
+        <p>The remote-access systems, firewalls, and their control panels that face the internet are attackers' favourite way in. Update them within a day or two of a serious flaw being announced, keep their control panels off the public internet, and require a second login step (MFA) everywhere. This was the single clearest pattern of 2024.</p>
       </div>
     </div>
 
     <div class="advisory">
       <div class="adv-num">03</div>
       <div class="adv-body">
-        <h4>Address Insider Threats with Access Governance Controls</h4>
-        <p>Implement user and entity behaviour analytics (UEBA), enforce separation of duties in high-value processes (especially financial settlement and privileged IT operations), conduct quarterly access recertification, and deploy PAM for privileged accounts. The $29M insider fraud case was entirely preventable with standard governance controls.</p>
+        <h4>Guard Against Insiders</h4>
+        <p>Make sure no single person can both start and approve an important action (like a large payment). Review who has access to what every few months, watch for unusual behaviour on sensitive systems, and keep tight control of the most powerful accounts. The $29M insider fraud above was entirely preventable with these basic steps.</p>
       </div>
     </div>
 
     <div class="advisory">
       <div class="adv-num">04</div>
       <div class="adv-body">
-        <h4>Build Ransomware Resilience as a Core Capability</h4>
-        <p>Implement offline, immutable backups (air-gapped or WORM storage). Deploy EDR on all endpoints. Segment your network so that a single compromised workstation cannot reach your backup infrastructure. Conduct ransomware tabletop exercises at least annually. Brief your board on the decision framework for ransom payment vs. recovery — before an incident, not during one.</p>
+        <h4>Be Ready to Survive Ransomware</h4>
+        <p>Keep at least one set of backups completely offline, so it can't be locked. Put modern protection on every device. Divide your network into sections so one infected computer can't reach everything &mdash; especially your backups. Practise your response once a year, and agree in advance how you'd decide whether to pay or recover &mdash; before it happens, not during.</p>
       </div>
     </div>
 
     <div class="advisory">
       <div class="adv-num">05</div>
       <div class="adv-body">
-        <h4>Strengthen Operational Technology (OT) Security</h4>
-        <p>OT environments (SCADA, ICS, building management systems) are increasingly targeted and rarely hardened to IT security standards. Conduct asset inventory, segment OT from IT networks, and implement monitoring capable of detecting anomalous OT protocol behaviour. Nation-state actors specifically target OT for its physical disruption potential.</p>
+        <h4>Protect the Systems That Run Physical Equipment</h4>
+        <p>The computers that control machinery &mdash; in power plants, factories, or building systems &mdash; are increasingly targeted and are often far less protected than office IT. Know exactly what you have, keep these systems separate from the office network, and monitor them for anything unusual. Attackers target them precisely because they can cause real-world, physical disruption.</p>
       </div>
     </div>
 
     <div class="advisory">
       <div class="adv-num">06</div>
       <div class="adv-body">
-        <h4>Accelerate Regulatory Compliance as a Security Investment</h4>
-        <p>Compliance deadlines are a forcing function for security maturity. Use regulatory requirements to build the business case for security investments that would otherwise struggle for budget. Align your security roadmap to applicable standards (ISO 27001, NIST CSF, sectoral frameworks) and treat audits as maturity assessments, not bureaucratic obligations.</p>
+        <h4>Use Compliance to Fund Good Security</h4>
+        <p>Legal deadlines are useful leverage. Use required standards to win budget for security work that might otherwise be turned down. Line your security plans up with recognized standards (such as ISO 27001 or the NIST framework), and treat audits as a health check &mdash; not just a box-ticking chore.</p>
       </div>
     </div>
 
     <div class="advisory">
       <div class="adv-num">07</div>
       <div class="adv-body">
-        <h4>Combat Social Engineering with Culture, Not Just Technology</h4>
-        <p>Phishing remains the primary initial access vector for both APTs and ransomware groups. Technology controls (email filtering, anti-phishing, MFA) reduce but do not eliminate the risk. Invest in security awareness training, simulate phishing campaigns to measure and improve employee susceptibility rates, and reward employees for reporting suspicious activity rather than penalising those who fall for tests.</p>
+        <h4>Beat Scams with Culture, Not Just Tools</h4>
+        <p>Tricking staff with fake emails (phishing) is still the most common way in for both spies and ransomware gangs. Email filters and a second login step help, but they can't catch everything. Train your people, run practice phishing tests to see who's at risk, and &mdash; crucially &mdash; thank staff for reporting suspicious messages rather than punishing those who slip up.</p>
       </div>
     </div>
   </div>
 
   <!-- RECOMMENDATIONS -->
   <div class="divider"></div>
-  <h2><i class="fa fa-shield-halved"></i> Immediate Action Recommendations</h2>
-  <p>For security teams and executives who need to act on this intelligence now:</p>
+  <h2><i class="fa fa-shield-halved"></i> Six Things to Do This Quarter</h2>
+  <p>If you want to act on all this now, here are six concrete starting points:</p>
 
   <div class="rec-grid">
     <div class="rec-card">
       <i class="fa fa-network-wired"></i>
-      <h4>Audit Edge Device Exposure</h4>
-      <p>Run an immediate inventory of internet-facing VPNs, firewalls, and remote access tools. Check each against the 2024 CVE list above and patch or mitigate within 48 hours.</p>
+      <h4>Check Your Internet-Facing Equipment</h4>
+      <p>Make a list of every remote-access system, firewall, and similar device that faces the internet. Check each against the known 2024 flaws and update them within 48 hours.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-users-gear"></i>
-      <h4>Review Privileged Access</h4>
-      <p>Pull a report of all accounts with Domain Admin, Database Admin, or financial transaction approval rights. Remove unnecessary elevation. Enroll all privileged accounts in MFA and PAM vaulting.</p>
+      <h4>Review Who Has Powerful Access</h4>
+      <p>List everyone who can administer systems, manage databases, or approve financial transactions. Remove access that isn't needed, and require a second login step for all the accounts that remain.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-hard-drive"></i>
-      <h4>Test Your Backup Restoration</h4>
-      <p>Schedule a backup restoration test this quarter. Confirm that at least one backup copy is offline or air-gapped and validate that restoration time meets your Recovery Time Objective (RTO).</p>
+      <h4>Test That Your Backups Actually Restore</h4>
+      <p>Run a restore test this quarter. Confirm at least one backup is kept offline, and check that you can bring systems back within the time your business can tolerate being down.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-magnifying-glass"></i>
-      <h4>Subscribe to CERT Intelligence</h4>
-      <p>Ensure your security team is subscribed to your national CERT advisory mailing list and at least one commercial threat intelligence feed relevant to your sector. Set up alerts for threat actors profiled above.</p>
+      <h4>Sign Up for Threat Warnings</h4>
+      <p>Make sure your team receives alerts from your national cyber authority and at least one threat-information service for your industry, so you hear about active attacks early.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-clipboard-check"></i>
-      <h4>Conduct a Ransomware Tabletop</h4>
-      <p>Run a one-day tabletop exercise simulating a ransomware scenario. Test your IR playbook, communication plan, and decision-making framework. Identify gaps before an attacker does.</p>
+      <h4>Run a Ransomware Practice Drill</h4>
+      <p>Spend a day walking your team through a realistic ransomware scenario. Test your plan, your communications, and your decision-making. Find the gaps before an attacker does.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-eye"></i>
-      <h4>Enable Dark Web Monitoring</h4>
-      <p>Given the documented breach-to-dark-web timeline (as little as 72 hours), deploy dark web monitoring for corporate email domains, IP ranges, and sensitive asset names. See the companion article on dark web intelligence for a monitoring lifecycle framework.</p>
+      <h4>Watch the Dark Web</h4>
+      <p>Since stolen data can appear for sale within three days of a breach, set up dark web monitoring for your email addresses and sensitive names. Our companion article explains how.</p>
     </div>
   </div>
 
   <div class="takeaways">
     <h3><i class="fa fa-star"></i> Key Takeaways</h3>
     <ul>
-      <li><strong>Geopolitics is now your threat model</strong> — conflicts thousands of miles away generate real cyber threats to domestic infrastructure. Threat modelling must incorporate geopolitical context.</li>
-      <li><strong>Edge devices are the new perimeter battleground</strong> — every major 2024 zero-day targeted VPNs, firewalls, and remote access infrastructure. Treat these as your highest-priority patch targets.</li>
-      <li><strong>Insider threats are systemic, not isolated</strong> — access governance failures are the enabler. UEBA, PAM, and separation of duties are essential controls, not optional enhancements.</li>
-      <li><strong>Ransomware is a business</strong> — RaaS groups operate with commercial precision. Match their operational efficiency with equally systematic defences: offline backups, EDR, network segmentation, and tested playbooks.</li>
-      <li><strong>AI is coming to both sides</strong> — FunkSec's AI-assisted malware development signals the beginning of a new threat evolution cycle. Defenders must adopt AI-powered analysis tools to maintain detection parity.</li>
+      <li><strong>Global politics is now part of your risk.</strong> Conflicts on the other side of the world create real cyber threats to local services. Your planning has to take that into account.</li>
+      <li><strong>Your internet-facing equipment is the front line.</strong> Every major 2024 weakness was in remote-access systems and firewalls. These should be your first priority to patch.</li>
+      <li><strong>Insider threats come down to weak oversight.</strong> Splitting duties, reviewing access regularly, and watching for unusual behaviour aren't optional extras &mdash; they're the controls that stop insider fraud.</li>
+      <li><strong>Ransomware gangs run like businesses.</strong> Beat their efficiency with your own discipline: offline backups, modern device protection, a divided network, and a rehearsed plan.</li>
+      <li><strong>AI is now used by both sides.</strong> Attackers are starting to use AI to build malware faster. Defenders will increasingly need AI-powered tools just to keep up.</li>
     </ul>
   </div>
 

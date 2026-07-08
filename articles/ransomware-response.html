@@ -378,9 +378,9 @@
   <p class="eyebrow"><i class="fa fa-radiation"></i>&nbsp; Field Account &mdash; Incident Response</p>
   <h1>Ransomware in the Enterprise:<br/>A Consultant's Field Account</h1>
   <p class="subtitle">
-    Inside a real-world double-extortion ransomware attack on a Tier-1 insurance group &mdash;
-    the containment decisions made under fire, the attribution methodology, and the hard lessons
-    that every organization should internalize before the breach alarm sounds.
+    A real ransomware attack on a large insurance group, explained in plain language &mdash;
+    how the attack unfolded, how we stopped it, how the organization recovered without paying,
+    and what any business can do to be better prepared.
   </p>
   <div class="article-meta">
     <span><i class="fa fa-calendar"></i> February 2023</span>
@@ -398,19 +398,25 @@
     <p>All client-identifying information has been anonymized. The technical methodology, attack indicators, and response playbook are drawn from direct engagement experience and are shared here purely for educational purposes.</p>
   </div>
 
+  <div class="callout info">
+    <p class="callout-title"><i class="fa fa-circle-info"></i> In Plain Terms</p>
+    <p><strong>Ransomware</strong> is malicious software that locks up an organization's files and demands payment to unlock them. In a <strong>double-extortion</strong> attack, the criminals also steal a copy of the data first, then threaten to publish it &mdash; so paying to unlock the files still doesn't stop the leak. In this case, a large insurance company had every computer locked. Because it kept a set of backups completely disconnected from its network, it was able to rebuild everything <em>without paying the criminals a cent</em>.</p>
+  </div>
+
   <!-- EXECUTIVE SUMMARY -->
-  <h2><i class="fa fa-crosshairs"></i> Executive Summary</h2>
+  <h2><i class="fa fa-crosshairs"></i> What Happened</h2>
   <p>
-    A <strong>Tier-1 insurance group</strong> &mdash; one of the largest in the region by asset base &mdash; was struck by the
-    <strong>BlackCat/ALPHV</strong> ransomware syndicate in a double-extortion attack. The group's entire enterprise
-    network, including connected online backup repositories, was encrypted. I was engaged as the
-    incident response lead to contain the threat, attribute the attack, coordinate forensic preservation,
-    and supervise the recovery process in compliance with the applicable sectoral regulatory framework.
+    A large regional insurance group was hit by a well-known criminal group called
+    <strong>BlackCat</strong> (also known as ALPHV). The attackers locked every computer on the
+    company's network and, at the same time, stole sensitive customer data to use as extra leverage.
+    Even the company's online backups &mdash; the copies it would normally rely on to recover &mdash;
+    were locked, because those backups were connected to the same network.
   </p>
   <p>
-    This article distils that engagement into a replicable methodology and a set of hard-won
-    recommendations that any security practitioner or executive can apply to strengthen their
-    organization's ransomware posture <em>before</em> an incident occurs.
+    I was brought in to lead the response: stop the attack from spreading, work out who was behind it,
+    preserve the evidence, and guide the recovery in line with the rules that apply to financial
+    companies. This article turns that experience into a clear, step-by-step approach and a set of
+    practical recommendations any organization can use to prepare <em>before</em> something like this happens.
   </p>
 
   <div class="stat-row">
@@ -433,47 +439,57 @@
   </div>
 
   <!-- ATTACK TIMELINE -->
-  <h2><i class="fa fa-timeline"></i> Attack Timeline</h2>
+  <h2><i class="fa fa-timeline"></i> How the Attack Unfolded</h2>
   <p>
-    Reconstructing the adversary's kill chain from forensic artifacts revealed a methodical, multi-phase
-    intrusion that preceded the detonation of the ransomware payload by several days.
+    A common myth is that ransomware locks everything the instant it arrives. In reality, attackers
+    usually spend days quietly moving around inside a network first. By piecing together the evidence
+    afterwards, we could see the attackers had been inside for about a week before they triggered the
+    lock-up. Here is that week, step by step.
   </p>
 
   <div class="timeline">
     <div class="tl-event red">
-      <p class="tl-time">T-7 days (estimated)</p>
-      <p class="tl-title">Initial Access</p>
-      <p class="tl-desc">Adversary establishes foothold, likely via phishing or exploitation of an internet-facing service with valid credentials. Exact vector confirmed through forensic artefacts preserved from hypervisor snapshots.</p>
+      <p class="tl-time">Day 1 — Getting in</p>
+      <p class="tl-title">The attackers slip inside</p>
+      <p class="tl-desc">The criminals gained their first foothold, most likely by tricking an employee with a fake email (phishing) or by logging in through an internet-facing system using a stolen password.</p>
     </div>
     <div class="tl-event red">
-      <p class="tl-time">T-5 to T-3 days</p>
-      <p class="tl-title">Discovery &amp; Lateral Movement</p>
-      <p class="tl-desc">BlackCat uses built-in Living-off-the-Land (LotL) tools &mdash; net commands, WMI, BloodHound-style AD enumeration &mdash; to map the network and identify high-value targets and backup infrastructure.</p>
+      <p class="tl-time">Days 3&ndash;5 — Looking around</p>
+      <p class="tl-title">Mapping the network</p>
+      <p class="tl-desc">Rather than bringing their own noisy tools, the attackers used the everyday administration tools already built into the company's own systems. This let them quietly map the network and find the most valuable systems &mdash; including where the backups lived &mdash; without setting off alarms.</p>
     </div>
     <div class="tl-event amber">
-      <p class="tl-time">T-2 to T-1 days</p>
-      <p class="tl-title">Credential Harvesting &amp; Backup Access</p>
-      <p class="tl-desc">Domain Administrator credentials harvested. Online backup servers accessed and shadow copies deleted. Exfiltration of sensitive policyholder data begins to attacker-controlled infrastructure.</p>
+      <p class="tl-time">Days 6&ndash;7 — Preparing the blow</p>
+      <p class="tl-title">Stealing the keys and the data</p>
+      <p class="tl-desc">The attackers captured the master administrator passwords, which act like a master key to the whole network. They used that access to delete the online backups and quietly copy out sensitive customer data to their own servers.</p>
     </div>
     <div class="tl-event red">
-      <p class="tl-time">T-0 — Detonation</p>
-      <p class="tl-title">Mass Encryption Initiated</p>
-      <p class="tl-desc">BlackCat/ALPHV payload deployed across all reachable hosts via GPO abuse and remote service execution. Ransom notes dropped in every directory. Operations come to a complete halt.</p>
+      <p class="tl-time">Day 8 — The lock-up</p>
+      <p class="tl-title">Every system locked at once</p>
+      <p class="tl-desc">Using the master access they had stolen, the attackers pushed the ransomware to every reachable computer simultaneously. A ransom note appeared in every folder, and the business ground to a complete halt.</p>
     </div>
     <div class="tl-event">
-      <p class="tl-time">T+0 hrs</p>
-      <p class="tl-title">IR Engagement Initiated</p>
-      <p class="tl-desc">Consultant engaged. Immediate triage begins to assess scope, isolate affected segments, and engage the national CERT for public agency coordination.</p>
+      <p class="tl-time">Hour 0 — We step in</p>
+      <p class="tl-title">Response begins</p>
+      <p class="tl-desc">Our team was engaged and immediately began working out how far the attack had spread, cutting off the affected areas, and notifying the national cyber authority (CERT) for support.</p>
     </div>
     <div class="tl-event green">
-      <p class="tl-time">T+4 hrs</p>
-      <p class="tl-title">Containment Achieved</p>
-      <p class="tl-desc">All affected network segments isolated. IOCs extracted and distributed to all perimeter controls. Hypervisor snapshots taken for forensic preservation. Recovery planning initiated from offline backups.</p>
+      <p class="tl-time">Hour 4 — Under control</p>
+      <p class="tl-title">The attack is contained</p>
+      <p class="tl-desc">Within four hours, every affected part of the network was cut off so the attack could spread no further. We recorded the attackers' fingerprints (see below), safely captured evidence, and began planning recovery from the offline backups.</p>
     </div>
   </div>
 
   <!-- THREAT ACTOR PROFILE -->
-  <h2><i class="fa fa-spider"></i> Threat Actor Profile</h2>
+  <h2><i class="fa fa-spider"></i> Who Was Behind It</h2>
+  <p>
+    Working out who is responsible matters, because it tells you how they operate and what they are
+    likely to do next. The evidence pointed to BlackCat, a professional criminal group that rents out
+    its ransomware to other criminals for a cut of the profits &mdash; a business model the industry
+    calls <strong>Ransomware-as-a-Service</strong>. The reference card below is for readers who want the
+    technical detail; if the terms are unfamiliar, the key takeaway is simply that this was an organized,
+    for-profit crime operation, not a lone hacker.
+  </p>
 
   <div class="threat-box">
     <div class="threat-header">
@@ -498,8 +514,8 @@
         <span class="ti-val">Up to 90% for affiliates (high-incentive RaaS model)</span>
       </div>
       <div class="threat-item">
-        <span class="ti-label">Notable TTPs</span>
-        <span class="ti-val">LotL binaries, BYOVD, ESXi encryption, AD exploitation</span>
+        <span class="ti-label">Signature Tactics</span>
+        <span class="ti-val">Uses the victim's own admin tools to stay hidden; targets virtual servers and Active Directory (the network's master directory)</span>
       </div>
       <div class="threat-item">
         <span class="ti-label">Attribution Source</span>
@@ -517,10 +533,12 @@
   </div>
 
   <!-- RESPONSE METHODOLOGY -->
-  <h2><i class="fa fa-shield-halved"></i> Six-Phase Response Methodology</h2>
+  <h2><i class="fa fa-shield-halved"></i> How We Responded, Step by Step</h2>
   <p>
-    The response was executed across six distinct phases, each building on the previous.
-    Speed of containment and forensic fidelity were treated as equally important objectives.
+    We worked through six stages, in order. Two goals mattered equally: stopping the attack quickly,
+    and carefully preserving the evidence so we could understand what happened and meet legal
+    requirements. The grey boxes show the specific technical actions for readers who work in security;
+    everyone else can safely skip them &mdash; the plain-language explanation is in the paragraph above each.
   </p>
 
   <div class="steps">
@@ -638,15 +656,15 @@
   </div>
 
   <!-- KEY LESSONS -->
-  <h2><i class="fa fa-lightbulb"></i> Key Lessons from the Field</h2>
+  <h2><i class="fa fa-lightbulb"></i> The Four Biggest Lessons</h2>
 
-  <h3>1. Online Backups Are Not Backups</h3>
+  <h3>1. A backup the attacker can reach is a backup you can lose</h3>
   <p>
-    The most dangerous misconception in enterprise resilience is equating online backups with
-    disaster recovery capability. BlackCat specifically targeted and encrypted the backup infrastructure
-    before detonating the main payload. Any backup solution that is reachable from the corporate
-    network — including cloud sync, NAS shares, and backup agents on domain-joined machines —
-    is within the ransomware's blast radius.
+    Many organizations assume that having backups means they are safe. But if a backup is connected to
+    the network, an attacker who takes over the network can lock or delete it too &mdash; which is exactly
+    what happened here. The attackers went after the backups first. The only copies that survived were the
+    ones kept completely offline and disconnected. If you can reach your backup from your everyday
+    network, so can an attacker.
   </p>
 
   <div class="callout danger">
@@ -654,29 +672,30 @@
     <p>Online backups were encrypted alongside the production environment, eliminating that recovery path entirely. Offline, air-gapped backups were the <em>only</em> mechanism that enabled recovery without paying the ransom.</p>
   </div>
 
-  <h3>2. Forensic Preservation Must Precede Recovery</h3>
+  <h3>2. Save the evidence before you start cleaning up</h3>
   <p>
-    There is an inherent tension between the IR team's desire to restore services quickly and the need
-    to preserve forensic evidence. The organization's instinct was to immediately begin wiping and
-    rebuilding infected machines. Intercepting that instinct and forcing the creation of hypervisor
-    snapshots first proved essential — it was from those snapshots that the attack timeline was
-    reconstructed and the regulatory package was built.
+    When systems are down, everyone wants to wipe the infected machines and get back to work as fast as
+    possible. But wiping a machine also destroys the evidence of how the attack happened. We insisted on
+    taking exact copies (snapshots) of the affected systems <em>before</em> touching anything. Those copies
+    were what let us reconstruct the timeline, identify the attackers, and produce the report regulators
+    required. Rushing to rebuild would have thrown all of that away.
   </p>
 
-  <h3>3. Active Directory Is the Attacker's Prize</h3>
+  <h3>3. The master administrator accounts are the real target</h3>
   <p>
-    BlackCat's pivot to AD-wide encryption was enabled by harvested Domain Administrator credentials.
-    The speed with which the actor moved from initial access to full AD compromise indicated either
-    an existing weak credential policy, a lack of Privileged Access Management (PAM) controls,
-    or both. Without AD, nothing else matters &mdash; it is the foundational target.
+    The attackers were only able to lock everything at once because they had stolen the master
+    administrator passwords &mdash; the accounts that control the entire network. The fact that they
+    reached that level of access so quickly pointed to weak password practices and a lack of extra
+    protection around those powerful accounts. Protecting these &ldquo;keys to the kingdom&rdquo; is one
+    of the most valuable things any organization can do.
   </p>
 
-  <h3>4. The National CERT Is a Force Multiplier</h3>
+  <h3>4. Call the national cyber authority early &mdash; don't hide the incident</h3>
   <p>
-    Early notification of the national CERT proved valuable. The CERT provided supplementary
-    threat intelligence, confirmed the attribution, and facilitated coordination with the sectoral
-    regulatory body. Organizations often delay this notification out of reputational concern —
-    this is a mistake. Early coordination reduces the overall response time significantly.
+    Notifying the national cyber authority (CERT) early paid off: they provided extra intelligence,
+    helped confirm who was behind the attack, and coordinated with the regulator. Many organizations
+    delay this call because they worry about their reputation. That is a mistake &mdash; getting help
+    early shortens the whole recovery and often improves how the incident is judged later.
   </p>
 
   <div class="divider"></div>
@@ -701,18 +720,18 @@
     </div>
     <div class="rec-card">
       <i class="fa fa-key"></i>
-      <h4>Enforce MFA on All Remote Access</h4>
-      <p>VPN, RDP, and privileged admin portals must require MFA. Hardware FIDO2 tokens for privileged accounts eliminate credential-only attacks on administrative paths.</p>
+      <h4>Require a Second Login Step (MFA)</h4>
+      <p>Multi-factor authentication (MFA) means a password alone isn't enough &mdash; a second check, like a code or a physical security key, is also needed. Require it for all remote access. For the powerful admin accounts, use physical security keys, which stop attackers even if they steal the password.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-user-lock"></i>
-      <h4>Deploy Privileged Access Management (PAM)</h4>
-      <p>Use just-in-time (JIT) privilege elevation rather than standing Domain Admin accounts. PAM vaults, session recording, and privileged account discovery are essential controls.</p>
+      <h4>Lock Down Your Most Powerful Accounts</h4>
+      <p>Don't leave master-administrator access switched on all the time. Grant it only when needed and for a limited time, keep the passwords in a secured vault, and record what those accounts do. Tools for this are called Privileged Access Management (PAM).</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-laptop-medical"></i>
-      <h4>EDR on Every Endpoint — No Exceptions</h4>
-      <p>Behavioural EDR (CrowdStrike, Cortex XDR, SentinelOne) catches ransomware TTPs that signature-based AV misses. Coverage must be 100% — unmanaged endpoints are the attack surface.</p>
+      <h4>Put Modern Protection on Every Device</h4>
+      <p>Traditional antivirus looks for known bad files and misses modern ransomware. Newer tools (called EDR) watch for suspicious <em>behaviour</em> instead. Every device must be covered &mdash; a single unprotected machine is a way in.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-clipboard-list"></i>
@@ -721,13 +740,13 @@
     </div>
     <div class="rec-card">
       <i class="fa fa-bell"></i>
-      <h4>Subscribe to Threat Intelligence Feeds</h4>
-      <p>IOC feeds (MISP, commercial TI platforms) give your SOC early warning of campaigns targeting your sector. BlackCat TTPs were well-documented — intelligence ahead of the attack changes the outcome.</p>
+      <h4>Get Early Warnings About Active Threats</h4>
+      <p>Threat intelligence feeds share up-to-date information about criminal groups and their current attacks. Knowing which groups are targeting your industry &mdash; and how &mdash; lets you block them before they reach you.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-eye"></i>
-      <h4>Monitor for Backup Deletion Events</h4>
-      <p>Alert on <code>vssadmin delete shadows</code>, <code>wbadmin delete catalog</code>, and equivalent storage API calls. Backup deletion is a pre-encryption signal that provides a response window.</p>
+      <h4>Watch for Backups Being Deleted</h4>
+      <p>Attackers usually delete backups just before locking everything. Set up an alert for any unexpected backup deletion &mdash; it's an early warning sign that gives you a chance to act before the damage is done.</p>
     </div>
   </div>
 
@@ -735,11 +754,11 @@
   <div class="takeaways">
     <h3><i class="fa fa-star"></i> Key Takeaways</h3>
     <ul>
-      <li><strong>Containment speed is the only variable you control</strong> after the payload detonates — network isolation within the first hour limits the blast radius dramatically.</li>
-      <li><strong>Forensic snapshots before recovery</strong> is a non-negotiable principle: without them, the regulatory and legal process cannot be completed, and attribution is lost.</li>
-      <li><strong>Offline backups are the ultimate insurance policy</strong> — they are the single control that enabled a full recovery without ransom payment in this case.</li>
-      <li><strong>AD credential hygiene and PAM</strong> are the highest-return pre-incident investments for ransomware defence; every major RaaS operator targets AD first.</li>
-      <li><strong>CERT and regulator relationships</strong> built before an incident dramatically reduce response time — make those connections now, not during a crisis.</li>
+      <li><strong>Speed of containment is what you control.</strong> Once the lock-up starts, cutting off the affected areas within the first hour is the single biggest thing that limits the damage.</li>
+      <li><strong>Preserve evidence before cleaning up.</strong> Without it, you can't understand the attack, identify who did it, or satisfy regulators &mdash; and rebuilding destroys it forever.</li>
+      <li><strong>Offline backups are your safety net.</strong> A set of backups kept fully disconnected from the network was the one thing that made recovery possible without paying.</li>
+      <li><strong>Protect your most powerful accounts.</strong> Strong passwords, a second login step, and tight control over master-admin accounts are the best-value investments you can make before an attack.</li>
+      <li><strong>Build relationships before a crisis.</strong> Knowing your national cyber authority and regulator ahead of time means faster help when it counts. Make those connections now, not on the worst day.</li>
     </ul>
   </div>
 

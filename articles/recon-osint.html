@@ -97,8 +97,8 @@
 
 <header class="article-hero">
   <p class="eyebrow"><i class="fa fa-crosshairs"></i> &nbsp;Offensive Security &bull; OSINT &bull; Penetration Testing</p>
-  <h1>Offensive Security Tradecraft: Inside a Professional Reconnaissance Operation</h1>
-  <p class="subtitle">A practitioner's walkthrough of how ethical hackers systematically map an organization's attack surface — from passive OSINT through infrastructure enumeration to internal situational awareness — before a single exploit is fired.</p>
+  <h1>How Ethical Hackers Do Their Homework Before an Attack</h1>
+  <p class="subtitle">A behind-the-scenes look at &ldquo;reconnaissance&rdquo; &mdash; how authorized security testers quietly map out everything an organization exposes to the internet before testing its defenses &mdash; and, just as importantly, how you can shrink what they (and real attackers) find.</p>
   <div class="article-meta">
     <span><i class="fa fa-user"></i> Joe Smith-Essang</span>
     <span><i class="fa fa-crosshairs"></i> Discipline: Penetration Testing / Red Team</span>
@@ -109,43 +109,48 @@
 
 <main class="article-body">
 
-  <h2><i class="fa fa-circle-info"></i> Why Reconnaissance Defines the Engagement</h2>
-  <p>In professional penetration testing, reconnaissance is not a preliminary step — it is the foundation on which the entire engagement rests. The quality of intelligence gathered during reconnaissance directly determines the precision and impact of subsequent attack phases. A rushed reconnaissance phase produces a shallow assessment; thorough reconnaissance uncovers the asymmetric entry points that no automated scanner will ever find.</p>
-  <p>This article is drawn from a detailed reconnaissance methodology framework developed and refined across enterprise-grade black-box penetration testing engagements. <strong>Nothing here is instruction for unauthorized use.</strong> All techniques described are used exclusively within the scope of authorized security assessments, governed by a Letter of Engagement (LoE) that defines legal boundaries before any testing begins.</p>
+  <div class="callout info" style="border-left-color:var(--green);background:rgba(0,255,179,.04);">
+    <div class="callout-title"><i class="fa fa-circle-info"></i> In Plain Terms</div>
+    <strong>Penetration testing</strong> is hiring authorized experts (&ldquo;ethical hackers&rdquo;) to attack your systems the way a criminal would, so you can fix the weaknesses first. <strong>Reconnaissance</strong> is the homework they do before that: quietly gathering information about the target. A lot of it is <strong>OSINT</strong> &mdash; &ldquo;open-source intelligence,&rdquo; which just means information that's already public, like your website, staff LinkedIn profiles, and job ads. This article shows what that homework reveals &mdash; and how to give away less of it.
+  </div>
+
+  <h2><i class="fa fa-circle-info"></i> Why the Homework Phase Matters Most</h2>
+  <p>In professional security testing, reconnaissance isn't a warm-up &mdash; it's the foundation everything else is built on. The better the information gathered up front, the sharper and more effective the test. Rushed homework produces a shallow test; thorough homework uncovers the unexpected ways in that no automated tool would ever spot.</p>
+  <p>This article is based on a reconnaissance approach refined across many authorized tests of large organizations. <strong>None of this is a how-to for unauthorized use.</strong> Every technique here is used only within an authorized test, governed by a signed agreement (a &ldquo;Letter of Engagement&rdquo;) that sets the legal boundaries before anything begins.</p>
 
   <div class="callout success">
     <div class="callout-title"><i class="fa fa-file-contract"></i> Authorization First</div>
     Every technique described in this article requires explicit written authorization from the target organization. A Letter of Engagement defining scope, testing window, emergency contacts, and authorized activities is a non-negotiable prerequisite. Testing without authorization is illegal and unethical — full stop.
   </div>
 
-  <h2><i class="fa fa-sitemap"></i> Reconnaissance in the Penetration Testing Lifecycle</h2>
-  <p>Penetration testing follows a structured lifecycle. Reconnaissance occurs before any active exploitation and feeds intelligence forward into every subsequent phase.</p>
+  <h2><i class="fa fa-sitemap"></i> Where Recon Fits in a Security Test</h2>
+  <p>A security test runs in stages. Reconnaissance comes early, before any actual break-in attempt, and everything it uncovers feeds the stages that follow.</p>
 
   <div class="phase-strip">
-    <div class="phase active">Scoping &amp; LoE</div>
+    <div class="phase active">Agree scope</div>
     <div class="phase active">Reconnaissance</div>
-    <div class="phase active">Enumeration</div>
-    <div class="phase">Exploitation</div>
-    <div class="phase">Post-Exploitation</div>
-    <div class="phase">Reporting</div>
+    <div class="phase active">Map the target</div>
+    <div class="phase">Attempt entry</div>
+    <div class="phase">Explore access</div>
+    <div class="phase">Report</div>
   </div>
 
-  <h3>Black-Box vs White-Box Engagements</h3>
-  <p>For the reconnaissance methodology described here, the engagement model is <strong>black-box</strong>: the tester simulates an external attacker with no prior knowledge of the target's internal systems, architecture, or credentials. The client defines scope as "the entirety of their external touchpoints" — which means the tester must first <em>discover</em> those touchpoints before assessing them. This is precisely where reconnaissance methodology matters most.</p>
+  <h3>Testing Blind, on Purpose</h3>
+  <p>The approach here assumes a &ldquo;blind&rdquo; test: the tester starts like a real outside attacker, knowing nothing about the target's inner workings. The client simply says &ldquo;everything you can reach from the internet is fair game&rdquo; &mdash; which means the tester first has to <em>discover</em> what that includes. That's exactly why good reconnaissance matters so much.</p>
 
-  <h3>Note-Taking: The Most Underrated Practice in Penetration Testing</h3>
-  <p>Before any tool is run, a disciplined note-taking system must be in place. Reconnaissance generates enormous volumes of data — domains, IPs, employee names, technology fingerprints, exposed credentials, configuration details — and the ability to retrieve, cross-reference, and act on that data later determines the quality of the final report. There is no right tool; there is only consistent, structured practice. Organized intelligence is exploitable; disorganized intelligence is noise.</p>
+  <h3>The Unsung Hero: Good Note-Taking</h3>
+  <p>Before running any tool, you need a solid way to organize what you find. Reconnaissance produces a mountain of information &mdash; web addresses, staff names, technologies in use, exposed passwords, and more. Being able to find and connect that information later is what makes the final report valuable. There's no single right tool; what matters is being consistent. Well-organized findings are useful; a messy pile is just noise.</p>
 
-  <h2><i class="fa fa-globe"></i> Phase 1 — Passive Reconnaissance: Building Intelligence Without Touching the Target</h2>
-  <p>Passive reconnaissance involves gathering intelligence from publicly available sources — without sending a single packet to the target's infrastructure. It is entirely legal and produces intelligence that surprises most organizations about what they expose to the open internet.</p>
+  <h2><i class="fa fa-globe"></i> Step 1 — Gathering Public Information (Without Touching Anything)</h2>
+  <p>This first step uses only information that's already public &mdash; without ever contacting the target's systems. It's completely legal, and it routinely surprises organizations with just how much they've unknowingly put on display.</p>
 
-  <h3>Corporate Websites, LinkedIn &amp; Job Postings</h3>
-  <p>An organization's own digital presence is one of the richest OSINT sources available. Through systematic analysis of corporate websites, social media profiles, and job postings, a skilled analyst can extract:</p>
+  <h3>Your Website, LinkedIn &amp; Job Ads</h3>
+  <p>An organization's own online presence is a goldmine. From the website, staff social media, and job adverts, a skilled analyst can piece together:</p>
   <ul>
-    <li><strong>Email naming conventions</strong> — first.last@company.com vs flast@company.com reveals the format for crafting targeted phishing lures or credential spraying lists</li>
-    <li><strong>Technology stack details</strong> — technical job descriptions frequently enumerate specific products in use ("experience with Palo Alto NGFWs", "proficiency in Splunk SIEM") revealing the defensive environment</li>
-    <li><strong>Key personnel</strong> — names and roles of IT and security staff are valuable for social engineering and for understanding the organizational security structure</li>
-    <li><strong>Partnerships and integrations</strong> — mentions of third-party providers and cloud platforms indicate potential supply chain entry points</li>
+    <li><strong>The email format</strong> &mdash; knowing it's, say, firstname.lastname@company.com lets an attacker guess staff email addresses for targeted scam emails</li>
+    <li><strong>Which technology you use</strong> &mdash; technical job ads often name the exact security products in use, revealing what defenses an attacker will face</li>
+    <li><strong>Key people</strong> &mdash; the names and roles of IT and security staff are useful for impersonation scams and for understanding who does what</li>
+    <li><strong>Partners and suppliers</strong> &mdash; mentions of outside providers point to possible indirect ways in</li>
   </ul>
 
   <div class="callout amber">
@@ -153,166 +158,160 @@
     Review your own organization's job postings from an attacker's perspective. Ask: does this listing reveal which security tools we use? Does it disclose our cloud provider? Technical specificity in job postings is a competitive necessity but also an intelligence gift to adversaries. Consider how much technology detail is truly necessary.
   </div>
 
-  <h3>Google Dorking</h3>
-  <p>Google's advanced search operators enable highly targeted enumeration of an organization's internet-exposed assets and related domains. By searching for a target's copyright notice, terms of service text, or privacy policy language, testers can discover related web properties that the organization may not actively maintain or monitor.</p>
+  <h3>Advanced Google Searches (&ldquo;Google Dorking&rdquo;)</h3>
+  <p>Google has advanced search tricks that go far beyond a normal search. Using them, a tester can dig up documents, login pages, and forgotten websites an organization didn't realize were public. Searching for the exact wording of a company's copyright or privacy notice, for example, can surface related sites it has stopped maintaining. The examples below show the kind of searches used:</p>
   <span class="mono">site:target.com ext:pdf
 inurl:"login" site:target.com
 "copyright 2024 TargetOrg" -site:target.com
 intitle:"index of" site:target.com</span>
-  <p>The Google Hacking Database (GHDB) maintains a catalogue of dorks targeting specific vulnerability classes — exposed admin panels, configuration files, backup files, and credential stores — that can be searched against any target within scope.</p>
+  <p>There's even a public catalogue of these search tricks aimed at finding specific weaknesses &mdash; exposed admin pages, configuration files, and the like.</p>
 
-  <h3>GitHub Dorking: Leaked Source Code &amp; Credentials</h3>
-  <p>As engineering teams grow, the probability of a developer accidentally pushing sensitive material to a public repository increases. GitHub dorking involves searching public repositories for an organization's name, domain, or known product names to find accidentally leaked secrets.</p>
+  <h3>Searching Public Code for Leaked Secrets</h3>
+  <p>As development teams grow, sooner or later someone accidentally posts sensitive material to a public code-sharing site. Testers search these sites for the organization's name and products to find secrets left in the open by mistake:</p>
   <span class="mono">org:TargetOrg "password" extension:config
 org:TargetOrg "api_key" language:python
 "target.com" "secret" pushed:>2023-01-01</span>
 
   <div class="callout danger">
-    <div class="callout-title"><i class="fa fa-triangle-exclamation"></i> Common Finding Pattern</div>
-    In a significant proportion of enterprise engagements, at least one developer has committed credentials to a public repository — often database connection strings, API keys, or internal IP addresses in configuration files that were intended to remain private. These findings are high-impact because they require no exploitation; the attacker simply reads the exposed secret.
+    <div class="callout-title"><i class="fa fa-triangle-exclamation"></i> A Very Common Finding</div>
+    In a large share of these tests, at least one developer has left a working password or access key in public code &mdash; often keys to databases or internal systems that were meant to stay private. These are especially dangerous because there's no &ldquo;hacking&rdquo; involved: the attacker just reads the exposed secret and walks in.
   </div>
 
-  <h2><i class="fa fa-map"></i> Phase 2 — Asset Discovery: Mapping the Attack Surface</h2>
-  <p>Asset discovery translates passive intelligence into a structured map of the target's internet-facing infrastructure. The goal is to identify every IP, domain, subdomain, and cloud asset within scope — including assets the organization may have forgotten it owns.</p>
+  <h2><i class="fa fa-map"></i> Step 2 — Mapping What's Connected to the Internet</h2>
+  <p>Next, the tester turns that public information into a map of everything the organization has facing the internet: its websites, servers, and cloud services &mdash; including the ones the organization has forgotten it even owns. Those forgotten systems are often the most vulnerable.</p>
 
-  <h3>ASN Enumeration</h3>
-  <p>Autonomous System Numbers (ASNs) are identifiers assigned to large network blocks. Enumerating an organization's ASNs reveals their entire IP address space — including legacy infrastructure and cloud presence.</p>
-  <span class="mono">amass intel --asn &lt;ASN_NUMBER&gt;
-# Hurricane Electric lookup: http://bgp.he.net
-# crt.sh certificate transparency search for additional IP ranges</span>
-  <p>A critical caveat: because modern organizations use shared cloud infrastructure (AWS, Azure, GCP), ASN enumeration does not capture cloud-hosted assets, which may appear under the cloud provider's ASN. Certificate transparency logs via crt.sh fill this gap by revealing hostnames regardless of hosting provider.</p>
+  <h3>Finding the Organization's Internet Addresses</h3>
+  <p>Large organizations are assigned blocks of internet addresses. By looking these up in public registries, a tester can uncover the full range of systems an organization runs &mdash; including old, neglected ones. One catch: systems hosted in the cloud (like Amazon or Microsoft) don't show up this way, so testers also search public certificate records, which reveal website names no matter where they're hosted.</p>
 
-  <h3>Reverse WHOIS</h3>
-  <p>Standard WHOIS lookups reveal the registrant of a single domain. Reverse WHOIS queries invert this — given a registrant name, email, or phone number, find all domains registered to that entity. This surfaces related domains the organization may not list publicly, including acquired subsidiaries, test environments, and legacy domains.</p>
+  <h3>Finding Related Websites</h3>
+  <p>Public domain-registration records can be searched in reverse: starting from a company's name or contact email, you can list <em>all</em> the web addresses registered to it. This often turns up related sites the organization never advertises &mdash; acquired brands, test sites, and old domains it forgot to shut down.</p>
 
-  <h3>Subdomain Enumeration</h3>
-  <p>A primary domain like target.com may host hundreds of subdomains, each representing a distinct web application or service — many of which are less carefully maintained than the main site. Subdomain enumeration uses three complementary techniques:</p>
+  <h3>Finding Hidden Sub-Sites</h3>
+  <p>A single web address like company.com can hide hundreds of sub-sites (such as mail.company.com or vpn.company.com), each a separate service &mdash; and many are looked after far less carefully than the main website. Testers find these in a few complementary ways:</p>
 
   <div class="tool-grid">
     <div class="tool-card">
-      <span class="tool-badge tb-passive">Passive</span>
-      <h4>Subdomain Scraping</h4>
-      <p><strong>Amass / Subfinder:</strong> Parse multiple public intelligence sources (certificate transparency, DNS records, web archives) to discover known subdomains without active scanning.</p>
+      <span class="tool-badge tb-passive">Quiet</span>
+      <h4>Checking Public Records</h4>
+      <p>Gather sub-site names from public sources like certificate logs and web archives &mdash; without ever contacting the target.</p>
     </div>
     <div class="tool-card">
       <span class="tool-badge tb-active">Active</span>
-      <h4>Linked &amp; JS Discovery</h4>
-      <p><strong>GoSpider / Hakrawler:</strong> Spider the target site recursively, extracting all linked URLs and JavaScript file references to find subdomains referenced in client-side code.</p>
+      <h4>Following the Links</h4>
+      <p>Automatically crawl the website, following every link and reference to discover other sites it connects to.</p>
     </div>
     <div class="tool-card">
       <span class="tool-badge tb-active">Active</span>
-      <h4>Subdomain Brute-Force</h4>
-      <p><strong>Amass / ffuf:</strong> Attempt to resolve domains constructed from common prefixes (mail, vpn, dev, staging, api) against the target's DNS to find unlisted subdomains.</p>
+      <h4>Educated Guessing</h4>
+      <p>Test common names (mail, vpn, dev, staging, api) to see which ones exist &mdash; turning up sub-sites that aren't listed anywhere.</p>
     </div>
     <div class="tool-card">
-      <span class="tool-badge tb-passive">Passive</span>
-      <h4>JS Entropy Analysis</h4>
-      <p><strong>SubDomainizer:</strong> Analyzes JavaScript files for subdomains, cloud service references, and Shannon entropy anomalies that may indicate embedded API keys or tokens.</p>
+      <span class="tool-badge tb-passive">Quiet</span>
+      <h4>Reading the Website's Code</h4>
+      <p>Scan the site's own behind-the-scenes code, which often mentions other sub-sites and cloud services &mdash; and sometimes even leaked keys.</p>
     </div>
   </div>
 
-  <h3>Shodan: Discovering Exposed Infrastructure</h3>
-  <p>Shodan is a continuous internet-wide scanner that captures service banners, certificate data, and stack profiling information from every reachable IP address. For a penetration tester, Shodan is a passive window into what an organization's infrastructure looks like from the outside — without probing it directly.</p>
-  <p>Shodan searches can surface: exposed remote desktop services, industrial control systems (ICS/SCADA), unpatched software versions, default login pages, and misconfigured cloud storage buckets — all without a single packet reaching the target.</p>
+  <h3>Using Shodan, the &ldquo;Search Engine for Devices&rdquo;</h3>
+  <p>Shodan is a service that continuously scans the whole internet and records what it finds on every reachable device. For a tester, it's a way to see what an organization looks like from the outside &mdash; without probing it directly.</p>
+  <p>A Shodan search can reveal exposed remote-access services, industrial control systems, out-of-date software, default login pages, and misconfigured cloud storage &mdash; all without ever touching the target's systems.</p>
 
-  <h2><i class="fa fa-satellite-dish"></i> Phase 3 — Infrastructure Analysis</h2>
+  <h2><i class="fa fa-satellite-dish"></i> Step 3 — Probing the Systems Found</h2>
 
-  <h3>Port Scanning: Masscan + Nmap Chain</h3>
-  <p>Port scanning is the first active technique in the methodology — it sends packets to the target and is detectable. For this reason, it is always conducted within explicit written scope. The standard approach chains two tools for efficiency and accuracy:</p>
+  <h3>Checking Which Doors Are Open (Port Scanning)</h3>
+  <p>This is the first step that actually contacts the target's systems, so it can be detected &mdash; which is why it's only ever done within the agreed, written scope. The tester checks which network &ldquo;doors&rdquo; (ports) are open and what's running behind them. In practice, a fast tool finds the open doors, then a more careful tool identifies exactly what each one is:</p>
   <span class="mono">masscan -p1-65535 -iL $ipFile --max-rate 1800 -oG $output.log
-# Feed masscan results to nmap for service fingerprinting
-nmap -sV -iL masscan_results.txt -oG nmap_services.log
-# Run Brutespray against remote admin protocols for default credentials
-brutespray --file nmap_services.log</span>
-  <p>Masscan achieves its speed through a custom TCP/IP stack implementation and true multi-threading. The tradeoff is accuracy — masscan is used for rapid port discovery, then nmap performs slower, more accurate service version detection on the discovered open ports.</p>
+# Then identify what's running on each open port
+nmap -sV -iL masscan_results.txt -oG nmap_services.log</span>
+  <p>The fast tool trades detail for speed; the careful tool then fills in the detail on just the open doors it found. Together they're both quick and accurate.</p>
 
-  <h3>Screenshot Enumeration</h3>
-  <p>At scale — hundreds or thousands of discovered web-facing services — it is not feasible to manually browse each one. Screenshot tools (Eyewitness, Aquatone) automatically capture screenshots of every discovered web service, enabling rapid visual triage to identify high-value targets: login portals, admin interfaces, default-configured applications, and accidentally exposed development environments.</p>
+  <h3>Taking Screenshots at Scale</h3>
+  <p>When you've found hundreds or thousands of web pages, you can't open them all by hand. Tools automatically take a screenshot of each one, so the tester can quickly eyeball them and spot the interesting targets: login pages, admin panels, and forgotten test sites left exposed.</p>
 
-  <h2><i class="fa fa-robot"></i> Phase 4 — Automation &amp; Scale</h2>
-  <p>Enterprise-grade penetration tests involve attack surfaces with thousands of assets. Manual execution of reconnaissance steps becomes the bottleneck. Automation frameworks address this by chaining tools, managing input/output formats, adding threading, and enabling distributed execution across multiple machines.</p>
+  <h2><i class="fa fa-robot"></i> Step 4 — Doing It All at Scale</h2>
+  <p>A big organization can have thousands of systems, and doing every step by hand becomes the bottleneck. So testers automate: stringing tools together, feeding the output of one into the next, and running many checks at once. As a rough guide, automation maturity climbs through four levels:</p>
 
   <table class="tier-table">
     <thead>
-      <tr><th>Tier</th><th>Characteristics</th><th>Capability Level</th></tr>
+      <tr><th>Level</th><th>What it looks like</th><th>Who's here</th></tr>
     </thead>
     <tbody>
       <tr>
-        <td>C-Tier</td>
-        <td>Bash/Python scripts chaining existing tools. Step-based, no workflow management. Few techniques.</td>
-        <td>Entry-level automation</td>
+        <td>Basic</td>
+        <td>Simple scripts stringing existing tools together, run step by step by hand.</td>
+        <td>Beginners</td>
       </tr>
       <tr>
-        <td>B-Tier</td>
-        <td>Custom modules for some functions. Basic GUI or workflow. Runs point-in-time. Flat file output.</td>
         <td>Intermediate</td>
+        <td>Some custom-built pieces and a basic interface; run when needed.</td>
+        <td>Improving</td>
       </tr>
       <tr>
-        <td>A-Tier</td>
-        <td>All custom modules. GUI-driven. Runs iteratively. Manages data via database. Scales.</td>
-        <td>Professional</td>
+        <td>Advanced</td>
+        <td>Mostly custom-built, runs itself repeatedly, and stores results in an organized database.</td>
+        <td>Professionals</td>
       </tr>
       <tr>
-        <td>S-Tier</td>
-        <td>Custom modules + GUI + iterative execution + database + multi-box scaling + alerts + ML/AI + novel techniques.</td>
-        <td>Elite red team</td>
+        <td>Elite</td>
+        <td>Fully custom, runs continuously across many machines, sends alerts, and uses AI to work smarter.</td>
+        <td>Top red teams</td>
       </tr>
     </tbody>
   </table>
 
-  <p>A practical entry point for automation is <strong>Interlace</strong>, a framework that adds threading, CIDR/glob input support, proxying, and command queuing to existing tools — without requiring their rewriting. Combined with tools from the tomnomnom ecosystem (httprobe, waybackurls, anew), it enables scalable recon pipelines buildable in hours rather than weeks.</p>
+  <p>You don't need to build the elite version to benefit. Free, off-the-shelf tools let a small team stitch together a capable, automated reconnaissance process in a matter of hours rather than weeks.</p>
 
-  <h2><i class="fa fa-sitemap"></i> Phase 5 — Internal Situational Awareness</h2>
-  <p>If reconnaissance leads to a foothold inside the network, the methodology transitions to internal reconnaissance — understanding the Active Directory (AD) environment, which underpins Windows networks in virtually all enterprise environments.</p>
-  <p>Active Directory stores every network object — servers, workstations, users, printers, applications — as a queryable object with attributes. Understanding AD structure reveals: privileged accounts, trust relationships between domains, reachable network segments, and the organizational hierarchy of access. Internal recon is a precursor to privilege escalation, lateral movement, and ultimately, domain compromise.</p>
+  <h2><i class="fa fa-sitemap"></i> Step 5 — Looking Around From Inside</h2>
+  <p>If a test succeeds in getting a foothold inside the network, the focus shifts to understanding the inside. In most Windows-based organizations, that means studying the central directory system (Active Directory) &mdash; the master list that keeps track of every user, computer, and printer, and who's allowed to do what.</p>
+  <p>Understanding this central directory shows an attacker where the powerful accounts are, which systems they can reach, and how access is organized &mdash; the map they need to move deeper and, ultimately, take over the whole network.</p>
 
   <div class="callout info">
     <div class="callout-title"><i class="fa fa-shield-halved"></i> For Defenders</div>
-    Understanding how attackers enumerate your AD environment is essential for hardening it. Enable AD audit logging (Event IDs 4624, 4625, 4648, 4768, 4769, 4776). Monitor for LDAP queries from unexpected sources. Implement tiered administration to limit the blast radius of credential compromise at any single tier.
+    Because attackers rely on this map, watch it closely. Keep detailed logs of logins and directory look-ups, watch for unusual queries coming from unexpected places, and organize your powerful accounts into tiers &mdash; so that compromising one account doesn't hand over everything at once.
   </div>
 
-  <h2><i class="fa fa-shield-halved"></i> What Organizations Can Do to Reduce Their Reconnaissance Surface</h2>
+  <h2><i class="fa fa-shield-halved"></i> How to Give Attackers Less to Find</h2>
 
   <div class="rec-grid">
     <div class="rec-card">
       <i class="fa fa-search"></i>
-      <h4>Google Yourself First</h4>
-      <p>Conduct regular passive reconnaissance against your own organization. Search for leaked credentials on GitHub, check your Shodan exposure, enumerate your own subdomains with Subfinder. Know what an attacker would find before they do.</p>
+      <h4>Investigate Yourself First</h4>
+      <p>Do this same homework on your own organization regularly. Search public code sites for your leaked passwords, check what Shodan shows about you, and list your own sub-sites. Know what an attacker would find before they do.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-code-branch"></i>
-      <h4>Scan Repos for Secrets</h4>
-      <p>Deploy tools like Gitleaks or TruffleHog in your CI/CD pipeline to detect credential patterns before code is committed. Retroactively scan existing repositories. Treat a leaked secret as a confirmed compromise — rotate it immediately.</p>
+      <h4>Scan Your Code for Secrets</h4>
+      <p>Use automated tools to catch passwords and keys before they get saved into code, and scan your existing code too. If a secret does leak, treat it as compromised and change it immediately.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-map-location-dot"></i>
-      <h4>Maintain an Asset Inventory</h4>
-      <p>You cannot protect what you do not know you have. Implement continuous asset discovery — not a quarterly spreadsheet. Shadow IT (assets deployed without IT knowledge) are disproportionately likely to be unpatched and misconfigured.</p>
+      <h4>Keep a Live Inventory of What You Own</h4>
+      <p>You can't protect what you don't know you have. Keep a continuously updated list of your systems, not a spreadsheet updated once a quarter. Systems set up without IT's knowledge are the ones most likely to be neglected and vulnerable.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-envelope-circle-check"></i>
-      <h4>Reduce OSINT Footprint</h4>
-      <p>Audit job postings for unnecessary technology disclosure. Configure WHOIS privacy on domain registrations. Remove excess DNS records (unused subdomains, development domains). Reduce the intelligence gift you leave for adversaries.</p>
+      <h4>Share Less in Public</h4>
+      <p>Trim unnecessary technical detail from job ads, turn on privacy for your domain registrations, and shut down old sub-sites and test sites you no longer use. Every detail you remove is one less clue for an attacker.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-plug-circle-minus"></i>
-      <h4>Close Unnecessary Ports &amp; Services</h4>
-      <p>Shodan your own IP ranges. Any service visible from the internet that is not intended to be public is a finding. SSH and RDP should never be directly internet-accessible; use jump hosts, VPNs, or Zero Trust Network Access instead.</p>
+      <h4>Close Doors You Don't Need Open</h4>
+      <p>Check what of yours is visible on the internet. Anything exposed that doesn't need to be is a problem. In particular, remote-admin access should never be open directly to the internet &mdash; put it behind a secure gateway.</p>
     </div>
     <div class="rec-card">
       <i class="fa fa-bell"></i>
-      <h4>Monitor for Recon Signatures</h4>
-      <p>Anomalous DNS query volumes, rapid sequential port scans, and unusual subdomain resolution patterns are observable signals of active reconnaissance. Implement honeypots and canary tokens in DNS to detect passive enumeration attempts.</p>
+      <h4>Watch for Signs of Snooping</h4>
+      <p>Bursts of unusual look-ups or rapid scanning of your systems can signal an attacker doing their homework. You can even plant harmless &ldquo;tripwires&rdquo; that quietly alert you the moment someone pokes at them.</p>
     </div>
   </div>
 
   <h2><i class="fa fa-book-open"></i> Key Takeaways</h2>
   <ul>
-    <li><strong>Reconnaissance is not hacking — yet.</strong> The passive phase of reconnaissance uses only public information. The most damaging intelligence an attacker gathers may come entirely from sources your organization published itself: job boards, GitHub, LinkedIn, your own website.</li>
-    <li><strong>Forgotten assets are the highest-risk assets.</strong> Subdomains, legacy applications, and cloud resources that an organization has stopped actively maintaining are disproportionately likely to be unpatched, misconfigured, and unmonitored.</li>
-    <li><strong>The attack surface is larger than most organizations realize.</strong> A single enterprise domain may yield hundreds of subdomains and dozens of IP ranges through systematic enumeration. Every one of those represents a potential entry point.</li>
-    <li><strong>Understanding offensive techniques is essential for defensive design.</strong> Security teams that understand how attackers enumerate their environment make better decisions about what to monitor, what to expose, and where to invest in hardening.</li>
-    <li><strong>Automation amplifies capability — on both sides.</strong> Attackers use automation to enumerate attack surfaces at scale. Defenders must use the same tools to understand their own exposure continuously, not once a year.</li>
+    <li><strong>Most of this isn't hacking &mdash; it's reading.</strong> The bulk of what an attacker learns comes from information you published yourself: job ads, code sites, LinkedIn, your own website.</li>
+    <li><strong>Forgotten systems are the riskiest.</strong> The sub-sites, old apps, and cloud services no one maintains anymore are exactly the ones most likely to be out of date and unwatched.</li>
+    <li><strong>You're probably more exposed than you think.</strong> A single company web address can hide hundreds of sub-sites. Each one is a possible way in.</li>
+    <li><strong>Knowing the attacker's playbook helps you defend.</strong> Understanding how attackers do their homework tells you what to hide, what to watch, and where to invest.</li>
+    <li><strong>Do this to yourself, regularly.</strong> Attackers scan for exposure constantly. The best defense is to check your own exposure just as often &mdash; not once a year.</li>
   </ul>
 
 </main>
